@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         guard let logintext = loginTextField.text else { return }
         guard let passtext = passwordTextField.text else { return }
    
-        if logintext == "Alex", passtext == "qwe77" {
+        if logintext == "Alex", passtext == "qwe777" {
             print("successful authorization")
         }
         else {
