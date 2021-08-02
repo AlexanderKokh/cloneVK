@@ -54,9 +54,9 @@ final class LoginViewController: UIViewController {
     @IBAction func loginButton(_ sender: UIButton) {
         guard let loginText = loginTextField.text, let pwdText = passwordTextField.text else { return }
         if loginText == "admin", pwdText == "1234" {
-            print("+")
+            showAlert(title: "Авторизация", message: "Успешно")
         } else {
-            print("-")
+            showAlert(title: "Авторизация", message: "Неверный логин или пароль")
         }
     }
 }
