@@ -4,9 +4,13 @@
 import UIKit
 
 final class LoginViewController: UIViewController {
+    // MARK: - UIViewController
+
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginTextField: UITextField!
+
+    // MARK: - UIViewController
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,6 +37,8 @@ final class LoginViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
     }
+
+    // MARK: - IBAction
 
     @objc func keyboardWillShown(notification: Notification) {
         let info = notification.userInfo as NSDictionary?
