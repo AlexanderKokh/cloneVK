@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +32,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="t4c-WN-ov1"/>
                                         </constraints>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -52,7 +52,7 @@
                                             <constraint firstAttribute="height" constant="50" id="Ac7-pL-ZUP"/>
                                         </constraints>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
@@ -67,7 +67,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ioj-ab-fkn">
                                         <rect key="frame" x="82" y="630" width="250" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="tintColor" systemColor="linkColor"/>
                                         <state key="normal" title="Войти">
                                             <color key="titleColor" systemColor="linkColor"/>
@@ -77,6 +77,9 @@
                                                 <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="soB-JY-h0a"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7S2-fz-lTB">
                                         <rect key="frame" x="127.5" y="728" width="159" height="30"/>
@@ -117,6 +120,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tSF-i5-Tf1" secondAttribute="bottom" id="tDO-fc-Kja"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginTextField" destination="oGX-sy-pqK" id="tzO-AE-yTy"/>
+                        <outlet property="passwordTextField" destination="MJd-8g-7Qa" id="x4i-bS-M5j"/>
+                        <outlet property="scrollView" destination="tSF-i5-Tf1" id="qDn-bJ-vG4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -126,7 +134,7 @@
     <resources>
         <image name="vk" width="200" height="200"/>
         <namedColor name="VKLoginViewColor">
-            <color red="0.46407210830000001" green="0.63168603180000005" blue="0.83116680379999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46399998664855957" green="0.63200002908706665" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
