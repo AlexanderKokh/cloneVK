@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		FC19319E26B87E410078AAC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19319D26B87E410078AAC8 /* AppDelegate.swift */; };
 		FC1931A026B87E410078AAC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19319F26B87E410078AAC8 /* SceneDelegate.swift */; };
-		FC1931A226B87E410078AAC8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1931A126B87E410078AAC8 /* ViewController.swift */; };
 		FC1931A526B87E410078AAC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1931A326B87E410078AAC8 /* Main.storyboard */; };
 		FC1931A726B87E430078AAC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC1931A626B87E430078AAC8 /* Assets.xcassets */; };
 		FC1931AA26B87E430078AAC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1931A826B87E430078AAC8 /* LaunchScreen.storyboard */; };
@@ -21,7 +20,6 @@
 		FC19319A26B87E410078AAC8 /* CloneVK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloneVK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC19319D26B87E410078AAC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC19319F26B87E410078AAC8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FC1931A126B87E410078AAC8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC1931A426B87E410078AAC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC1931A626B87E430078AAC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC1931A926B87E430078AAC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,14 +58,8 @@
 		FC19319C26B87E410078AAC8 /* CloneVK */ = {
 			isa = PBXGroup;
 			children = (
-				FC19319D26B87E410078AAC8 /* AppDelegate.swift */,
-				FC19319F26B87E410078AAC8 /* SceneDelegate.swift */,
-				FC1931A126B87E410078AAC8 /* ViewController.swift */,
-				FC1931A326B87E410078AAC8 /* Main.storyboard */,
-				FC65EF1326B9366F001212C7 /* LoginViewController.swift */,
-				FC1931A626B87E430078AAC8 /* Assets.xcassets */,
-				FC1931A826B87E430078AAC8 /* LaunchScreen.storyboard */,
-				FC1931AB26B87E430078AAC8 /* Info.plist */,
+				FC65EF2526BA0141001212C7 /* Application */,
+				FC65EF2226B9D7DF001212C7 /* ViewControllers */,
 				FC65EF1626B93816001212C7 /* Helpers */,
 			);
 			path = CloneVK;
@@ -79,6 +71,27 @@
 				FC65EF1726B93816001212C7 /* UIViewController+extension.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FC65EF2226B9D7DF001212C7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FC65EF1326B9366F001212C7 /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FC65EF2526BA0141001212C7 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				FC19319D26B87E410078AAC8 /* AppDelegate.swift */,
+				FC19319F26B87E410078AAC8 /* SceneDelegate.swift */,
+				FC1931A326B87E410078AAC8 /* Main.storyboard */,
+				FC1931A626B87E430078AAC8 /* Assets.xcassets */,
+				FC1931A826B87E430078AAC8 /* LaunchScreen.storyboard */,
+				FC1931AB26B87E430078AAC8 /* Info.plist */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,7 +206,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC65EF1426B9366F001212C7 /* LoginViewController.swift in Sources */,
-				FC1931A226B87E410078AAC8 /* ViewController.swift in Sources */,
 				FC65EF1826B93816001212C7 /* UIViewController+extension.swift in Sources */,
 				FC19319E26B87E410078AAC8 /* AppDelegate.swift in Sources */,
 				FC1931A026B87E410078AAC8 /* SceneDelegate.swift in Sources */,
@@ -344,7 +356,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CloneVK/Info.plist;
+				INFOPLIST_FILE = CloneVK/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,7 +374,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CloneVK/Info.plist;
+				INFOPLIST_FILE = CloneVK/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
