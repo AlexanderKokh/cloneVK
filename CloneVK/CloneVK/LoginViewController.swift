@@ -6,36 +6,20 @@ import UIKit
 final class LoginViewController: UIViewController {
     // MARK: - IBOutlet
 
-    @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var loginTextField: UITextField!
+    @IBOutlet private var scrollView: UIScrollView!
+    @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var loginTextField: UITextField!
 
     // MARK: - UIViewController
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShown(notification:)),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillHide(notification:)),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
-
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        scrollView.addGestureRecognizer(tapGesture)
+        addNotification()
+        addGesture()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        deleteNotification()
     }
 
     // MARK: - IBAction
@@ -57,12 +41,40 @@ final class LoginViewController: UIViewController {
         scrollView.endEditing(true)
     }
 
-    @IBAction func loginButton(_ sender: UIButton) {
+    @IBAction func loginAction(_ sender: UIButton) {
         guard let loginText = loginTextField.text, let pwdText = passwordTextField.text else { return }
         if loginText == "admin", pwdText == "1234" {
             showAlert(title: "Авторизация", message: "Успешно")
         } else {
             showAlert(title: "Авторизация", message: "Неверный логин или пароль")
         }
+    }
+
+    // MARK: - Private Properties
+
+    private func addGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        scrollView.addGestureRecognizer(tapGesture)
+    }
+
+    private func addNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShown(notification:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide(notification:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+
+    private func deleteNotification() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 }
