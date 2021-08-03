@@ -4,7 +4,7 @@
 import UIKit
 
 final class LoginViewController: UIViewController {
-    // MARK: - UIViewController
+    // MARK: - IBOutlet
 
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var passwordTextField: UITextField!
@@ -39,7 +39,7 @@ final class LoginViewController: UIViewController {
     }
 
     // MARK: - IBAction
-
+    
     @objc func keyboardWillShown(notification: Notification) {
         let info = notification.userInfo as NSDictionary?
         let kbSize = (info?.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as? NSValue)?.cgRectValue.size
