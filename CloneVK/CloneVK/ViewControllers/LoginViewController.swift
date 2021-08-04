@@ -42,9 +42,11 @@ final class LoginViewController: UIViewController {
     }
 
     @IBAction func loginAction(_ sender: UIButton) {
-        guard let loginText = loginTextField.text, let pwdText = passwordTextField.text else { return }
-        if loginText == "admin", pwdText == "1234" {
-            showAlert(title: "Авторизация", message: "Успешно")
+        if checkLoginInfo() {
+            guard let vc = UIStoryboard(name: "Main", bundle: nil)
+                .instantiateViewController(identifier: "TabBarVK") as? UITabBarController else { return }
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
         } else {
             showAlert(title: "Авторизация", message: "Неверный логин или пароль")
         }
@@ -76,5 +78,14 @@ final class LoginViewController: UIViewController {
     private func deleteNotification() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+
+    private func checkLoginInfo() -> Bool {
+        guard let loginText = loginTextField.text, let pwdText = passwordTextField.text else { return false }
+        if loginText == "admin", pwdText == "1234" {
+            return true
+        } else {
+            return false
+        }
     }
 }
