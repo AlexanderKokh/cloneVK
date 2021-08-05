@@ -12,6 +12,7 @@
 		FC1931A526B87E410078AAC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1931A326B87E410078AAC8 /* Main.storyboard */; };
 		FC1931A726B87E430078AAC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC1931A626B87E430078AAC8 /* Assets.xcassets */; };
 		FC1931AA26B87E430078AAC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1931A826B87E430078AAC8 /* LaunchScreen.storyboard */; };
+		FC641C3526BC6E3B00749964 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC641C3426BC6E3B00749964 /* UserView.swift */; };
 		FC65EF1426B9366F001212C7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65EF1326B9366F001212C7 /* LoginViewController.swift */; };
 		FC65EF1826B93816001212C7 /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65EF1726B93816001212C7 /* UIViewController+extension.swift */; };
 		FC6CD3B626BB473D006B486D /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CD3B526BB473D006B486D /* FriendsTableViewController.swift */; };
@@ -34,6 +35,7 @@
 		FC1931A626B87E430078AAC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC1931A926B87E430078AAC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC1931AB26B87E430078AAC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC641C3426BC6E3B00749964 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		FC65EF1326B9366F001212C7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FC65EF1726B93816001212C7 /* UIViewController+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
 		FC6CD3B526BB473D006B486D /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
@@ -81,10 +83,18 @@
 				FC6CD3BD26BB4A1E006B486D /* Model */,
 				FC65EF2526BA0141001212C7 /* Application */,
 				FC65EF2226B9D7DF001212C7 /* ViewControllers */,
+				FC641C3726BC8B5300749964 /* Controls */,
 				FC6CD3BB26BB48E3006B486D /* Cell */,
 				FC65EF1626B93816001212C7 /* Helpers */,
 			);
 			path = CloneVK;
+			sourceTree = "<group>";
+		};
+		FC641C3726BC8B5300749964 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controls;
 			sourceTree = "<group>";
 		};
 		FC65EF1626B93816001212C7 /* Helpers */ = {
@@ -127,6 +137,7 @@
 				FC6CD3C126BB5740006B486D /* UserCollectionViewCell.swift */,
 				FC6CD3CA26BB5FDB006B486D /* GroupsTableViewCell.swift */,
 				FCA51B8F26BB6B2400B2FA77 /* AllGroupsTableViewCell.swift */,
+				FC641C3426BC6E3B00749964 /* UserView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -258,6 +269,7 @@
 				FC6CD3CE26BB60F9006B486D /* Group.swift in Sources */,
 				FC65EF1826B93816001212C7 /* UIViewController+extension.swift in Sources */,
 				FC6CD3CB26BB5FDB006B486D /* GroupsTableViewCell.swift in Sources */,
+				FC641C3526BC6E3B00749964 /* UserView.swift in Sources */,
 				FC19319E26B87E410078AAC8 /* AppDelegate.swift in Sources */,
 				FC6CD3B926BB47CE006B486D /* FriendsTableViewCell.swift in Sources */,
 				FCA51B9026BB6B2400B2FA77 /* AllGroupsTableViewCell.swift in Sources */,

@@ -171,30 +171,38 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uTp-AP-i99">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGS-SD-i7s" customClass="UserView" customModule="CloneVK" customModuleProvider="target">
                                             <rect key="frame" x="281" y="5" width="100" height="100"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="Qqu-VI-s3B"/>
-                                                <constraint firstAttribute="width" constant="100" id="ZBk-0Y-Ibr"/>
+                                                <constraint firstAttribute="width" constant="100" id="HUT-ww-moX"/>
+                                                <constraint firstAttribute="height" constant="100" id="Tgp-MD-feA"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="50"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" systemColor="systemTealColor"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="50"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOfsetX">
+                                                    <integer key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOfsetY">
+                                                    <integer key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                        </imageView>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="5Bh-1n-LtD" firstAttribute="centerY" secondItem="akH-R2-LVT" secondAttribute="centerY" id="757-Uy-EAe"/>
-                                        <constraint firstAttribute="bottom" secondItem="uTp-AP-i99" secondAttribute="bottom" constant="5" id="7Xo-98-pNF"/>
+                                        <constraint firstAttribute="trailing" secondItem="bGS-SD-i7s" secondAttribute="trailing" constant="33" id="AUA-tL-6gt"/>
+                                        <constraint firstItem="bGS-SD-i7s" firstAttribute="top" secondItem="akH-R2-LVT" secondAttribute="top" constant="5" id="Aj1-vF-OaF"/>
                                         <constraint firstItem="5Bh-1n-LtD" firstAttribute="leading" secondItem="akH-R2-LVT" secondAttribute="leading" constant="36" id="EDM-7M-cRG"/>
-                                        <constraint firstAttribute="trailing" secondItem="uTp-AP-i99" secondAttribute="trailing" constant="33" id="EjU-dF-fNP"/>
-                                        <constraint firstItem="uTp-AP-i99" firstAttribute="top" secondItem="akH-R2-LVT" secondAttribute="top" constant="5" id="Q7w-S1-IRV"/>
-                                        <constraint firstItem="uTp-AP-i99" firstAttribute="centerY" secondItem="akH-R2-LVT" secondAttribute="centerY" id="dto-rY-5aO"/>
+                                        <constraint firstAttribute="bottom" secondItem="bGS-SD-i7s" secondAttribute="bottom" constant="5" id="pJc-8l-zub"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="friendImageView" destination="uTp-AP-i99" id="81C-FN-qT1"/>
+                                    <outlet property="customUserView" destination="bGS-SD-i7s" id="b2j-IM-no4"/>
                                     <outlet property="friendNameLabel" destination="5Bh-1n-LtD" id="eB7-4N-P7L"/>
                                 </connections>
                             </tableViewCell>
@@ -455,6 +463,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

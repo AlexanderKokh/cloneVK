@@ -9,11 +9,14 @@ final class FriendsTableViewCell: UITableViewCell {
     @IBOutlet private var friendImageView: UIImageView!
     @IBOutlet private var friendNameLabel: UILabel!
 
+    @IBOutlet var customUserView: UserView!
+
     // MARK: - Public methods
 
     func configureCell(user: User) {
         friendNameLabel.text = user.userName
         guard let avatarName = user.userImageName else { return }
-        friendImageView.image = UIImage(named: avatarName)
+        customUserView.setupImage(imageName: avatarName)
+        // friendImageView.image = UIImage(named: avatarName)
     }
 }
