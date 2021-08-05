@@ -4,7 +4,11 @@
 import UIKit
 
 final class UserCollectionViewCell: UICollectionViewCell {
-    @IBOutlet var userImageView: UIImageView!
+    // MARK: - IBOutlet
+
+    @IBOutlet private var userImageView: UIImageView!
+
+    // MARK: - Public methods
 
     func configureCell(userImageName: String) {
         userImageView.image = UIImage(named: userImageName)

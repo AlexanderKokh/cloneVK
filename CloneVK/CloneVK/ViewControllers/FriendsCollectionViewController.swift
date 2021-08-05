@@ -3,11 +3,21 @@
 
 import UIKit
 
-private let reuseIdentifier = "UserCollectionViewCell"
-
-let userImage = "Матвей"
+protocol ShowUserImage: AnyObject {
+    func setUserImage(userImageName: String)
+}
 
 final class FriendsCollectionViewController: UICollectionViewController {
+    // MARK: - Public Properties
+
+    var userImage = ""
+
+    // MARK: - Private Properties
+
+    private let reuseIdentifier = "UserCollectionViewCell"
+
+    // MARK: - UIViewController
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -28,7 +38,15 @@ final class FriendsCollectionViewController: UICollectionViewController {
         guard let cell = collectionView
             .dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? UserCollectionViewCell
         else { fatalError() }
+
         cell.configureCell(userImageName: userImage)
+
         return cell
+    }
+}
+
+extension FriendsCollectionViewController: ShowUserImage {
+    func setUserImage(userImageName: String) {
+        userImage = userImageName
     }
 }

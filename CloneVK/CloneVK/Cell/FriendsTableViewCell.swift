@@ -6,16 +6,10 @@ import UIKit
 final class FriendsTableViewCell: UITableViewCell {
     // MARK: - IBOutlet
 
-    @IBOutlet var friendImageView: UIImageView!
-    @IBOutlet var friendNameLabel: UILabel!
+    @IBOutlet private var friendImageView: UIImageView!
+    @IBOutlet private var friendNameLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+    // MARK: - Public methods
 
     func configureCell(user: User) {
         friendNameLabel.text = user.userName
