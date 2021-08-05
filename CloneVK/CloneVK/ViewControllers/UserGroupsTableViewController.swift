@@ -41,14 +41,15 @@ final class GroupsTableViewController: UITableViewController {
             groups.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
-        } else if editingStyle == .insert {}
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? AllGroupsTableViewController else { return }
         destination.closure = { [weak self] groupName, groupImageName in
-            self?.groups.append(Group(groupName: groupName, groupImageName: groupImageName))
-            self?.tableView.reloadData()
+            guard let self = self else { return }
+            self.groups.append(Group(groupName: groupName, groupImageName: groupImageName))
+            self.tableView.reloadData()
         }
     }
 }

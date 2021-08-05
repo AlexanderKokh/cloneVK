@@ -13,8 +13,7 @@ final class FriendsTableViewCell: UITableViewCell {
 
     func configureCell(user: User) {
         friendNameLabel.text = user.userName
-        if let avatarName = user.userImageName {
-            friendImageView.image = UIImage(named: avatarName)
-        }
+        guard let avatarName = user.userImageName else { return }
+        friendImageView.image = UIImage(named: avatarName)
     }
 }

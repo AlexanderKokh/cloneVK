@@ -33,21 +33,12 @@ final class AllGroupsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let refreshAlert = UIAlertController(
-            title: "Вступить в группу?",
-            message: nil,
-            preferredStyle: UIAlertController.Style.alert
-        )
-
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [self] (_: UIAlertAction!) in
-            let groupName = groups[indexPath.row].groupName
-            let groupImageName = groups[indexPath.row].groupImageName
-            closure?(groupName, groupImageName ?? "")
-        }))
-
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-
-        present(refreshAlert, animated: true)
+        showAlertCompleation(title: "Вступить в группу", message: nil) { [weak self] in
+            guard let self = self else { return }
+            let groupName = self.groups[indexPath.row].groupName
+            let groupImageName = self.groups[indexPath.row].groupImageName
+            self.closure?(groupName, groupImageName ?? "")
+        }
     }
 
     // MARK: - Private methods

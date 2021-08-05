@@ -8,9 +8,8 @@ final class FriendsTableViewController: UITableViewController {
 
     private var users: [User] = []
     private let reuseIdentifier = "FriendsTableViewCell"
-    private var currentUserImage = ""
-
-    weak var delegate: ShowUserImage?
+    private var currentUserImage = String()
+    private let segueFriendidentifier = "showFriend"
 
     // MARK: - UIViewController
 
@@ -36,15 +35,14 @@ final class FriendsTableViewController: UITableViewController {
             .dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) is FriendsTableViewCell
         else { fatalError() }
         if let userImageName = users[indexPath.row].userImageName {
-            // delegate?.setUserImage(userImageName: userImageName)
             currentUserImage = userImageName
-            performSegue(withIdentifier: "showFriend", sender: userImageName)
+            performSegue(withIdentifier: segueFriendidentifier, sender: userImageName)
         }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "showFriend" else { return }
-        guard let destination = segue.destination as? FriendsCollectionViewController else { return }
+        guard segue.identifier == segueFriendidentifier,
+              let destination = segue.destination as? FriendsCollectionViewController else { return }
         if let userImage = sender as? String {
             destination.userImage = userImage
         }

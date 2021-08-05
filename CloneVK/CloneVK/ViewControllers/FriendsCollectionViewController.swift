@@ -3,10 +3,6 @@
 
 import UIKit
 
-protocol ShowUserImage: AnyObject {
-    func setUserImage(userImageName: String)
-}
-
 final class FriendsCollectionViewController: UICollectionViewController {
     // MARK: - Public Properties
 
@@ -20,9 +16,8 @@ final class FriendsCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.itemSize = CGSize(width: 200, height: 200)
-        }
+        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        layout.itemSize = CGSize(width: 200, height: 200)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -40,13 +35,5 @@ final class FriendsCollectionViewController: UICollectionViewController {
         cell.configureCell(userImageName: userImage)
 
         return cell
-    }
-}
-
-// MARK: Extension FriendsCollectionViewController
-
-extension FriendsCollectionViewController: ShowUserImage {
-    func setUserImage(userImageName: String) {
-        userImage = userImageName
     }
 }
