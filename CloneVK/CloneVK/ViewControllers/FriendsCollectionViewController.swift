@@ -25,8 +25,6 @@ final class FriendsCollectionViewController: UICollectionViewController {
         }
     }
 
-    // MARK: UICollectionViewDataSource
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         1
     }
@@ -44,6 +42,8 @@ final class FriendsCollectionViewController: UICollectionViewController {
         return cell
     }
 }
+
+// MARK: Extension FriendsCollectionViewController
 
 extension FriendsCollectionViewController: ShowUserImage {
     func setUserImage(userImageName: String) {

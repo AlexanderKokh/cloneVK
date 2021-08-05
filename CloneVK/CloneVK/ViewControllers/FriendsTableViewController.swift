@@ -16,6 +16,43 @@ final class FriendsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addDataToUser()
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        users.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView
+            .dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? FriendsTableViewCell
+        else { fatalError() }
+        cell.configureCell(user: users[indexPath.row])
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard tableView
+            .dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) is FriendsTableViewCell
+        else { fatalError() }
+        if let userImageName = users[indexPath.row].userImageName {
+            // delegate?.setUserImage(userImageName: userImageName)
+            currentUserImage = userImageName
+            performSegue(withIdentifier: "showFriend", sender: userImageName)
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "showFriend" else { return }
+        guard let destination = segue.destination as? FriendsCollectionViewController else { return }
+        if let userImage = sender as? String {
+            destination.userImage = userImage
+        }
+    }
+
+    // MARK: - Private methods
+
+    private func addDataToUser() {
         users = [
             User(userName: "Матвей", userImageName: "Матвей"),
             User(userName: "Nikolay", userImageName: "Nikolay"),
@@ -44,33 +81,5 @@ final class FriendsTableViewController: UITableViewController {
             User(userName: "Valeriy", userImageName: "Валерий"),
             User(userName: "Valeriy", userImageName: "Valeriy"),
         ]
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        users.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView
-            .dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? FriendsTableViewCell
-        else { fatalError() }
-        cell.configureCell(user: users[indexPath.row])
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard tableView
-            .dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) is FriendsTableViewCell
-        else { fatalError() }
-        if let userImageName = users[indexPath.row].userImageName {
-            // delegate?.setUserImage(userImageName: userImageName)
-            currentUserImage = userImageName
-        }
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "showFriend" else { return }
-        guard let destination = segue.destination as? FriendsCollectionViewController else { return }
-        destination.userImage = currentUserImage
     }
 }

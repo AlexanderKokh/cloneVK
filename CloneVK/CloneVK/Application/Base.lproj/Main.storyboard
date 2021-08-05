@@ -196,7 +196,6 @@
                                 <connections>
                                     <outlet property="friendImageView" destination="uTp-AP-i99" id="81C-FN-qT1"/>
                                     <outlet property="friendNameLabel" destination="5Bh-1n-LtD" id="eB7-4N-P7L"/>
-                                    <segue destination="dDW-HJ-Xj6" kind="show" identifier="showFriend" id="avj-To-CHe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -206,6 +205,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Friends" id="W0b-5e-66W"/>
+                    <connections>
+                        <segue destination="dDW-HJ-Xj6" kind="show" identifier="showFriend" id="QwZ-kn-C8M"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCN-Xq-MHI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

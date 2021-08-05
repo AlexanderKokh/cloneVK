@@ -17,16 +17,7 @@ final class AllGroupsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        groups = [
-            Group(groupName: "Swift", groupImageName: "Swift"),
-            Group(groupName: "Cars", groupImageName: "Car"),
-            Group(groupName: "Best films", groupImageName: "Best"),
-            Group(groupName: "Hack with swift", groupImageName: "Hack with swift"),
-            Group(groupName: "IOS developers", groupImageName: "IOS developers"),
-            Group(groupName: "IOS magic", groupImageName: "IOS magic"),
-            Group(groupName: "Senior for 40 days", groupImageName: "Swift for 40 days")
-        ]
+        addDataToGroups()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,5 +48,19 @@ final class AllGroupsTableViewController: UITableViewController {
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
 
         present(refreshAlert, animated: true)
+    }
+
+    // MARK: - Private methods
+
+    private func addDataToGroups() {
+        groups = [
+            Group(groupName: "Swift", groupImageName: "Swift"),
+            Group(groupName: "Cars", groupImageName: "Car"),
+            Group(groupName: "Best films", groupImageName: "Best"),
+            Group(groupName: "Hack with swift", groupImageName: "Hack with swift"),
+            Group(groupName: "IOS developers", groupImageName: "IOS developers"),
+            Group(groupName: "IOS magic", groupImageName: "IOS magic"),
+            Group(groupName: "Senior for 40 days", groupImageName: "Swift for 40 days")
+        ]
     }
 }
