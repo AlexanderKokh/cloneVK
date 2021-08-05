@@ -4,7 +4,6 @@
 import UIKit
 
 @IBDesignable final class UserView: UIView {
-
     private let userImageView = UIImageView()
     private let usershadomView = UIView()
 
@@ -81,6 +80,10 @@ import UIKit
     }
 
     func setupImage(imageName: String) {
-        userImageView.image = UIImage(named: imageName)
+        if UIImage(named: imageName) != nil {
+            userImageView.image = UIImage(named: imageName)
+        } else {
+            userImageView.image = UIImage(named: "unnamed")
+        }
     }
 }

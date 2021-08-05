@@ -4,13 +4,26 @@
 import UIKit
 
 final class UserCollectionViewCell: UICollectionViewCell {
-    // MARK: - IBOutlet
+    let likeControl = UserImageLikeControl()
 
-    @IBOutlet private var userImageView: UIImageView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
 
-    // MARK: - Public methods
+        likeControl.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(likeControl)
+
+        let likeConstraints = [
+            likeControl.leftAnchor.constraint(equalTo: leftAnchor),
+            likeControl.rightAnchor.constraint(equalTo: rightAnchor),
+            likeControl.topAnchor.constraint(equalTo: topAnchor),
+            likeControl.widthAnchor.constraint(equalTo: widthAnchor),
+            likeControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 20)
+        ]
+
+        NSLayoutConstraint.activate(likeConstraints)
+    }
 
     func configureCell(userImageName: String) {
-        userImageView.image = UIImage(named: userImageName)
+        likeControl.setupUserImage(userImageName: userImageName)
     }
 }

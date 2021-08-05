@@ -6,7 +6,6 @@ import UIKit
 final class FriendsTableViewCell: UITableViewCell {
     // MARK: - IBOutlet
 
-    @IBOutlet private var friendImageView: UIImageView!
     @IBOutlet private var friendNameLabel: UILabel!
 
     @IBOutlet var customUserView: UserView!
@@ -17,6 +16,5 @@ final class FriendsTableViewCell: UITableViewCell {
         friendNameLabel.text = user.userName
         guard let avatarName = user.userImageName else { return }
         customUserView.setupImage(imageName: avatarName)
-        // friendImageView.image = UIImage(named: avatarName)
     }
 }
