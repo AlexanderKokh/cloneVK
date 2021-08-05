@@ -30,7 +30,19 @@ final class FriendsTableViewController: UITableViewController {
             User(userName: "Weys", userImageName: "Weys"),
             User(userName: "Эдуард", userImageName: "Эдуард"),
             User(userName: "Tim", userImageName: "Tim"),
-            User(userName: "Ардак", userImageName: "Ардак")
+            User(userName: "Ардак", userImageName: "Ардак"),
+            User(userName: "Юрий", userImageName: "Юрий"),
+            User(userName: "Артем", userImageName: "Артем"),
+            User(userName: "Евгений", userImageName: "ЕвгенийСова"),
+            User(userName: "Dmi3", userImageName: "Dmi3"),
+            User(userName: "Max", userImageName: "Max"),
+            User(userName: "Тигран", userImageName: "Тигран"),
+            User(userName: "Sergey", userImageName: "Sergey"),
+            User(userName: "Эдвард", userImageName: "Эдвард"),
+            User(userName: "Full Master", userImageName: ""),
+            User(userName: "VERA ZAITSEVA", userImageName: "Vera"),
+            User(userName: "Valeriy", userImageName: "Валерий"),
+            User(userName: "Valeriy", userImageName: "Valeriy"),
         ]
     }
 
