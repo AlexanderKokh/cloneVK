@@ -171,31 +171,42 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uTp-AP-i99">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGS-SD-i7s" customClass="UserView" customModule="CloneVK" customModuleProvider="target">
                                             <rect key="frame" x="281" y="5" width="100" height="100"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="Qqu-VI-s3B"/>
-                                                <constraint firstAttribute="width" constant="100" id="ZBk-0Y-Ibr"/>
+                                                <constraint firstAttribute="width" constant="100" id="HUT-ww-moX"/>
+                                                <constraint firstAttribute="height" constant="100" id="Tgp-MD-feA"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="50"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" systemColor="systemRedColor"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="50"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOfsetX">
+                                                    <integer key="value" value="13"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOfsetY">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                        </imageView>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="5Bh-1n-LtD" firstAttribute="centerY" secondItem="akH-R2-LVT" secondAttribute="centerY" id="757-Uy-EAe"/>
-                                        <constraint firstAttribute="bottom" secondItem="uTp-AP-i99" secondAttribute="bottom" constant="5" id="7Xo-98-pNF"/>
+                                        <constraint firstAttribute="trailing" secondItem="bGS-SD-i7s" secondAttribute="trailing" constant="33" id="AUA-tL-6gt"/>
+                                        <constraint firstItem="bGS-SD-i7s" firstAttribute="top" secondItem="akH-R2-LVT" secondAttribute="top" constant="5" id="Aj1-vF-OaF"/>
                                         <constraint firstItem="5Bh-1n-LtD" firstAttribute="leading" secondItem="akH-R2-LVT" secondAttribute="leading" constant="36" id="EDM-7M-cRG"/>
-                                        <constraint firstAttribute="trailing" secondItem="uTp-AP-i99" secondAttribute="trailing" constant="33" id="EjU-dF-fNP"/>
-                                        <constraint firstItem="uTp-AP-i99" firstAttribute="top" secondItem="akH-R2-LVT" secondAttribute="top" constant="5" id="Q7w-S1-IRV"/>
-                                        <constraint firstItem="uTp-AP-i99" firstAttribute="centerY" secondItem="akH-R2-LVT" secondAttribute="centerY" id="dto-rY-5aO"/>
+                                        <constraint firstAttribute="bottom" secondItem="bGS-SD-i7s" secondAttribute="bottom" constant="5" id="pJc-8l-zub"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="friendImageView" destination="uTp-AP-i99" id="81C-FN-qT1"/>
                                     <outlet property="friendNameLabel" destination="5Bh-1n-LtD" id="eB7-4N-P7L"/>
+                                    <outlet property="userView" destination="bGS-SD-i7s" id="Gdk-jd-l3q"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -234,38 +245,8 @@
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lRA-DD-nq2">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cfs-1g-uxw">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="200" id="Sra-8h-VdK"/>
-                                                <constraint firstAttribute="width" constant="150" id="WhW-3w-hDo"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHE-FF-hle">
-                                            <rect key="frame" x="97" y="171" width="18" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEc-VU-lA0">
-                                            <rect key="frame" x="113" y="169" width="37" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="heart" catalog="system"/>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="cfs-1g-uxw" firstAttribute="top" secondItem="lRA-DD-nq2" secondAttribute="top" id="H2B-r3-4CV"/>
-                                        <constraint firstItem="cfs-1g-uxw" firstAttribute="leading" secondItem="lRA-DD-nq2" secondAttribute="leading" id="RDm-To-dM3"/>
-                                        <constraint firstAttribute="bottom" secondItem="cfs-1g-uxw" secondAttribute="bottom" id="iNV-VO-FdI"/>
-                                        <constraint firstAttribute="trailing" secondItem="cfs-1g-uxw" secondAttribute="trailing" id="q8V-CH-T8o"/>
-                                    </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="150" height="200"/>
-                                <connections>
-                                    <outlet property="userImageView" destination="cfs-1g-uxw" id="Wge-XP-tiI"/>
-                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -445,7 +426,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="vk" width="200" height="200"/>
         <namedColor name="VKLoginViewColor">
             <color red="0.46399998664855957" green="0.63200002908706665" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -455,6 +435,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

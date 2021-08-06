@@ -13,8 +13,7 @@ final class GroupsTableViewCell: UITableViewCell {
 
     func configureCell(group: Group) {
         groupNameLabel.text = group.groupName
-        if let groupAvatar = group.groupImageName {
-            groupImageView.image = UIImage(named: groupAvatar)
-        }
+        guard let groupAvatar = group.groupImageName else { return }
+        groupImageView.image = UIImage(named: groupAvatar)
     }
 }
