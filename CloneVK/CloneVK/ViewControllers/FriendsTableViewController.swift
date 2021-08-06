@@ -52,10 +52,10 @@ final class FriendsTableViewController: UITableViewController {
         guard tableView
             .dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) is FriendsTableViewCell
         else { fatalError() }
-        if let userImageName = users[indexPath.row].userImageName {
-            currentUserImage = userImageName
-            performSegue(withIdentifier: segueFriendidentifier, sender: userImageName)
-        }
+
+        guard let userImageName = sections[sectionTitles[indexPath.section]]?[indexPath.row].userImageName
+        else { fatalError() }
+        performSegue(withIdentifier: segueFriendidentifier, sender: userImageName)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -109,5 +109,6 @@ final class FriendsTableViewController: UITableViewController {
             }
         }
         sectionTitles = Array(sections.keys)
+        sectionTitles.sort()
     }
 }
