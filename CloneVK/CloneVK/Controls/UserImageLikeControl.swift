@@ -4,14 +4,44 @@
 import UIKit
 
 final class UserImageLikeControl: UIControl {
+    // MARK: - Private Properties
+
     private var count = Int()
     private var userLikeCountLabel = UILabel()
     private var userLikeImageView = UIImageView()
     private var userImageView = UIImageView()
 
+    // MARK: - Initializers
+
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupCustomContol()
+    }
 
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Public methods
+
+    func setupUserImage(userImageName: String) {
+        userImageView.contentMode = .scaleAspectFill
+        userImageView.image = UIImage(named: userImageName)
+        setupSubViews()
+    }
+
+    // MARK: - IBAction
+
+    @objc private func onUserImageTap() {
+        isSelected = !isSelected
+        count += isSelected ? 1 : -1
+        updateView()
+    }
+
+    // MARK: - Private methods
+
+    private func setupCustomContol() {
         userLikeCountLabel.translatesAutoresizingMaskIntoConstraints = false
         userImageView.translatesAutoresizingMaskIntoConstraints = false
         userLikeImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -22,11 +52,6 @@ final class UserImageLikeControl: UIControl {
 
         createConstraints()
         addGesture()
-    }
-
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     private func createConstraints() {
@@ -61,12 +86,6 @@ final class UserImageLikeControl: UIControl {
         isUserInteractionEnabled = true
     }
 
-    @objc private func onUserImageTap() {
-        isSelected = !isSelected
-        count += isSelected ? 1 : -1
-        updateView()
-    }
-
     private func updateView() {
         userLikeCountLabel.text = "\(count)"
         if isSelected {
@@ -78,12 +97,10 @@ final class UserImageLikeControl: UIControl {
         }
     }
 
-    func setupUserImage(userImageName: String) {
+    private func setupSubViews() {
         userLikeImageView.contentMode = .scaleAspectFit
         userLikeImageView.tintColor = .black
         userLikeImageView.image = UIImage(systemName: "heart")
         userLikeCountLabel.text = "0"
-        userImageView.contentMode = .scaleAspectFill
-        userImageView.image = UIImage(named: userImageName)
     }
 }

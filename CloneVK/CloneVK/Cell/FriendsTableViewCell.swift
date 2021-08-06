@@ -7,7 +7,6 @@ final class FriendsTableViewCell: UITableViewCell {
     // MARK: - IBOutlet
 
     @IBOutlet private var friendNameLabel: UILabel!
-
     @IBOutlet var customUserView: UserView!
 
     // MARK: - Public methods

@@ -10,23 +10,41 @@ final class FriendsTableViewController: UITableViewController {
     private let reuseIdentifier = "FriendsTableViewCell"
     private var currentUserImage = String()
     private let segueFriendidentifier = "showFriend"
+    private var sections: [Character: [User]] = [:]
+    private var sectionTitles: [Character] = []
 
     // MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addDataToUser()
+        addSections()
+    }
+
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        sectionTitles.map { String($0) }
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        String(sectionTitles[section])
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        users.count
+        sections[sectionTitles[section]]?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView
             .dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? FriendsTableViewCell
         else { fatalError() }
-        cell.configureCell(user: users[indexPath.row])
+
+        guard let user = sections[sectionTitles[indexPath.section]]?[indexPath.row] else { fatalError() }
+        cell.configureCell(user: user)
+
         return cell
     }
 
@@ -79,5 +97,17 @@ final class FriendsTableViewController: UITableViewController {
             User(userName: "Valeriy", userImageName: "Валерий"),
             User(userName: "Valeriy", userImageName: "Valeriy"),
         ]
+    }
+
+    private func addSections() {
+        for user in users {
+            guard let firstLetter = user.userName.first else { return }
+            if sections[firstLetter] != nil {
+                sections[firstLetter]?.append(user)
+            } else {
+                sections[firstLetter] = [user]
+            }
+        }
+        sectionTitles = Array(sections.keys)
     }
 }
