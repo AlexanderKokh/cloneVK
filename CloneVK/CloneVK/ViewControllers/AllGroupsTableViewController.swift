@@ -8,27 +8,40 @@ final class AllGroupsTableViewController: UITableViewController {
 
     var closure: ((_ groupName: String, _ groupImageName: String) -> ())?
 
+    @IBOutlet var searchBar: UISearchBar!
+
     // MARK: - Private Properties
 
     private var groups: [Group] = []
+    var searchGroups: [Group] = []
+    var searching = false
     private let reuseIdentifier = "AllGroupsTableViewCell"
 
     // MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         addDataToGroups()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        groups.count
+        if searching {
+            return searchGroups.count
+        } else {
+            return groups.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView
             .dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? AllGroupsTableViewCell
         else { fatalError() }
-        cell.configureCell(group: groups[indexPath.row])
+        if searching {
+            cell.configureCell(group: searchGroups[indexPath.row])
+        } else {
+            cell.configureCell(group: groups[indexPath.row])
+        }
         return cell
     }
 
@@ -53,5 +66,13 @@ final class AllGroupsTableViewController: UITableViewController {
             Group(groupName: "IOS magic", groupImageName: "IOS magic"),
             Group(groupName: "Senior for 40 days", groupImageName: "Swift for 40 days")
         ]
+    }
+}
+
+extension AllGroupsTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchGroups = groups.filter { $0.groupName.prefix(searchText.count).lowercased() == searchText.lowercased() }
+        searching = true
+        tableView.reloadData()
     }
 }
