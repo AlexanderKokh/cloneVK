@@ -7,7 +7,7 @@ final class FriendsTableViewCell: UITableViewCell {
     // MARK: - IBOutlet
 
     @IBOutlet private var friendNameLabel: UILabel!
-    @IBOutlet var userView: UserView!
+    @IBOutlet private var userView: UserView!
 
     // MARK: - Public methods
 
@@ -15,5 +15,6 @@ final class FriendsTableViewCell: UITableViewCell {
         friendNameLabel.text = user.userName
         guard let avatarName = user.userImageName else { return }
         userView.setupImage(imageName: avatarName)
+        backgroundColor = .systemTeal
     }
 }

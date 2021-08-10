@@ -8,27 +8,34 @@ final class AllGroupsTableViewController: UITableViewController {
 
     var closure: ((_ groupName: String, _ groupImageName: String) -> ())?
 
+    // MARK: - IBOutlet
+
+    @IBOutlet private var searchBar: UISearchBar!
+
     // MARK: - Private Properties
 
     private var groups: [Group] = []
+    private var searchGroups: [Group] = []
+    private var isSearching = false
     private let reuseIdentifier = "AllGroupsTableViewCell"
 
     // MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addDataToGroups()
+        setupView()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        groups.count
+        isSearching ? searchGroups.count : groups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView
             .dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? AllGroupsTableViewCell
         else { fatalError() }
-        cell.configureCell(group: groups[indexPath.row])
+        isSearching ? cell.configureCell(group: searchGroups[indexPath.row]) : cell
+            .configureCell(group: groups[indexPath.row])
         return cell
     }
 
@@ -43,6 +50,11 @@ final class AllGroupsTableViewController: UITableViewController {
 
     // MARK: - Private methods
 
+    private func setupView() {
+        searchBar.delegate = self
+        addDataToGroups()
+    }
+
     private func addDataToGroups() {
         groups = [
             Group(groupName: "Swift", groupImageName: "Swift"),
@@ -53,5 +65,13 @@ final class AllGroupsTableViewController: UITableViewController {
             Group(groupName: "IOS magic", groupImageName: "IOS magic"),
             Group(groupName: "Senior for 40 days", groupImageName: "Swift for 40 days")
         ]
+    }
+}
+
+extension AllGroupsTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchGroups = groups.filter { $0.groupName.prefix(searchText.count).lowercased() == searchText.lowercased() }
+        isSearching = true
+        tableView.reloadData()
     }
 }
