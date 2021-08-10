@@ -25,8 +25,25 @@ final class FriendsTableViewController: UITableViewController {
         sectionTitles.map { String($0) }
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        String(sectionTitles[section])
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        40
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
+
+        headerView.backgroundColor = .systemTeal
+        headerView.alpha = 0.5
+
+        let headerlabel = UILabel()
+        headerlabel.frame = CGRect(x: 0, y: -20, width: headerView.frame.width - 40, height: headerView.frame.height)
+        headerlabel.text = String(sectionTitles[section])
+        headerlabel.font = .systemFont(ofSize: 20, weight: .heavy)
+        headerlabel.textColor = .black
+
+        headerView.addSubview(headerlabel)
+
+        return headerView
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -15,5 +15,6 @@ final class FriendsTableViewCell: UITableViewCell {
         friendNameLabel.text = user.userName
         guard let avatarName = user.userImageName else { return }
         userView.setupImage(imageName: avatarName)
+        backgroundColor = .systemTeal
     }
 }
