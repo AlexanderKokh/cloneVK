@@ -16,7 +16,7 @@ final class AllGroupsTableViewController: UITableViewController {
 
     private var groups: [Group] = []
     private var searchGroups: [Group] = []
-    private var searching = false
+    private var isSearching = false
     private let reuseIdentifier = "AllGroupsTableViewCell"
 
     // MARK: - UIViewController
@@ -27,22 +27,15 @@ final class AllGroupsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searching {
-            return searchGroups.count
-        } else {
-            return groups.count
-        }
+        isSearching ? searchGroups.count : groups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView
             .dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? AllGroupsTableViewCell
         else { fatalError() }
-        if searching {
-            cell.configureCell(group: searchGroups[indexPath.row])
-        } else {
-            cell.configureCell(group: groups[indexPath.row])
-        }
+        isSearching ? cell.configureCell(group: searchGroups[indexPath.row]) : cell
+            .configureCell(group: groups[indexPath.row])
         return cell
     }
 
@@ -78,7 +71,7 @@ final class AllGroupsTableViewController: UITableViewController {
 extension AllGroupsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchGroups = groups.filter { $0.groupName.prefix(searchText.count).lowercased() == searchText.lowercased() }
-        searching = true
+        isSearching = true
         tableView.reloadData()
     }
 }

@@ -15,22 +15,18 @@ final class NewsTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        avatarNewsImageView.contentMode = .scaleAspectFit
+        mainNewsImageView.contentMode = .scaleAspectFill
+        mainNewsImageView.clipsToBounds = true
     }
 
     // MARK: - Public methods
 
     func configureCell(news: News) {
-        avatarNewsImageView.contentMode = .scaleAspectFit
         avatarNewsImageView.image = UIImage(named: news.sourceImageName)
         avatarNewsLabel.text = news.sourceNews
         textNewsLabel.text = news.sourceText
         guard let mainNewsImage = news.sourceMainImagename else { return }
-        mainNewsImageView.contentMode = .scaleToFill
-        mainNewsImageView.clipsToBounds = true
         mainNewsImageView.image = UIImage(named: mainNewsImage)
     }
 }
