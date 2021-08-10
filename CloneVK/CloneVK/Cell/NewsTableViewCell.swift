@@ -29,7 +29,7 @@ final class NewsTableViewCell: UITableViewCell {
         avatarNewsLabel.text = news.sourceNews
         textNewsLabel.text = news.sourceText
         guard let mainNewsImage = news.sourceMainImagename else { return }
-        mainNewsImageView.contentMode = .scaleAspectFit
+        mainNewsImageView.contentMode = .scaleToFill
         mainNewsImageView.clipsToBounds = true
         mainNewsImageView.image = UIImage(named: mainNewsImage)
     }
