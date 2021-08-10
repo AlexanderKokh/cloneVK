@@ -12,6 +12,10 @@ final class LoginViewController: UIViewController {
 
     // MARK: - UIViewController
 
+    private var firstDote = UIView()
+    private var secondDote = UIView()
+    private var thirdDote = UIView()
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addNotification()
@@ -43,16 +47,53 @@ final class LoginViewController: UIViewController {
 
     @IBAction func loginAction(_ sender: UIButton) {
         if checkLoginInfo() {
-            guard let vc = UIStoryboard(name: "Main", bundle: nil)
-                .instantiateViewController(identifier: "TabBarVK") as? UITabBarController else { return }
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true, completion: nil)
+            startAnimation()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                self.firstDote.layer.removeAllAnimations()
+                self.secondDote.layer.removeAllAnimations()
+                self.thirdDote.layer.removeAllAnimations()
+
+                guard let vc = UIStoryboard(name: "Main", bundle: nil)
+                    .instantiateViewController(identifier: "TabBarVK") as? UITabBarController else { return }
+                vc.modalPresentationStyle = .fullScreen
+
+                self.present(vc, animated: true, completion: nil)
+            }
         } else {
-            showAlert(title: "Авторизация", message: "Неверный логин или пароль")
+            showAlert(title: "Ошибка авторизации", message: "Неверный логин и/или пароль")
         }
     }
 
     // MARK: - Private Properties
+
+    private func setupSubView(newView: UIView, xPosition: Int) -> UIView {
+        newView.backgroundColor = .black
+        newView.alpha = 0
+        newView.frame = CGRect(x: view.center.x + CGFloat(xPosition), y: view.center.y, width: 10, height: 10)
+        view.addSubview(newView)
+        newView.layer.cornerRadius = 5
+        return newView
+    }
+
+    private func startAnimation() {
+        firstDote = setupSubView(newView: firstDote, xPosition: -15)
+
+        UIView.animate(withDuration: 0.7, delay: 0, options: [.repeat, .autoreverse]) {
+            self.firstDote.alpha = 1
+        }
+
+        secondDote = setupSubView(newView: secondDote, xPosition: 0)
+
+        UIView.animate(withDuration: 0.7, delay: 0.3, options: [.repeat, .autoreverse]) {
+            self.secondDote.alpha = 1
+        }
+
+        thirdDote = setupSubView(newView: thirdDote, xPosition: 15)
+
+        UIView.animate(withDuration: 0.7, delay: 0.6, options: [.repeat, .autoreverse]) {
+            self.thirdDote.alpha = 1
+        }
+    }
 
     private func addGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))

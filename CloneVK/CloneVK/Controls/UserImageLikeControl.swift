@@ -36,6 +36,13 @@ final class UserImageLikeControl: UIControl {
     @objc private func onUserImageTap() {
         isSelected = !isSelected
         count += isSelected ? 1 : -1
+        UIView.transition(
+            with: userLikeCountLabel,
+            duration: 0.45,
+            options: .transitionFlipFromLeft,
+            animations: { self.userLikeCountLabel.text = "\(self.count)"
+            }
+        )
         updateView()
     }
 
@@ -87,7 +94,7 @@ final class UserImageLikeControl: UIControl {
     }
 
     private func updateView() {
-        userLikeCountLabel.text = "\(count)"
+        // userLikeCountLabel.text = "\(count)"
         if isSelected {
             userLikeImageView.image = UIImage(systemName: "heart.fill")
             userLikeImageView.tintColor = .red

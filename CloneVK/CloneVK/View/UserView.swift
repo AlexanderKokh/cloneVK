@@ -71,6 +71,8 @@ import UIKit
         userImageView.frame = bounds
         userImageView.clipsToBounds = true
         addSubview(userImageView)
+
+        addGesture()
     }
 
     private func updateRadius() {
@@ -96,5 +98,20 @@ import UIKit
         usershadomView.layer.shadowOpacity = 1
         usershadomView.layer.shadowOffset = .zero
         usershadomView.layer.shadowRadius = 10
+    }
+
+    private func addGesture() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(onUserImagetap))
+        addGestureRecognizer(gesture)
+        isUserInteractionEnabled = true
+    }
+
+    @objc private func onUserImagetap() {
+        let animation = CABasicAnimation(keyPath: "transform.scale")
+        animation.toValue = 0.8
+        animation.duration = 0.7
+        animation.repeatCount = 2
+        animation.autoreverses = true
+        layer.add(animation, forKey: nil)
     }
 }
