@@ -4,14 +4,23 @@
 import UIKit
 
 final class NewsViewController: UIViewController {
+    // MARK: - IBOutlet
+
     @IBOutlet var tableView: UITableView!
+
+    // MARK: - Private Properties
 
     private var news: [News] = []
     private let cellIdentifier = "NewsTableViewCell"
+
+    // MARK: - UIViewController
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
+
+    // MARK: - Private methods
 
     private func setupView() {
         tableView.dataSource = self
@@ -31,6 +40,8 @@ final class NewsViewController: UIViewController {
         ]
     }
 }
+
+// MARK: - UITableViewDataSource
 
 extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

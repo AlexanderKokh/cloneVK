@@ -17,8 +17,7 @@ final class FriendsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addDataToUser()
-        addSections()
+        setupView()
     }
 
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -84,6 +83,11 @@ final class FriendsTableViewController: UITableViewController {
     }
 
     // MARK: - Private methods
+
+    private func setupView() {
+        addDataToUser()
+        addSections()
+    }
 
     private func addDataToUser() {
         users = [

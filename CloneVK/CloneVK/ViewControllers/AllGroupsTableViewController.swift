@@ -8,21 +8,22 @@ final class AllGroupsTableViewController: UITableViewController {
 
     var closure: ((_ groupName: String, _ groupImageName: String) -> ())?
 
+    // MARK: - IBOutlet
+
     @IBOutlet var searchBar: UISearchBar!
 
     // MARK: - Private Properties
 
     private var groups: [Group] = []
-    var searchGroups: [Group] = []
-    var searching = false
+    private var searchGroups: [Group] = []
+    private var searching = false
     private let reuseIdentifier = "AllGroupsTableViewCell"
 
     // MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
-        addDataToGroups()
+        setupView()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,6 +56,11 @@ final class AllGroupsTableViewController: UITableViewController {
     }
 
     // MARK: - Private methods
+
+    private func setupView() {
+        searchBar.delegate = self
+        addDataToGroups()
+    }
 
     private func addDataToGroups() {
         groups = [

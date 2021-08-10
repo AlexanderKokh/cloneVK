@@ -558,7 +558,7 @@
         <scene sceneID="Scz-SC-7Eb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Soi-47-9H5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Главная" image="house.fill" selectedImage="house.fill" catalog="system" id="B1C-6p-1JL"/>
+                    <tabBarItem key="tabBarItem" title="Главная" image="house.fill" catalog="system" selectedImage="house.fill" id="B1C-6p-1JL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Ia-UN-nkL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -576,7 +576,6 @@
     </scenes>
     <resources>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
-        <image name="house.fill" width="128" height="128"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
