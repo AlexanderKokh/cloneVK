@@ -457,7 +457,7 @@
                                                             <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal" image="ellipsis" catalog="system"/>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYt-Hp-yvw">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYt-Hp-yvw">
                                                             <rect key="frame" x="8" y="85" width="393.5" height="62"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -546,6 +546,7 @@
                                                         <constraint firstItem="doy-ip-JK4" firstAttribute="leading" secondItem="SWR-Xf-f0X" secondAttribute="trailing" constant="5" id="lzr-Ru-kLv"/>
                                                         <constraint firstItem="w5I-77-tGu" firstAttribute="leading" secondItem="XFa-7n-LqA" secondAttribute="trailing" constant="5" id="m5k-nc-Pa1"/>
                                                         <constraint firstItem="XFa-7n-LqA" firstAttribute="leading" secondItem="doy-ip-JK4" secondAttribute="trailing" constant="30" id="pTF-2k-LNQ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="eYt-Hp-yvw" secondAttribute="trailing" constant="1" id="shd-un-Cif"/>
                                                         <constraint firstItem="hwo-LW-zj3" firstAttribute="leading" secondItem="RNf-fQ-zGF" secondAttribute="leading" constant="8" id="u1T-aO-tus"/>
                                                         <constraint firstAttribute="bottom" secondItem="OkT-63-pv7" secondAttribute="bottom" constant="38" id="wTr-ct-hwZ"/>
                                                     </constraints>

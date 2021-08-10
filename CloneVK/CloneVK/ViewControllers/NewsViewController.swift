@@ -6,7 +6,7 @@ import UIKit
 final class NewsViewController: UIViewController {
     // MARK: - IBOutlet
 
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet private var tableView: UITableView!
 
     // MARK: - Private Properties
 

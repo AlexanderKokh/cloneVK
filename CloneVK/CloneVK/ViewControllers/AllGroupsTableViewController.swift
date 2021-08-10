@@ -10,7 +10,7 @@ final class AllGroupsTableViewController: UITableViewController {
 
     // MARK: - IBOutlet
 
-    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet private var searchBar: UISearchBar!
 
     // MARK: - Private Properties
 
