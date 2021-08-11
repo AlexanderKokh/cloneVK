@@ -61,6 +61,17 @@ import UIKit
         }
     }
 
+    // MARK: - IBAction
+
+    @objc private func onUserImagetap() {
+        let animation = CABasicAnimation(keyPath: "transform.scale")
+        animation.toValue = 0.8
+        animation.duration = 0.7
+        animation.repeatCount = 2
+        animation.autoreverses = true
+        layer.add(animation, forKey: nil)
+    }
+
     // MARK: - Private methods
 
     private func setupView() {
@@ -104,14 +115,5 @@ import UIKit
         let gesture = UITapGestureRecognizer(target: self, action: #selector(onUserImagetap))
         addGestureRecognizer(gesture)
         isUserInteractionEnabled = true
-    }
-
-    @objc private func onUserImagetap() {
-        let animation = CABasicAnimation(keyPath: "transform.scale")
-        animation.toValue = 0.8
-        animation.duration = 0.7
-        animation.repeatCount = 2
-        animation.autoreverses = true
-        layer.add(animation, forKey: nil)
     }
 }

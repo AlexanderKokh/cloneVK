@@ -94,7 +94,6 @@ final class UserImageLikeControl: UIControl {
     }
 
     private func updateView() {
-        // userLikeCountLabel.text = "\(count)"
         if isSelected {
             userLikeImageView.image = UIImage(systemName: "heart.fill")
             userLikeImageView.tintColor = .red
