@@ -33,7 +33,7 @@ final class NewsViewController: UIViewController {
                 sourceNews: "Футбол | News 24",
                 sourceImageName: "IOS developers",
                 sourceText: textMessi,
-                sourceMainImagename: "Messi"
+                sourceMainImagename: "messi"
             ),
             News(sourceNews: "IT юмор", sourceImageName: "Swift", sourceText: textITOne, sourceMainImagename: "IT"),
             News(sourceNews: "IT юмор", sourceImageName: "Swift", sourceText: textITOne, sourceMainImagename: "IT2")
