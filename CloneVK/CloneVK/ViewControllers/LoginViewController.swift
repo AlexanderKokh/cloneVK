@@ -12,9 +12,9 @@ final class LoginViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private var firstDote = UIView()
-    private var secondDote = UIView()
-    private var thirdDote = UIView()
+    private var firstDoteView = UIView()
+    private var secondDoteView = UIView()
+    private var thirdDoteView = UIView()
 
     // MARK: - UIViewController
 
@@ -58,11 +58,11 @@ final class LoginViewController: UIViewController {
     // MARK: - Private Properties
 
     private func continueLogin() {
-        startAnimation()
+        startAnimationView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.firstDote.layer.removeAllAnimations()
-            self.secondDote.layer.removeAllAnimations()
-            self.thirdDote.layer.removeAllAnimations()
+            self.firstDoteView.layer.removeAllAnimations()
+            self.secondDoteView.layer.removeAllAnimations()
+            self.thirdDoteView.layer.removeAllAnimations()
 
             guard let vc = UIStoryboard(name: "Main", bundle: nil)
                 .instantiateViewController(identifier: "TabBarVK") as? UITabBarController else { return }
@@ -81,21 +81,21 @@ final class LoginViewController: UIViewController {
         return newView
     }
 
-    private func startAnimation() {
-        firstDote = setupSubView(newView: firstDote, xPosition: -15)
-        secondDote = setupSubView(newView: secondDote, xPosition: 0)
-        thirdDote = setupSubView(newView: thirdDote, xPosition: 15)
+    private func startAnimationView() {
+        firstDoteView = setupSubView(newView: firstDoteView, xPosition: -15)
+        secondDoteView = setupSubView(newView: secondDoteView, xPosition: 0)
+        thirdDoteView = setupSubView(newView: thirdDoteView, xPosition: 15)
 
         UIView.animate(withDuration: 0.7, delay: 0, options: [.repeat, .autoreverse]) {
-            self.firstDote.alpha = 1
+            self.firstDoteView.alpha = 1
         }
 
         UIView.animate(withDuration: 0.7, delay: 0.3, options: [.repeat, .autoreverse]) {
-            self.secondDote.alpha = 1
+            self.secondDoteView.alpha = 1
         }
 
         UIView.animate(withDuration: 0.7, delay: 0.6, options: [.repeat, .autoreverse]) {
-            self.thirdDote.alpha = 1
+            self.thirdDoteView.alpha = 1
         }
     }
 
