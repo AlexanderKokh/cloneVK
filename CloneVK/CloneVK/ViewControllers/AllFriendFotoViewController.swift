@@ -85,7 +85,6 @@ final class AllFriendFotoViewController: UIViewController {
             completion: { _ in
                 self.friendImageView.layer.opacity = 1
                 self.friendImageView.transform = .identity
-
                 self.friendImageView.image = self.photos[self.index]
                 self.currentNumberLabel.text = "\(self.index + 1) / \(self.photos.count)"
             }

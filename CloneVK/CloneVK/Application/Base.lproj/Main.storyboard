@@ -225,7 +225,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCN-Xq-MHI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="-226"/>
+            <point key="canvasLocation" x="1423" y="-226"/>
         </scene>
         <!--Friends Collection View Controller-->
         <scene sceneID="Rx9-SE-95T">
@@ -261,7 +261,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olp-3L-SMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2274" y="-226"/>
+            <point key="canvasLocation" x="2314" y="-226"/>
         </scene>
         <!--All Friend Foto View Controller-->
         <scene sceneID="xYV-Fn-e2s">
@@ -626,7 +626,7 @@
         <!--Сообщества-->
         <scene sceneID="TP7-HC-2Na">
             <objects>
-                <navigationController id="klv-6R-nZF" sceneMemberID="viewController">
+                <navigationController id="klv-6R-nZF" customClass="CustomNavigationController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Сообщества" image="person.3" catalog="system" id="qkO-8e-Ajt"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="a9M-yN-d8I">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -655,7 +655,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wXb-MJ-Y47" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="836" y="-226"/>
+            <point key="canvasLocation" x="636" y="-226"/>
         </scene>
         <!--Главная-->
         <scene sceneID="Scz-SC-7Eb">
