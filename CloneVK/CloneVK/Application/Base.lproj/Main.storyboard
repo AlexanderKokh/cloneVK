@@ -220,7 +220,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Friends" id="W0b-5e-66W"/>
                     <connections>
-                        <segue destination="dDW-HJ-Xj6" kind="show" identifier="showFriend" id="QwZ-kn-C8M"/>
+                        <segue destination="RCl-Vd-fwj" kind="show" identifier="showFriend" id="AVI-Ms-udR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCN-Xq-MHI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -232,7 +232,7 @@
             <objects>
                 <collectionViewController id="dDW-HJ-Xj6" customClass="FriendsCollectionViewController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="7zG-2y-YUi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0xb-us-SNe">
@@ -262,6 +262,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olp-3L-SMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2274" y="-226"/>
+        </scene>
+        <!--All Friend Foto View Controller-->
+        <scene sceneID="xYV-Fn-e2s">
+            <objects>
+                <viewController id="RCl-Vd-fwj" customClass="AllFriendFotoViewController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4qo-kk-mOo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W9j-RM-6P5">
+                                <rect key="frame" x="43.5" y="179" width="327" height="543"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="327" id="KQ2-Sd-RYB"/>
+                                    <constraint firstAttribute="width" secondItem="W9j-RM-6P5" secondAttribute="height" multiplier="109:181" id="sNV-6P-Dx4"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z05-0W-B8b">
+                                <rect key="frame" x="140" y="749" width="134" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hfd-4K-2Ng"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hfd-4K-2Ng" firstAttribute="trailing" secondItem="z05-0W-B8b" secondAttribute="trailing" constant="140" id="EUU-Un-Xsn"/>
+                            <constraint firstItem="W9j-RM-6P5" firstAttribute="centerY" secondItem="hfd-4K-2Ng" secondAttribute="centerY" id="JCS-17-Dfb"/>
+                            <constraint firstItem="z05-0W-B8b" firstAttribute="top" secondItem="W9j-RM-6P5" secondAttribute="bottom" constant="27" id="Qxb-Xs-mzX"/>
+                            <constraint firstItem="z05-0W-B8b" firstAttribute="centerX" secondItem="hfd-4K-2Ng" secondAttribute="centerX" id="Vxj-2N-jwt"/>
+                            <constraint firstItem="W9j-RM-6P5" firstAttribute="centerX" secondItem="hfd-4K-2Ng" secondAttribute="centerX" id="x2s-kb-cVF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="32v-MF-REb"/>
+                    <connections>
+                        <outlet property="currentNumberLabel" destination="z05-0W-B8b" id="4b3-e5-jjc"/>
+                        <outlet property="friendImageView" destination="W9j-RM-6P5" id="4hr-NP-JEF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iLH-0u-E8u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2273.913043478261" y="-985.04464285714278"/>
         </scene>
         <!--My Groups-->
         <scene sceneID="rjb-8b-2Oa">
