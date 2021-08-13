@@ -3,14 +3,20 @@
 
 import UIKit
 
-final class CustomNavigationController: UINavigationController, UINavigationControllerDelegate {
+final class CustomNavigationController: UINavigationController {
+    // MARK: - Private Properties
+
+    private let interactiveTransition = CustomInteractiveTransition()
+
+    // MARK: - UIViewController
+
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
     }
+}
 
-    let interactiveTransition = CustomInteractiveTransition()
-
+extension CustomNavigationController: UINavigationControllerDelegate {
     func navigationController(
         _ navigationController: UINavigationController,
         interactionControllerFor animationController: UIViewControllerAnimatedTransitioning

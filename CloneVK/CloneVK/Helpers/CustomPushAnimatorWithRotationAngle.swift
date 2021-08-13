@@ -4,6 +4,8 @@
 import UIKit
 
 final class CustomPushAnimatorWithRotationAngle: NSObject, UIViewControllerAnimatedTransitioning {
+    // MARK: - Public methods
+
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         1.0
     }

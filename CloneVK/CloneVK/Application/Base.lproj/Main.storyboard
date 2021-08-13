@@ -157,7 +157,7 @@
             <objects>
                 <tableViewController id="Utx-nB-Mt5" customClass="FriendsTableViewController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AhW-6q-y1c">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -268,25 +268,25 @@
             <objects>
                 <viewController id="RCl-Vd-fwj" customClass="AllFriendFotoViewController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4qo-kk-mOo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W9j-RM-6P5">
-                                <rect key="frame" x="43.5" y="179" width="327" height="543"/>
+                                <rect key="frame" x="43.5" y="91" width="327" height="543"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="327" id="KQ2-Sd-RYB"/>
                                     <constraint firstAttribute="width" secondItem="W9j-RM-6P5" secondAttribute="height" multiplier="109:181" id="sNV-6P-Dx4"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z05-0W-B8b">
-                                <rect key="frame" x="140" y="749" width="134" height="41"/>
+                                <rect key="frame" x="140" y="661" width="134" height="41"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hfd-4K-2Ng"/>
-                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hfd-4K-2Ng" firstAttribute="trailing" secondItem="z05-0W-B8b" secondAttribute="trailing" constant="140" id="EUU-Un-Xsn"/>
                             <constraint firstItem="W9j-RM-6P5" firstAttribute="centerY" secondItem="hfd-4K-2Ng" secondAttribute="centerY" id="JCS-17-Dfb"/>
@@ -310,7 +310,7 @@
             <objects>
                 <tableViewController id="UOr-D2-qEj" customClass="GroupsTableViewController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="li9-NA-twf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -378,7 +378,7 @@
             <objects>
                 <tableViewController id="3ft-ML-Mdu" customClass="AllGroupsTableViewController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Z8s-Ll-S77">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" showsCancelButton="YES" id="LHz-nf-E1S">
@@ -452,11 +452,11 @@
             <objects>
                 <viewController id="cgd-Af-nJ7" customClass="NewsViewController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5HR-5T-mnI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1mm-uu-bgN">
-                                <rect key="frame" x="-7" y="74" width="414" height="724"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -628,9 +628,13 @@
             <objects>
                 <navigationController id="klv-6R-nZF" customClass="CustomNavigationController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Сообщества" image="person.3" catalog="system" id="qkO-8e-Ajt"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a9M-yN-d8I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="a9M-yN-d8I">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="UOr-D2-qEj" kind="relationship" relationship="rootViewController" id="gS4-g2-evb"/>
@@ -645,9 +649,13 @@
             <objects>
                 <navigationController id="WKT-wo-dQ2" customClass="CustomNavigationController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Друзья" image="person.2" catalog="system" id="xkd-xd-NeD"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fEV-fx-36a">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="fEV-fx-36a">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="Utx-nB-Mt5" kind="relationship" relationship="rootViewController" id="dYh-mi-Rym"/>
@@ -663,9 +671,13 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Soi-47-9H5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Главная" image="house.fill" catalog="system" selectedImage="house.fill" id="B1C-6p-1JL"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Ia-UN-nkL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="6Ia-UN-nkL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -695,9 +707,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

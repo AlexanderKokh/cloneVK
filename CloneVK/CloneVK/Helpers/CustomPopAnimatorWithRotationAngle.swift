@@ -4,6 +4,8 @@
 import UIKit
 
 final class CustomPopAnimatorWithRotationAngle: NSObject, UIViewControllerAnimatedTransitioning {
+    // MARK: - Public methods
+
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         2.0
     }

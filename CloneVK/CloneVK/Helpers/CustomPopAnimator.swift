@@ -4,6 +4,8 @@
 import UIKit
 
 final class CustomPopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+    // MARK: - Public methods
+
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let source = transitionContext.viewController(forKey: .from) else { return }
         guard let destination = transitionContext.viewController(forKey: .to) else { return }
