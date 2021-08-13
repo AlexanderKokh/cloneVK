@@ -80,19 +80,13 @@ final class AllFriendFotoViewController: UIViewController {
                 let translation = CGAffineTransform(translationX: CGFloat(translationX), y: 0)
                 self.friendImageView.transform = translation
                     .concatenating(CGAffineTransform(scaleX: 0.6, y: 0.6))
+                self.friendImageView.layer.opacity = 0.2
             },
             completion: { _ in
-                self.friendImageView.layer.opacity = 0
+                self.friendImageView.layer.opacity = 1
                 self.friendImageView.transform = .identity
-
                 self.friendImageView.image = self.photos[self.index]
                 self.currentNumberLabel.text = "\(self.index + 1) / \(self.photos.count)"
-                UIView.animate(
-                    withDuration: 0.5,
-                    animations: {
-                        self.friendImageView.layer.opacity = 1
-                    }
-                )
             }
         )
     }
