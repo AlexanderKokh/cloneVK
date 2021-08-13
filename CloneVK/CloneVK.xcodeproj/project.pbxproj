@@ -12,6 +12,8 @@
 		FC1931A526B87E410078AAC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1931A326B87E410078AAC8 /* Main.storyboard */; };
 		FC1931A726B87E430078AAC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC1931A626B87E430078AAC8 /* Assets.xcassets */; };
 		FC1931AA26B87E430078AAC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1931A826B87E430078AAC8 /* LaunchScreen.storyboard */; };
+		FC62153626C64258005370AD /* CustomPushAnimatorWithRotationAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62153526C64258005370AD /* CustomPushAnimatorWithRotationAngle.swift */; };
+		FC62153926C642AC005370AD /* CustomPopAnimatorWithRotationAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62153826C642AC005370AD /* CustomPopAnimatorWithRotationAngle.swift */; };
 		FC641C3526BC6E3B00749964 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC641C3426BC6E3B00749964 /* UserView.swift */; };
 		FC641C3B26BC973700749964 /* UserImageLikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC641C3A26BC973700749964 /* UserImageLikeControl.swift */; };
 		FC64574726C5CE6200C768B6 /* InteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64574626C5CE6200C768B6 /* InteractiveTransition.swift */; };
@@ -44,6 +46,8 @@
 		FC1931A626B87E430078AAC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC1931A926B87E430078AAC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC1931AB26B87E430078AAC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC62153526C64258005370AD /* CustomPushAnimatorWithRotationAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnimatorWithRotationAngle.swift; sourceTree = "<group>"; };
+		FC62153826C642AC005370AD /* CustomPopAnimatorWithRotationAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimatorWithRotationAngle.swift; sourceTree = "<group>"; };
 		FC641C3426BC6E3B00749964 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		FC641C3A26BC973700749964 /* UserImageLikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageLikeControl.swift; sourceTree = "<group>"; };
 		FC64574626C5CE6200C768B6 /* InteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveTransition.swift; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 				FC65EF1726B93816001212C7 /* UIViewController+extension.swift */,
 				FC64574626C5CE6200C768B6 /* InteractiveTransition.swift */,
 				FC64574926C5D22800C768B6 /* CustomNavigationController.swift */,
+				FC62153826C642AC005370AD /* CustomPopAnimatorWithRotationAngle.swift */,
+				FC62153526C64258005370AD /* CustomPushAnimatorWithRotationAngle.swift */,
 				FC64574C26C5D59800C768B6 /* CustomPopAnimator.swift */,
 				FC64575026C5DAFC00C768B6 /* CustomPushAnimator.swift */,
 			);
@@ -298,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC64574A26C5D22800C768B6 /* CustomNavigationController.swift in Sources */,
+				FC62153626C64258005370AD /* CustomPushAnimatorWithRotationAngle.swift in Sources */,
 				FC6CD3C526BB577A006B486D /* FriendsCollectionViewController.swift in Sources */,
 				FC6CD3C826BB5E69006B486D /* UserGroupsTableViewController.swift in Sources */,
 				FCA51B9426BB6B9700B2FA77 /* AllGroupsTableViewController.swift in Sources */,
@@ -307,6 +314,7 @@
 				FC65EF1826B93816001212C7 /* UIViewController+extension.swift in Sources */,
 				FCB0A78026C1D3410041982B /* News.swift in Sources */,
 				FC64575126C5DAFC00C768B6 /* CustomPushAnimator.swift in Sources */,
+				FC62153926C642AC005370AD /* CustomPopAnimatorWithRotationAngle.swift in Sources */,
 				FC6CD3CB26BB5FDB006B486D /* GroupsTableViewCell.swift in Sources */,
 				FC641C3526BC6E3B00749964 /* UserView.swift in Sources */,
 				FCB0A77D26C1D1AB0041982B /* NewsTableViewCell.swift in Sources */,

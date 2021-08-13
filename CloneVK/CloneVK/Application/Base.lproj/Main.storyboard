@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s8S-HL-2Lk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -225,7 +225,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCN-Xq-MHI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1423" y="-226"/>
+            <point key="canvasLocation" x="1421.7391304347827" y="-226.33928571428569"/>
         </scene>
         <!--Friends Collection View Controller-->
         <scene sceneID="Rx9-SE-95T">
@@ -286,7 +286,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hfd-4K-2Ng"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
                         <constraints>
                             <constraint firstItem="hfd-4K-2Ng" firstAttribute="trailing" secondItem="z05-0W-B8b" secondAttribute="trailing" constant="140" id="EUU-Un-Xsn"/>
                             <constraint firstItem="W9j-RM-6P5" firstAttribute="centerY" secondItem="hfd-4K-2Ng" secondAttribute="centerY" id="JCS-17-Dfb"/>
@@ -643,7 +643,7 @@
         <!--Друзья-->
         <scene sceneID="rVt-aZ-GBS">
             <objects>
-                <navigationController id="WKT-wo-dQ2" sceneMemberID="viewController">
+                <navigationController id="WKT-wo-dQ2" customClass="CustomNavigationController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Друзья" image="person.2" catalog="system" id="xkd-xd-NeD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fEV-fx-36a">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -695,6 +695,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

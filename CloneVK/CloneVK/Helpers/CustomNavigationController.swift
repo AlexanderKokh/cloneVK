@@ -25,13 +25,22 @@ final class CustomNavigationController: UINavigationController, UINavigationCont
         to toVC: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
         if operation == .push {
-            interactiveTransition.viewController = toVC
-            return CustomPushAnimator()
-        } else if operation == .pop {
-            if navigationController.viewControllers.first != toVC {
+            if toVC is AllGroupsTableViewController {
                 interactiveTransition.viewController = toVC
+                return CustomPushAnimator()
+            } else {
+                return CustomPushAnimatorWithRotationAngle()
             }
-            return CustomPopAnimator()
+
+        } else if operation == .pop {
+            if fromVC is AllGroupsTableViewController {
+                if navigationController.viewControllers.first != toVC {
+                    interactiveTransition.viewController = toVC
+                }
+                return CustomPopAnimator()
+            } else {
+                return CustomPopAnimatorWithRotationAngle()
+            }
         }
         return nil
     }
