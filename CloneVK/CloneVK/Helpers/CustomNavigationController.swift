@@ -21,7 +21,7 @@ extension CustomNavigationController: UINavigationControllerDelegate {
         _ navigationController: UINavigationController,
         interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
     ) -> UIViewControllerInteractiveTransitioning? {
-        interactiveTransition.hasStarted ? interactiveTransition : nil
+        interactiveTransition.isHasStarted ? interactiveTransition : nil
     }
 
     func navigationController(
@@ -30,15 +30,15 @@ extension CustomNavigationController: UINavigationControllerDelegate {
         from fromVC: UIViewController,
         to toVC: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
-        if operation == .push {
+        switch operation {
+        case .push:
             if toVC is AllGroupsTableViewController {
                 interactiveTransition.viewController = toVC
                 return CustomPushAnimator()
             } else {
                 return CustomPushAnimatorWithRotationAngle()
             }
-
-        } else if operation == .pop {
+        case .pop:
             if fromVC is AllGroupsTableViewController {
                 if navigationController.viewControllers.first != toVC {
                     interactiveTransition.viewController = toVC
@@ -47,7 +47,8 @@ extension CustomNavigationController: UINavigationControllerDelegate {
             } else {
                 return CustomPopAnimatorWithRotationAngle()
             }
+        default:
+            return nil
         }
-        return nil
     }
 }

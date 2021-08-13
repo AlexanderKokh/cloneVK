@@ -18,27 +18,27 @@ final class CustomInteractiveTransition: UIPercentDrivenInteractiveTransition {
         }
     }
 
-    var hasStarted: Bool = false
-    var shouldFinish: Bool = false
+    var isHasStarted: Bool = false
+    var isShouldFinish: Bool = false
 
     // MARK: - IBAction
 
-    @objc func handleScreenEdgeGesture(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+    @objc private func handleScreenEdgeGesture(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         switch recognizer.state {
         case .began:
-            hasStarted = true
+            isHasStarted = true
             viewController?.navigationController?.popViewController(animated: true)
         case .changed:
             let translation = recognizer.translation(in: recognizer.view)
             let relativeTranslation = translation.x / (recognizer.view?.bounds.width ?? 1)
             let progress = max(0, min(1, relativeTranslation))
-            shouldFinish = progress > 0.33
+            isShouldFinish = progress > 0.33
             update(progress)
         case .ended:
-            hasStarted = false
-            shouldFinish ? finish() : cancel()
+            isHasStarted = false
+            isShouldFinish ? finish() : cancel()
         case .cancelled:
-            hasStarted = false
+            isHasStarted = false
             cancel()
         default: return
         }
