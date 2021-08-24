@@ -9,7 +9,7 @@ final class Session {
     static let shared = Session()
 
     var token = String()
-    var userID = Int()
+    var userID = 7_618_150
 
     // MARK: - Initializers
 

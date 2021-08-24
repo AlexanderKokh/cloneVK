@@ -32,6 +32,7 @@
 		FC6CD3CE26BB60F9006B486D /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CD3CD26BB60F9006B486D /* Group.swift */; };
 		FCA51B9026BB6B2400B2FA77 /* AllGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA51B8F26BB6B2400B2FA77 /* AllGroupsTableViewCell.swift */; };
 		FCA51B9426BB6B9700B2FA77 /* AllGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA51B9326BB6B9700B2FA77 /* AllGroupsTableViewController.swift */; };
+		FCAA3F5E26D583B000BF6521 /* LoginVKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAA3F5D26D583B000BF6521 /* LoginVKWebViewController.swift */; };
 		FCAD1F7826C4F589005731E0 /* AllFriendFotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAD1F7726C4F589005731E0 /* AllFriendFotoViewController.swift */; };
 		FCB0A77A26C1C7AB0041982B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0A77926C1C7AB0041982B /* NewsViewController.swift */; };
 		FCB0A77D26C1D1AB0041982B /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0A77C26C1D1AB0041982B /* NewsTableViewCell.swift */; };
@@ -67,6 +68,7 @@
 		FC6CD3CD26BB60F9006B486D /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		FCA51B8F26BB6B2400B2FA77 /* AllGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewCell.swift; sourceTree = "<group>"; };
 		FCA51B9326BB6B9700B2FA77 /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewController.swift; sourceTree = "<group>"; };
+		FCAA3F5D26D583B000BF6521 /* LoginVKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVKWebViewController.swift; sourceTree = "<group>"; };
 		FCAD1F7726C4F589005731E0 /* AllFriendFotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFriendFotoViewController.swift; sourceTree = "<group>"; };
 		FCB0A77926C1C7AB0041982B /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		FCB0A77C26C1D1AB0041982B /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				FC6CD3C726BB5E69006B486D /* UserGroupsTableViewController.swift */,
 				FCA51B9326BB6B9700B2FA77 /* AllGroupsTableViewController.swift */,
 				FCAD1F7726C4F589005731E0 /* AllFriendFotoViewController.swift */,
+				FCAA3F5D26D583B000BF6521 /* LoginVKWebViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				FC62153626C64258005370AD /* CustomPushAnimatorWithRotationAngle.swift in Sources */,
 				FC6CD3C526BB577A006B486D /* FriendsCollectionViewController.swift in Sources */,
 				FC6CD3C826BB5E69006B486D /* UserGroupsTableViewController.swift in Sources */,
+				FCAA3F5E26D583B000BF6521 /* LoginVKWebViewController.swift in Sources */,
 				FCA51B9426BB6B9700B2FA77 /* AllGroupsTableViewController.swift in Sources */,
 				FC65EF1426B9366F001212C7 /* LoginViewController.swift in Sources */,
 				FC6CD3CE26BB60F9006B486D /* Group.swift in Sources */,
