@@ -53,7 +53,9 @@ extension LoginVKWebViewController: WKNavigationDelegate {
             }
 
         guard let token = params["access_token"] else { return }
-        print(token)
+
+        Session.shared.token = token
+
         decisionHandler(.cancel)
 
         guard let vc = UIStoryboard(name: "Main", bundle: nil)
