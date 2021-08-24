@@ -5,6 +5,8 @@ import Foundation
 import WebKit
 
 final class LoginVKWebViewController: UIViewController {
+    lazy var vkService = VKAPIService()
+
     @IBOutlet var webView: WKWebView! {
         didSet {
             webView.navigationDelegate = self
@@ -55,6 +57,9 @@ extension LoginVKWebViewController: WKNavigationDelegate {
         guard let token = params["access_token"] else { return }
 
         Session.shared.token = token
+
+        // vkService.getFriends()
+        // vkService.getPhotos()
 
         decisionHandler(.cancel)
 
