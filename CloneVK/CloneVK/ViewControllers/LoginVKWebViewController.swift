@@ -5,7 +5,11 @@ import Foundation
 import WebKit
 
 final class LoginVKWebViewController: UIViewController {
+    // MARK: - Public Properties
+
     lazy var vkService = VKAPIService()
+
+    // MARK: - IBOutlet
 
     @IBOutlet var webView: WKWebView! {
         didSet {
@@ -13,8 +17,16 @@ final class LoginVKWebViewController: UIViewController {
         }
     }
 
+    // MARK: - UIViewController
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadRequest()
+    }
+
+    // MARK: - Private methods
+
+    private func loadRequest() {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "oauth.vk.com"
@@ -32,6 +44,8 @@ final class LoginVKWebViewController: UIViewController {
         webView.load(request)
     }
 }
+
+// MARK: - WKNavigationDelegate
 
 extension LoginVKWebViewController: WKNavigationDelegate {
     func webView(
@@ -57,12 +71,19 @@ extension LoginVKWebViewController: WKNavigationDelegate {
         guard let token = params["access_token"] else { return }
 
         Session.shared.token = token
-
-        // vkService.getFriends()
-        // vkService.getPhotos()
-
         decisionHandler(.cancel)
+        getServiceData()
+        moveToNextViewController()
+    }
 
+    func getServiceData() {
+        vkService.getFriends()
+        vkService.getPhotos()
+        vkService.getGroups()
+        vkService.groupsSearch()
+    }
+
+    func moveToNextViewController() {
         guard let vc = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "TabBarVK") as? UITabBarController else { return }
         vc.modalPresentationStyle = .fullScreen
