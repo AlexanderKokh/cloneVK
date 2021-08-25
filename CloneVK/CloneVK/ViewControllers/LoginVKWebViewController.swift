@@ -11,7 +11,7 @@ final class LoginVKWebViewController: UIViewController {
 
     // MARK: - IBOutlet
 
-    @IBOutlet var webView: WKWebView! {
+    @IBOutlet private var webView: WKWebView! {
         didSet {
             webView.navigationDelegate = self
         }
