@@ -77,10 +77,10 @@ extension LoginVKWebViewController: WKNavigationDelegate {
     }
 
     func getServiceData() {
-        vkService.getFriends()
-        vkService.getPhotos()
-        vkService.getGroups()
-        vkService.groupsSearch()
+        // vkService.getFriends()
+        // vkService.getPhotos()
+        // vkService.getGroups()
+        // vkService.groupsSearch()
     }
 
     func moveToNextViewController() {

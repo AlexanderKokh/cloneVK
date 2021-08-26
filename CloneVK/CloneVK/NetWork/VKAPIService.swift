@@ -3,6 +3,7 @@
 
 import Alamofire
 import Foundation
+import SwiftyJSON
 
 final class VKAPIService {
     // MARK: - Private Properties
@@ -55,11 +56,40 @@ final class VKAPIService {
 
     // MARK: - Private methods
 
+    func getGroups2(compleation: @escaping ([TestGroup]) -> ()) {
+        let path = "groups.get"
+        let parameters: Parameters = [
+            "v": version,
+            "extended": "1",
+            "access_token": token
+        ]
+
+        let url = baseURL + path
+
+        AF.request(url, parameters: parameters).validate().responseData { response in
+            switch response.result {
+            case let .success(data):
+                guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
+                compleation(items.compactMap { TestGroup(json: $0) })
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+
     private func getData(path: String, parameters: Parameters) {
         let url = baseURL + path
 
-        AF.request(url, parameters: parameters).responseJSON { response in
-            print(response.value ?? "No Json")
-        }
+//        AF.request(url, parameters: parameters).responseJSON { response in
+//            switch response.result {
+//            case .success(let value):
+//                let json = JSON(value)
+//                let slide = json["response"]["items"].arrayValue
+//                compleation(items
+//
+//            case.failure(let error):
+//                print(error)
+//            }
+//        }
     }
 }

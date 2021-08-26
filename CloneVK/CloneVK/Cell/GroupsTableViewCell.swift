@@ -11,9 +11,15 @@ final class GroupsTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    func configureCell(group: Group) {
+    func configureCell(group: TestGroup) {
         groupNameLabel.text = group.groupName
-        guard let groupAvatar = group.groupImageName else { return }
-        groupImageView.image = UIImage(named: groupAvatar)
+        groupImageView.image = getFoto(image: group.groupImageName)
+    }
+
+    private func getFoto(image: String) -> UIImage {
+        guard let imageURL = URL(string: image),
+              let data = try? Data(contentsOf: imageURL),
+              let image = UIImage(data: data) else { return UIImage() }
+        return image
     }
 }

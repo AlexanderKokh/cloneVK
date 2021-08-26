@@ -31,6 +31,7 @@
 		FC6CD3C826BB5E69006B486D /* UserGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CD3C726BB5E69006B486D /* UserGroupsTableViewController.swift */; };
 		FC6CD3CB26BB5FDB006B486D /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CD3CA26BB5FDB006B486D /* GroupsTableViewCell.swift */; };
 		FC6CD3CE26BB60F9006B486D /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CD3CD26BB60F9006B486D /* Group.swift */; };
+		FC9FBB1326D6DD98000D0DAB /* TestGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FBB1226D6DD98000D0DAB /* TestGroup.swift */; };
 		FCA51B9026BB6B2400B2FA77 /* AllGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA51B8F26BB6B2400B2FA77 /* AllGroupsTableViewCell.swift */; };
 		FCA51B9426BB6B9700B2FA77 /* AllGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA51B9326BB6B9700B2FA77 /* AllGroupsTableViewController.swift */; };
 		FCAA3F5E26D583B000BF6521 /* LoginVKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAA3F5D26D583B000BF6521 /* LoginVKWebViewController.swift */; };
@@ -71,6 +72,7 @@
 		FC6CD3C726BB5E69006B486D /* UserGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupsTableViewController.swift; sourceTree = "<group>"; };
 		FC6CD3CA26BB5FDB006B486D /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		FC6CD3CD26BB60F9006B486D /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		FC9FBB1226D6DD98000D0DAB /* TestGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGroup.swift; sourceTree = "<group>"; };
 		FCA51B8F26BB6B2400B2FA77 /* AllGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewCell.swift; sourceTree = "<group>"; };
 		FCA51B9326BB6B9700B2FA77 /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewController.swift; sourceTree = "<group>"; };
 		FCAA3F5D26D583B000BF6521 /* LoginVKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVKWebViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				FC6CD3BE26BB4A5A006B486D /* User.swift */,
 				FCB0A77F26C1D3400041982B /* News.swift */,
 				FC6CD3CD26BB60F9006B486D /* Group.swift */,
+				FC9FBB1226D6DD98000D0DAB /* TestGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				FC641C3B26BC973700749964 /* UserImageLikeControl.swift in Sources */,
 				FC6CD3B626BB473D006B486D /* FriendsTableViewController.swift in Sources */,
 				FC6CD3BF26BB4A5A006B486D /* User.swift in Sources */,
+				FC9FBB1326D6DD98000D0DAB /* TestGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

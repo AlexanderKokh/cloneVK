@@ -2,6 +2,7 @@
 // Copyright © RoadMap. All rights reserved.
 
 import Foundation
+import SwiftyJSON
 
 /// Модель полей для  пользовательских групп в ВК
 struct Group {
