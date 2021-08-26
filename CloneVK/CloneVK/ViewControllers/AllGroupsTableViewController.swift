@@ -14,10 +14,10 @@ final class AllGroupsTableViewController: UITableViewController {
 
     // MARK: - Private Properties
 
-    private var groups: [Group] = []
-    private var searchGroups: [Group] = []
+    private var groups: [TestGroup] = []
     private var isSearching = false
     private let reuseIdentifier = "AllGroupsTableViewCell"
+    private let service = VKAPIService()
 
     // MARK: - UIViewController
 
@@ -27,15 +27,14 @@ final class AllGroupsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isSearching ? searchGroups.count : groups.count
+        groups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView
             .dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? AllGroupsTableViewCell
         else { fatalError() }
-        isSearching ? cell.configureCell(group: searchGroups[indexPath.row]) : cell
-            .configureCell(group: groups[indexPath.row])
+        cell.configureCell(group: groups[indexPath.row])
         return cell
     }
 
@@ -52,26 +51,14 @@ final class AllGroupsTableViewController: UITableViewController {
 
     private func setupView() {
         searchBar.delegate = self
-        addDataToGroups()
-    }
-
-    private func addDataToGroups() {
-        groups = [
-            Group(groupName: "Swift", groupImageName: "Swift"),
-            Group(groupName: "Cars", groupImageName: "Car"),
-            Group(groupName: "Best films", groupImageName: "Best"),
-            Group(groupName: "Hack with swift", groupImageName: "Hack with swift"),
-            Group(groupName: "IOS developers", groupImageName: "IOS developers"),
-            Group(groupName: "IOS magic", groupImageName: "IOS magic"),
-            Group(groupName: "Senior for 40 days", groupImageName: "Swift for 40 days")
-        ]
     }
 }
 
 extension AllGroupsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchGroups = groups.filter { $0.groupName.prefix(searchText.count).lowercased() == searchText.lowercased() }
-        isSearching = true
-        tableView.reloadData()
+        service.groupsSearch(search: searchText) { [weak self] groups in
+            self?.groups = groups
+            self?.tableView.reloadData()
+        }
     }
 }

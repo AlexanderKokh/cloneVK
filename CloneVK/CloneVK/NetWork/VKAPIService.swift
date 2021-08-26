@@ -14,14 +14,25 @@ final class VKAPIService {
 
     // MARK: - Public methods
 
-    func groupsSearch() {
+    func groupsSearch(search: String, compleation: @escaping ([TestGroup]) -> ()) {
         let path = "groups.search"
         let parameters: Parameters = [
             "v": version,
-            "q": "swift",
+            "q": search,
             "access_token": token
         ]
-        //  getData(path: path, parameters: parameters)
+
+        let url = baseURL + path
+
+        AF.request(url, parameters: parameters).validate().responseData { response in
+            switch response.result {
+            case let .success(data):
+                guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
+                compleation(items.compactMap { TestGroup(json: $0) })
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 
     // MARK: - Private methods
