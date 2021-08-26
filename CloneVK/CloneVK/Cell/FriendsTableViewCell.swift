@@ -16,7 +16,7 @@ final class FriendsTableViewCell: UITableViewCell {
     // MARK: - Public methods
 
     func configureCell(user: User) {
-        friendNameLabel.text = user.userName + " " + user.userSurname
+        friendNameLabel.text = "\(user.userName) \(user.userSurname)"
         userView.setupImage(imageName: service.getFoto(image: user.userPhoto))
         backgroundColor = .systemTeal
     }
