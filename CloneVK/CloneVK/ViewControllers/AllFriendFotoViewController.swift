@@ -17,6 +17,7 @@ final class AllFriendFotoViewController: UIViewController {
 
     private var index = Int()
     private var photo: [String] = []
+    private lazy var service = VKAPIService()
 
     // MARK: - UIViewController
 
@@ -64,26 +65,14 @@ final class AllFriendFotoViewController: UIViewController {
     }
 
     private func addFotos() {
-        let service = VKAPIService()
-
         service.getPhotos(userID: userID) { [weak self] photos in
             let photo = Photo(json: photos)
             self?.photo = photo?.photo ?? []
-            guard let photoCount = self?.photo.count else {
-                self?.currentNumberLabel.text = "0 / 0"
-                return
-            }
+            guard let photoCount = self?.photo.count else { return }
             self?.currentNumberLabel.text = "1 / \(photoCount)"
-            guard let firstPhoto = self?.getFoto(image: self?.photo.first ?? "") else { return }
+            guard let firstPhoto = self?.service.getFoto(image: self?.photo.first ?? "") else { return }
             self?.friendImageView.image = firstPhoto
         }
-    }
-
-    private func getFoto(image: String) -> UIImage {
-        guard let imageURL = URL(string: image),
-              let data = try? Data(contentsOf: imageURL),
-              let image = UIImage(data: data) else { return UIImage() }
-        return image
     }
 
     private func swipe(translationX: Int, increaseIndex: Int) {
@@ -103,7 +92,7 @@ final class AllFriendFotoViewController: UIViewController {
             completion: { _ in
                 self.friendImageView.layer.opacity = 1
                 self.friendImageView.transform = .identity
-                self.friendImageView.image = self.getFoto(image: self.photo[self.index])
+                self.friendImageView.image = self.service.getFoto(image: self.photo[self.index])
                 self.currentNumberLabel.text = "\(self.index + 1) / \(self.photo.count)"
             }
         )

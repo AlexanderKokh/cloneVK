@@ -14,10 +14,9 @@ final class AllGroupsTableViewController: UITableViewController {
 
     // MARK: - Private Properties
 
-    private var groups: [TestGroup] = []
-    private var isSearching = false
+    private var groups: [Group] = []
     private let reuseIdentifier = "AllGroupsTableViewCell"
-    private let service = VKAPIService()
+    private lazy var service = VKAPIService()
 
     // MARK: - UIViewController
 
@@ -43,7 +42,7 @@ final class AllGroupsTableViewController: UITableViewController {
             guard let self = self else { return }
             let groupName = self.groups[indexPath.row].groupName
             let groupImageName = self.groups[indexPath.row].groupImageName
-            self.closure?(groupName, groupImageName ?? "")
+            self.closure?(groupName, groupImageName)
         }
     }
 
@@ -53,6 +52,8 @@ final class AllGroupsTableViewController: UITableViewController {
         searchBar.delegate = self
     }
 }
+
+// MARK: - UISearchBarDelegate
 
 extension AllGroupsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

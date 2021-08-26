@@ -14,7 +14,7 @@ final class VKAPIService {
 
     // MARK: - Public methods
 
-    func groupsSearch(search: String, compleation: @escaping ([TestGroup]) -> ()) {
+    func groupsSearch(search: String, compleation: @escaping ([Group]) -> ()) {
         let path = "groups.search"
         let parameters: Parameters = [
             "v": version,
@@ -28,16 +28,14 @@ final class VKAPIService {
             switch response.result {
             case let .success(data):
                 guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
-                compleation(items.compactMap { TestGroup(json: $0) })
+                compleation(items.compactMap { Group(json: $0) })
             case let .failure(error):
                 print(error)
             }
         }
     }
 
-    // MARK: - Private methods
-
-    func getGroups2(compleation: @escaping ([TestGroup]) -> ()) {
+    func getGroups(compleation: @escaping ([Group]) -> ()) {
         let path = "groups.get"
         let parameters: Parameters = [
             "v": version,
@@ -51,7 +49,7 @@ final class VKAPIService {
             switch response.result {
             case let .success(data):
                 guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
-                compleation(items.compactMap { TestGroup(json: $0) })
+                compleation(items.compactMap { Group(json: $0) })
             case let .failure(error):
                 print(error)
             }
@@ -81,7 +79,7 @@ final class VKAPIService {
         }
     }
 
-    func getFriends2(compleation: @escaping ([TestUser]) -> ()) {
+    func getFriends(compleation: @escaping ([User]) -> ()) {
         let path = "friends.get"
         let parameters: Parameters = [
             "v": version,
@@ -96,10 +94,17 @@ final class VKAPIService {
             switch response.result {
             case let .success(data):
                 guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
-                compleation(items.compactMap { TestUser(json: $0) })
+                compleation(items.compactMap { User(json: $0) })
             case let .failure(error):
                 print(error)
             }
         }
+    }
+
+    func getFoto(image: String) -> UIImage {
+        guard let imageURL = URL(string: image),
+              let data = try? Data(contentsOf: imageURL),
+              let image = UIImage(data: data) else { return UIImage() }
+        return image
     }
 }

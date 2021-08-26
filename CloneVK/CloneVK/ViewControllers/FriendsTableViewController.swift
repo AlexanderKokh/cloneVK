@@ -6,27 +6,19 @@ import UIKit
 final class FriendsTableViewController: UITableViewController {
     // MARK: - Private Properties
 
-    // private var users: [User] = []
-    private var testUsers: [TestUser] = []
+    private var users: [User] = []
     private let reuseIdentifier = "FriendsTableViewCell"
     private var currentUserImage = String()
     private let segueFriendidentifier = "showFriend"
-    private var sections: [Character: [TestUser]] = [:]
+    private var sections: [Character: [User]] = [:]
     private var sectionTitles: [Character] = []
+    private lazy var service = VKAPIService()
 
     // MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let service = VKAPIService()
-
-        service.getFriends2 { [weak self] users in
-            self?.testUsers = users
-            self?.setupView()
-            self?.tableView.reloadData()
-            print(users.count)
-        }
+        getFriends()
     }
 
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -93,12 +85,16 @@ final class FriendsTableViewController: UITableViewController {
 
     // MARK: - Private methods
 
-    private func setupView() {
-        addSections()
+    private func getFriends() {
+        service.getFriends { [weak self] users in
+            self?.users = users
+            self?.addSections()
+            self?.tableView.reloadData()
+        }
     }
 
     private func addSections() {
-        for user in testUsers {
+        for user in users {
             guard let firstLetter = user.userName.first else { return }
             if sections[firstLetter] != nil {
                 sections[firstLetter]?.append(user)

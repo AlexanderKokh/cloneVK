@@ -9,5 +9,17 @@ struct Group {
     /// Название группы
     let groupName: String
     /// Название оснвной картинки группы
-    let groupImageName: String?
+    let groupImageName: String
+
+    init?(json: JSON) {
+        let groupName = json["name"].stringValue
+        let groupImageName = json["photo_100"].stringValue
+        self.groupName = groupName
+        self.groupImageName = groupImageName
+    }
+
+    init(groupName: String, groupImageName: String) {
+        self.groupName = groupName
+        self.groupImageName = groupImageName
+    }
 }

@@ -6,6 +6,7 @@ import SwiftyJSON
 
 /// Модель фотографий пользователей
 struct Photo {
+    /// Массив  адресов, по которым хранятся фотографии
     var photo: [String] = []
 
     init?(json: JSON) {
