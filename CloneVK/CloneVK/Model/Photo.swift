@@ -2,20 +2,17 @@
 // Copyright © RoadMap. All rights reserved.
 
 import Foundation
+import RealmSwift
 import SwiftyJSON
 
 /// Модель фотографий пользователей
-struct Photo {
+final class Photo: Object {
     /// Массив  адресов, по которым хранятся фотографии
-    var photo: [String] = []
 
-    init?(json: JSON) {
-        var photoUser: [String] = []
-        for photo in json["response"]["items"].arrayValue {
-            let photoSizeArray = photo["sizes"].arrayValue
-            guard let photo = photoSizeArray.last?["url"].stringValue else { fatalError() }
-            photoUser.append(photo)
-        }
-        photo = photoUser
+    @objc dynamic var photo = String()
+
+    convenience init(json: JSON) {
+        self.init()
+        photo = json["sizes"].arrayValue.last?["url"].stringValue ?? ""
     }
 }

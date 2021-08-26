@@ -56,7 +56,7 @@ final class VKAPIService {
         }
     }
 
-    func getPhotos(userID: String, compleation: @escaping (JSON) -> Void) {
+    func getPhotos(userID: String, compleation: @escaping ([Photo]) -> Void) {
         let path = "photos.get"
         let parameters: Parameters = [
             "v": version,
@@ -68,11 +68,22 @@ final class VKAPIService {
 
         let url = baseURL + path
 
+//        AF.request(url, parameters: parameters).validate().responseData { response in
+//            switch response.result {
+//            case let .success(value):
+//                let json = JSON(value)
+//                compleation(json)
+//            case let .failure(error):
+//                print(error)
+//            }
+//        }
+
         AF.request(url, parameters: parameters).validate().responseData { response in
             switch response.result {
             case let .success(value):
                 let json = JSON(value)
-                compleation(json)
+                let friendsPhotos = json["response"]["items"].arrayValue.compactMap { Photo(json: $0) }
+                compleation(friendsPhotos)
             case let .failure(error):
                 print(error)
             }
