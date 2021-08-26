@@ -53,12 +53,8 @@ import UIKit
 
     // MARK: - Public methods
 
-    func setupImage(imageName: String) {
-        if UIImage(named: imageName) != nil {
-            userImageView.image = UIImage(named: imageName)
-        } else {
-            userImageView.image = UIImage(named: "unnamed")
-        }
+    func setupImage(imageName: UIImage) {
+        userImageView.image = imageName
     }
 
     // MARK: - IBAction

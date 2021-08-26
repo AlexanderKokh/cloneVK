@@ -6,18 +6,15 @@ import UIKit
 final class GroupsTableViewController: UITableViewController {
     // MARK: - Private Properties
 
-    private var groups: [Group] = []
     private let reuseIdentifier = "GroupsTableViewCell"
+    private var groups: [Group] = []
+    private lazy var service = VKAPIService()
 
     // MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        groups = [
-            Group(groupName: "Swift", groupImageName: "Swift"),
-            Group(groupName: "Cars", groupImageName: "Car")
-        ]
+        setupView()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,6 +47,13 @@ final class GroupsTableViewController: UITableViewController {
             guard let self = self else { return }
             self.groups.append(Group(groupName: groupName, groupImageName: groupImageName))
             self.tableView.reloadData()
+        }
+    }
+
+    private func setupView() {
+        service.getGroups { [weak self] groups in
+            self?.groups = groups
+            self?.tableView.reloadData()
         }
     }
 }

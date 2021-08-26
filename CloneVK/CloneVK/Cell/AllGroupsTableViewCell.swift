@@ -9,11 +9,14 @@ final class AllGroupsTableViewCell: UITableViewCell {
     @IBOutlet private var groupNameLabel: UILabel!
     @IBOutlet private var groupImageView: UIImageView!
 
+    // MARK: - Private Properties
+
+    private lazy var service = VKAPIService()
+
     // MARK: - Public methods
 
     func configureCell(group: Group) {
         groupNameLabel.text = group.groupName
-        guard let groupAvatar = group.groupImageName else { return }
-        groupImageView.image = UIImage(named: groupAvatar)
+        groupImageView.image = service.getFoto(image: group.groupImageName)
     }
 }

@@ -72,15 +72,7 @@ extension LoginVKWebViewController: WKNavigationDelegate {
 
         Session.shared.token = token
         decisionHandler(.cancel)
-        getServiceData()
         moveToNextViewController()
-    }
-
-    func getServiceData() {
-        vkService.getFriends()
-        vkService.getPhotos()
-        vkService.getGroups()
-        vkService.groupsSearch()
     }
 
     func moveToNextViewController() {

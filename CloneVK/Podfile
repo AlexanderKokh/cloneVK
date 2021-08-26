@@ -8,5 +8,6 @@ target 'CloneVK' do
   # Pods for CloneVK
 
 pod 'Alamofire'
+pod 'SwiftyJSON', '~> 4.0'
 
 end

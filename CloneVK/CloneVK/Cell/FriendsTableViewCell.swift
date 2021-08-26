@@ -9,12 +9,15 @@ final class FriendsTableViewCell: UITableViewCell {
     @IBOutlet private var friendNameLabel: UILabel!
     @IBOutlet private var userView: UserView!
 
+    // MARK: - Private Properties
+
+    private lazy var service = VKAPIService()
+
     // MARK: - Public methods
 
     func configureCell(user: User) {
-        friendNameLabel.text = user.userName
-        guard let avatarName = user.userImageName else { return }
-        userView.setupImage(imageName: avatarName)
+        friendNameLabel.text = "\(user.userName) \(user.userSurname)"
+        userView.setupImage(imageName: service.getFoto(image: user.userPhoto))
         backgroundColor = .systemTeal
     }
 }

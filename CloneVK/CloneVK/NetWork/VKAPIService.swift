@@ -3,6 +3,7 @@
 
 import Alamofire
 import Foundation
+import SwiftyJSON
 
 final class VKAPIService {
     // MARK: - Private Properties
@@ -13,53 +14,97 @@ final class VKAPIService {
 
     // MARK: - Public methods
 
-    func getFriends() {
-        let path = "friends.get"
+    func groupsSearch(search: String, compleation: @escaping ([Group]) -> ()) {
+        let path = "groups.search"
         let parameters: Parameters = [
             "v": version,
-            "access_token": token,
-            "fields": "[nickname]"
-        ]
-        getData(path: path, parameters: parameters)
-    }
-
-    func getPhotos() {
-        let path = "photos.get"
-        let parameters: Parameters = [
-            "v": version,
-            "album_id": "wall",
+            "q": search,
             "access_token": token
         ]
-        getData(path: path, parameters: parameters)
+
+        let url = baseURL + path
+
+        AF.request(url, parameters: parameters).validate().responseData { response in
+            switch response.result {
+            case let .success(data):
+                guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
+                compleation(items.compactMap { Group(json: $0) })
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 
-    func getGroups() {
+    func getGroups(compleation: @escaping ([Group]) -> ()) {
         let path = "groups.get"
         let parameters: Parameters = [
             "v": version,
             "extended": "1",
             "access_token": token
         ]
-        getData(path: path, parameters: parameters)
-    }
 
-    func groupsSearch() {
-        let path = "groups.search"
-        let parameters: Parameters = [
-            "v": version,
-            "q": "swift",
-            "access_token": token
-        ]
-        getData(path: path, parameters: parameters)
-    }
-
-    // MARK: - Private methods
-
-    private func getData(path: String, parameters: Parameters) {
         let url = baseURL + path
 
-        AF.request(url, parameters: parameters).responseJSON { response in
-            print(response.value ?? "No Json")
+        AF.request(url, parameters: parameters).validate().responseData { response in
+            switch response.result {
+            case let .success(data):
+                guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
+                compleation(items.compactMap { Group(json: $0) })
+            case let .failure(error):
+                print(error)
+            }
         }
+    }
+
+    func getPhotos(userID: String, compleation: @escaping (JSON) -> Void) {
+        let path = "photos.get"
+        let parameters: Parameters = [
+            "v": version,
+            "album_id": "profile",
+            "owner_id": userID,
+            "rev": "1",
+            "access_token": token
+        ]
+
+        let url = baseURL + path
+
+        AF.request(url, parameters: parameters).validate().responseData { response in
+            switch response.result {
+            case let .success(value):
+                let json = JSON(value)
+                compleation(json)
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+
+    func getFriends(compleation: @escaping ([User]) -> ()) {
+        let path = "friends.get"
+        let parameters: Parameters = [
+            "v": version,
+            "access_token": token,
+            "fields": "photo_100",
+            "order": "name"
+        ]
+
+        let url = baseURL + path
+
+        AF.request(url, parameters: parameters).validate().responseData { response in
+            switch response.result {
+            case let .success(data):
+                guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
+                compleation(items.compactMap { User(json: $0) })
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+
+    func getFoto(image: String) -> UIImage {
+        guard let imageURL = URL(string: image),
+              let data = try? Data(contentsOf: imageURL),
+              let image = UIImage(data: data) else { return UIImage() }
+        return image
     }
 }
