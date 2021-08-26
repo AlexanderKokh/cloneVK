@@ -13,6 +13,7 @@ final class AllFriendFotoViewController: UIViewController {
 
     private var photos: [UIImage] = []
     private var index = Int()
+    var userID = String()
 
     // MARK: - UIViewController
 

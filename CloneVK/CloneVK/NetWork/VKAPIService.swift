@@ -21,7 +21,7 @@ final class VKAPIService {
             "access_token": token,
             "fields": "[nickname]"
         ]
-        getData(path: path, parameters: parameters)
+        //  getData(path: path, parameters: parameters)
     }
 
     func getPhotos() {
@@ -31,7 +31,7 @@ final class VKAPIService {
             "album_id": "wall",
             "access_token": token
         ]
-        getData(path: path, parameters: parameters)
+        //  getData(path: path, parameters: parameters)
     }
 
     func getGroups() {
@@ -41,7 +41,7 @@ final class VKAPIService {
             "extended": "1",
             "access_token": token
         ]
-        getData(path: path, parameters: parameters)
+        // getData(path: path, parameters: parameters)
     }
 
     func groupsSearch() {
@@ -51,7 +51,7 @@ final class VKAPIService {
             "q": "swift",
             "access_token": token
         ]
-        getData(path: path, parameters: parameters)
+        //  getData(path: path, parameters: parameters)
     }
 
     // MARK: - Private methods
@@ -77,19 +77,25 @@ final class VKAPIService {
         }
     }
 
-    private func getData(path: String, parameters: Parameters) {
+    func getFriends2(compleation: @escaping ([TestUser]) -> ()) {
+        let path = "friends.get"
+        let parameters: Parameters = [
+            "v": version,
+            "access_token": token,
+            "fields": "photo_100",
+            "order": "name"
+        ]
+
         let url = baseURL + path
 
-//        AF.request(url, parameters: parameters).responseJSON { response in
-//            switch response.result {
-//            case .success(let value):
-//                let json = JSON(value)
-//                let slide = json["response"]["items"].arrayValue
-//                compleation(items
-//
-//            case.failure(let error):
-//                print(error)
-//            }
-//        }
+        AF.request(url, parameters: parameters).validate().responseData { response in
+            switch response.result {
+            case let .success(data):
+                guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
+                compleation(items.compactMap { TestUser(json: $0) })
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 }
