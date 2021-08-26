@@ -14,36 +14,6 @@ final class VKAPIService {
 
     // MARK: - Public methods
 
-    func getFriends() {
-        let path = "friends.get"
-        let parameters: Parameters = [
-            "v": version,
-            "access_token": token,
-            "fields": "[nickname]"
-        ]
-        //  getData(path: path, parameters: parameters)
-    }
-
-    func getPhotos() {
-        let path = "photos.get"
-        let parameters: Parameters = [
-            "v": version,
-            "album_id": "wall",
-            "access_token": token
-        ]
-        //  getData(path: path, parameters: parameters)
-    }
-
-    func getGroups() {
-        let path = "groups.get"
-        let parameters: Parameters = [
-            "v": version,
-            "extended": "1",
-            "access_token": token
-        ]
-        // getData(path: path, parameters: parameters)
-    }
-
     func groupsSearch() {
         let path = "groups.search"
         let parameters: Parameters = [
@@ -71,6 +41,29 @@ final class VKAPIService {
             case let .success(data):
                 guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
                 compleation(items.compactMap { TestGroup(json: $0) })
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+
+    func getPhotos(userID: String, compleation: @escaping (JSON) -> Void) {
+        let path = "photos.get"
+        let parameters: Parameters = [
+            "v": version,
+            "album_id": "profile",
+            "owner_id": userID,
+            "rev": "1",
+            "access_token": token
+        ]
+
+        let url = baseURL + path
+
+        AF.request(url, parameters: parameters).validate().responseData { response in
+            switch response.result {
+            case let .success(value):
+                let json = JSON(value)
+                compleation(json)
             case let .failure(error):
                 print(error)
             }

@@ -9,11 +9,14 @@ final class AllFriendFotoViewController: UIViewController {
     @IBOutlet private var friendImageView: UIImageView!
     @IBOutlet private var currentNumberLabel: UILabel!
 
+    // MARK: - Public Properties
+
+    var userID = String()
+
     // MARK: - Private Properties
 
-    private var photos: [UIImage] = []
     private var index = Int()
-    var userID = String()
+    private var photo: [String] = []
 
     // MARK: - UIViewController
 
@@ -44,8 +47,6 @@ final class AllFriendFotoViewController: UIViewController {
     private func setupView() {
         addFotos()
         createSwipeGesture()
-        friendImageView.image = photos.first ?? UIImage()
-        currentNumberLabel.text = "1 / \(photos.count)"
     }
 
     private func createSwipeGesture() {
@@ -63,15 +64,31 @@ final class AllFriendFotoViewController: UIViewController {
     }
 
     private func addFotos() {
-        photos.append(UIImage(named: "Tim") ?? UIImage())
-        photos.append(UIImage(named: "Vlad") ?? UIImage())
-        photos.append(UIImage(named: "Ардак") ?? UIImage())
-        photos.append(UIImage(named: "Мажит") ?? UIImage())
+        let service = VKAPIService()
+
+        service.getPhotos(userID: userID) { [weak self] photos in
+            let photo = Photo(json: photos)
+            self?.photo = photo?.photo ?? []
+            guard let photoCount = self?.photo.count else {
+                self?.currentNumberLabel.text = "0 / 0"
+                return
+            }
+            self?.currentNumberLabel.text = "1 / \(photoCount)"
+            guard let firstPhoto = self?.getFoto(image: self?.photo.first ?? "") else { return }
+            self?.friendImageView.image = firstPhoto
+        }
+    }
+
+    private func getFoto(image: String) -> UIImage {
+        guard let imageURL = URL(string: image),
+              let data = try? Data(contentsOf: imageURL),
+              let image = UIImage(data: data) else { return UIImage() }
+        return image
     }
 
     private func swipe(translationX: Int, increaseIndex: Int) {
         index += increaseIndex
-        guard index < photos.count, index >= 0 else {
+        guard index < photo.count, index >= 0 else {
             index -= increaseIndex
             return
         }
@@ -86,8 +103,8 @@ final class AllFriendFotoViewController: UIViewController {
             completion: { _ in
                 self.friendImageView.layer.opacity = 1
                 self.friendImageView.transform = .identity
-                self.friendImageView.image = self.photos[self.index]
-                self.currentNumberLabel.text = "\(self.index + 1) / \(self.photos.count)"
+                self.friendImageView.image = self.getFoto(image: self.photo[self.index])
+                self.currentNumberLabel.text = "\(self.index + 1) / \(self.photo.count)"
             }
         )
     }

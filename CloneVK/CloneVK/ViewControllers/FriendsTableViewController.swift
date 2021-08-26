@@ -20,6 +20,7 @@ final class FriendsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         let service = VKAPIService()
+
         service.getFriends2 { [weak self] users in
             self?.testUsers = users
             self?.setupView()
