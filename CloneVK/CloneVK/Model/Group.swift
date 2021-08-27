@@ -8,9 +8,9 @@ import SwiftyJSON
 /// Модель полей для  пользовательских групп в ВК
 final class Group: Object {
     /// Название группы
-    @objc dynamic var groupName: String = ""
+    @objc dynamic var groupName = String()
     /// Название оснвной картинки группы
-    @objc dynamic var groupImageName: String = ""
+    @objc dynamic var groupImageName = String()
 
     convenience init(json: JSON) {
         self.init()

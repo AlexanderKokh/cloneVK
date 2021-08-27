@@ -8,13 +8,13 @@ import SwiftyJSON
 /// Модель полей  пользователя ВК
 final class User: Object {
     /// Имя пользователя
-    @objc dynamic var userName: String = ""
+    @objc dynamic var userName = String()
     /// Фамилия пользователя
-    @objc dynamic var userSurname: String = ""
+    @objc dynamic var userSurname = String()
     /// ID пользователя
-    @objc dynamic var userID: String = ""
+    @objc dynamic var userID = String()
     /// Путь к аватарке пользователя
-    @objc dynamic var userPhoto: String = ""
+    @objc dynamic var userPhoto = String()
 
     convenience init(json: JSON) {
         self.init()
