@@ -2,20 +2,22 @@
 // Copyright © RoadMap. All rights reserved.
 
 import Foundation
+import RealmSwift
 import SwiftyJSON
 
 /// Модель полей  пользователя ВК
-struct User {
+final class User: Object {
     /// Имя пользователя
-    let userName: String
+    @objc dynamic var userName = String()
     /// Фамилия пользователя
-    let userSurname: String
+    @objc dynamic var userSurname = String()
     /// ID пользователя
-    let userID: String
+    @objc dynamic var userID = String()
     /// Путь к аватарке пользователя
-    let userPhoto: String
+    @objc dynamic var userPhoto = String()
 
-    init?(json: JSON) {
+    convenience init(json: JSON) {
+        self.init()
         let userName = json["first_name"].stringValue
         let userSurname = json["second_name"].stringValue
         let userID = json["id"].stringValue

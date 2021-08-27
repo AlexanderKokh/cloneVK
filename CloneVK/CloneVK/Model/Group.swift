@@ -2,23 +2,26 @@
 // Copyright © RoadMap. All rights reserved.
 
 import Foundation
+import RealmSwift
 import SwiftyJSON
 
 /// Модель полей для  пользовательских групп в ВК
-struct Group {
+final class Group: Object {
     /// Название группы
-    let groupName: String
+    @objc dynamic var groupName = String()
     /// Название оснвной картинки группы
-    let groupImageName: String
+    @objc dynamic var groupImageName = String()
 
-    init?(json: JSON) {
+    convenience init(json: JSON) {
+        self.init()
         let groupName = json["name"].stringValue
         let groupImageName = json["photo_100"].stringValue
         self.groupName = groupName
         self.groupImageName = groupImageName
     }
 
-    init(groupName: String, groupImageName: String) {
+    convenience init(groupName: String, groupImageName: String) {
+        self.init()
         self.groupName = groupName
         self.groupImageName = groupImageName
     }
