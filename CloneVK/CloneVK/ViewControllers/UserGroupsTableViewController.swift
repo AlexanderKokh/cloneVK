@@ -51,6 +51,8 @@ final class GroupsTableViewController: UITableViewController {
         }
     }
 
+    // MARK: - Private methods
+
     private func setupView() {
         loadFromRealm()
         loadFromNetwork()

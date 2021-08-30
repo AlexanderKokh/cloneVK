@@ -7,10 +7,14 @@ import SwiftyJSON
 
 /// Модель фотографий пользователей
 final class Photo: Object {
-    /// Массив  адресов, по которым хранятся фотографии
+    // MARK: - Public Properties
 
+    /// Массив  адресов, по которым хранятся фотографии
     @objc dynamic var photo = String()
+    /// ID Пользователя, владельца фотографии
     @objc dynamic var userID = String()
+
+    // MARK: - Initializers
 
     convenience init(json: JSON, ownerID: String) {
         self.init()

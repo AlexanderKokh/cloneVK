@@ -100,8 +100,8 @@ final class VKAPIService {
         AF.request(url, parameters: parameters).validate().responseData { response in
             switch response.result {
             case let .success(data):
-                guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
-                let users = items.compactMap { User(json: $0) }
+                let json = JSON(data)
+                let users = json["response"]["items"].arrayValue.compactMap { User(json: $0) }
                 self.saveUsersToRealm(users)
                 compleation()
             case let .failure(error):
@@ -118,7 +118,9 @@ final class VKAPIService {
         return image
     }
 
-    func saveGroupsToRealm(_ groups: [Group]) {
+    // MARK: - Private methods
+
+    private func saveGroupsToRealm(_ groups: [Group]) {
         do {
             let realm = try Realm()
             let oldData = realm.objects(Group.self)
@@ -131,7 +133,7 @@ final class VKAPIService {
         }
     }
 
-    func saveFotosToRealm(userID: String, _ fotos: [Photo]) {
+    private func saveFotosToRealm(userID: String, _ fotos: [Photo]) {
         do {
             let realm = try Realm()
             let oldFotos = realm.objects(Photo.self).filter("userID = %@", userID)
@@ -144,7 +146,7 @@ final class VKAPIService {
         }
     }
 
-    func saveUsersToRealm(_ users: [User]) {
+    private func saveUsersToRealm(_ users: [User]) {
         do {
             let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
             let realm = try Realm(configuration: config)

@@ -7,6 +7,8 @@ import SwiftyJSON
 
 /// Модель полей  пользователя ВК
 final class User: Object {
+    // MARK: - Public Properties
+
     /// Имя пользователя
     @objc dynamic var userName = String()
     /// Фамилия пользователя
@@ -16,9 +18,7 @@ final class User: Object {
     /// Путь к аватарке пользователя
     @objc dynamic var userPhoto = String()
 
-    override class func primaryKey() -> String? {
-        "userID"
-    }
+    // MARK: - Initializers
 
     convenience init(json: JSON) {
         self.init()
@@ -31,5 +31,11 @@ final class User: Object {
         self.userSurname = userSurname
         self.userID = userID
         self.userPhoto = userPhoto
+    }
+
+    // MARK: - UIViewController
+
+    override class func primaryKey() -> String? {
+        "userID"
     }
 }

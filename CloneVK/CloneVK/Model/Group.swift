@@ -7,10 +7,14 @@ import SwiftyJSON
 
 /// Модель полей для  пользовательских групп в ВК
 final class Group: Object {
+    // MARK: - Public Properties
+
     /// Название группы
     @objc dynamic var groupName = String()
     /// Название оснвной картинки группы
     @objc dynamic var groupImageName = String()
+
+    // MARK: - Initializers
 
     convenience init(json: JSON) {
         self.init()

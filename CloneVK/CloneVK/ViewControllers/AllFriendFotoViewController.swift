@@ -48,7 +48,6 @@ final class AllFriendFotoViewController: UIViewController {
     // MARK: - Private methods
 
     private func setupView() {
-        // addFotos()
         loadFromRealm()
         loadFromNetwork()
         createSwipeGesture()
@@ -67,21 +66,6 @@ final class AllFriendFotoViewController: UIViewController {
         swipeDown.direction = UISwipeGestureRecognizer.Direction.down
         view.addGestureRecognizer(swipeDown)
     }
-
-//    private func addFotos() {
-//        service.getPhotos(userID: userID) { [weak self] photos in
-//            for photo in photos {
-//                guard let url = URL(string: photo.photo),
-//                      let data = try? Data(contentsOf: url),
-//                      let image = UIImage(data: data)
-//                else { return }
-//                self?.photo.append(image)
-//                guard let photoCount = self?.photo.count else { return }
-//                self?.currentNumberLabel.text = "1 / \(photoCount)"
-//                self?.friendImageView.image = self?.photo.first
-//            }
-//        }
-//    }
 
     private func swipe(translationX: Int, increaseIndex: Int) {
         index += increaseIndex
@@ -126,11 +110,7 @@ final class AllFriendFotoViewController: UIViewController {
             let realmPhotos = realm.objects(Photo.self).filter("userID = %@", userID)
             let photos = Array(realmPhotos)
             for photo in photos {
-                guard let url = URL(string: photo.photo),
-                      let data = try? Data(contentsOf: url),
-                      let image = UIImage(data: data)
-                else { return }
-                self.photo.append(image)
+                self.photo.append(service.getFoto(image: photo.photo))
                 let photoCount = self.photo.count
                 currentNumberLabel.text = "1 / \(photoCount)"
                 friendImageView.image = self.photo.first
