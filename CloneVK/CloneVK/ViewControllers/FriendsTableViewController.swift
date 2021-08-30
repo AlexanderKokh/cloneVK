@@ -1,6 +1,7 @@
 // FriendsTableViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
+import RealmSwift
 import UIKit
 
 final class FriendsTableViewController: UITableViewController {
@@ -86,9 +87,24 @@ final class FriendsTableViewController: UITableViewController {
     // MARK: - Private methods
 
     private func getFriends() {
-        service.getFriends { [weak self] users in
-            self?.users = users
-            self?.addSections()
+        loadFromRealm()
+        loadFromNetwork()
+    }
+
+    private func loadFromRealm() {
+        do {
+            let realm = try Realm()
+            let friends = realm.objects(User.self)
+            users = Array(friends)
+            addSections()
+        } catch {
+            print(error)
+        }
+    }
+
+    private func loadFromNetwork() {
+        service.getFriends { [weak self] in
+            self?.loadFromRealm()
             self?.tableView.reloadData()
         }
     }

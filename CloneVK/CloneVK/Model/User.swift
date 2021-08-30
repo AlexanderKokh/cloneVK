@@ -16,6 +16,10 @@ final class User: Object {
     /// Путь к аватарке пользователя
     @objc dynamic var userPhoto = String()
 
+    override class func primaryKey() -> String? {
+        "userID"
+    }
+
     convenience init(json: JSON) {
         self.init()
         let userName = json["first_name"].stringValue
