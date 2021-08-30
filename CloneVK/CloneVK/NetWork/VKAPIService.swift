@@ -60,7 +60,7 @@ final class VKAPIService {
         }
     }
 
-    func getPhotos(userID: String, compleation: @escaping ([Photo]) -> Void) {
+    func getPhotos(userID: String, compleation: @escaping () -> ()) {
         let path = "photos.get"
         let parameters: Parameters = [
             "v": version,
@@ -76,10 +76,12 @@ final class VKAPIService {
             switch response.result {
             case let .success(value):
                 let json = JSON(value)
-                let friendsPhotos = json["response"]["items"].arrayValue.compactMap { Photo(json: $0) }
-                compleation(friendsPhotos)
+                let friendsPhotos = json["response"]["items"].arrayValue.compactMap { Photo(json: $0, ownerID: userID) }
+                self.saveFotosToRealm(userID: userID, friendsPhotos)
+                compleation()
             case let .failure(error):
                 print(error)
+                compleation()
             }
         }
     }
@@ -101,6 +103,7 @@ final class VKAPIService {
                 guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
                 let users = items.compactMap { User(json: $0) }
                 self.saveUsersToRealm(users)
+                compleation()
             case let .failure(error):
                 print(error)
                 compleation()
@@ -128,6 +131,19 @@ final class VKAPIService {
         }
     }
 
+    func saveFotosToRealm(userID: String, _ fotos: [Photo]) {
+        do {
+            let realm = try Realm()
+            let oldFotos = realm.objects(Photo.self).filter("userID = %@", userID)
+            try realm.write {
+                realm.delete(oldFotos)
+                realm.add(fotos)
+            }
+        } catch {
+            print(error)
+        }
+    }
+
     func saveUsersToRealm(_ users: [User]) {
         do {
             let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
@@ -136,7 +152,6 @@ final class VKAPIService {
             try realm.write {
                 realm.add(users, update: .modified)
             }
-
         } catch {
             print(error)
         }

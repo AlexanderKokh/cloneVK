@@ -97,6 +97,7 @@ final class FriendsTableViewController: UITableViewController {
             let friends = realm.objects(User.self)
             users = Array(friends)
             addSections()
+            tableView.reloadData()
         } catch {
             print(error)
         }
@@ -104,8 +105,10 @@ final class FriendsTableViewController: UITableViewController {
 
     private func loadFromNetwork() {
         service.getFriends { [weak self] in
+            self?.users = []
+            self?.sections = [:]
+            self?.sectionTitles = []
             self?.loadFromRealm()
-            self?.tableView.reloadData()
         }
     }
 
