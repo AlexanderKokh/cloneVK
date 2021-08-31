@@ -3,6 +3,7 @@
 
 import Alamofire
 import Foundation
+import RealmSwift
 import SwiftyJSON
 
 final class VKAPIService {
@@ -35,7 +36,7 @@ final class VKAPIService {
         }
     }
 
-    func getGroups(compleation: @escaping ([Group]) -> ()) {
+    func getGroups(compleation: @escaping () -> ()) {
         let path = "groups.get"
         let parameters: Parameters = [
             "v": version,
@@ -49,14 +50,17 @@ final class VKAPIService {
             switch response.result {
             case let .success(data):
                 guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
-                compleation(items.compactMap { Group(json: $0) })
+                let newItems = items.compactMap { Group(json: $0) }
+                self.saveGroupsToRealm(newItems)
+                compleation()
             case let .failure(error):
                 print(error)
+                compleation()
             }
         }
     }
 
-    func getPhotos(userID: String, compleation: @escaping ([Photo]) -> Void) {
+    func getPhotos(userID: String, compleation: @escaping () -> ()) {
         let path = "photos.get"
         let parameters: Parameters = [
             "v": version,
@@ -68,29 +72,21 @@ final class VKAPIService {
 
         let url = baseURL + path
 
-//        AF.request(url, parameters: parameters).validate().responseData { response in
-//            switch response.result {
-//            case let .success(value):
-//                let json = JSON(value)
-//                compleation(json)
-//            case let .failure(error):
-//                print(error)
-//            }
-//        }
-
         AF.request(url, parameters: parameters).validate().responseData { response in
             switch response.result {
             case let .success(value):
                 let json = JSON(value)
-                let friendsPhotos = json["response"]["items"].arrayValue.compactMap { Photo(json: $0) }
-                compleation(friendsPhotos)
+                let friendsPhotos = json["response"]["items"].arrayValue.compactMap { Photo(json: $0, ownerID: userID) }
+                self.saveFotosToRealm(userID: userID, friendsPhotos)
+                compleation()
             case let .failure(error):
                 print(error)
+                compleation()
             }
         }
     }
 
-    func getFriends(compleation: @escaping ([User]) -> ()) {
+    func getFriends(compleation: @escaping () -> ()) {
         let path = "friends.get"
         let parameters: Parameters = [
             "v": version,
@@ -104,10 +100,13 @@ final class VKAPIService {
         AF.request(url, parameters: parameters).validate().responseData { response in
             switch response.result {
             case let .success(data):
-                guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
-                compleation(items.compactMap { User(json: $0) })
+                let json = JSON(data)
+                let users = json["response"]["items"].arrayValue.compactMap { User(json: $0) }
+                self.saveUsersToRealm(users)
+                compleation()
             case let .failure(error):
                 print(error)
+                compleation()
             }
         }
     }
@@ -117,5 +116,46 @@ final class VKAPIService {
               let data = try? Data(contentsOf: imageURL),
               let image = UIImage(data: data) else { return UIImage() }
         return image
+    }
+
+    // MARK: - Private methods
+
+    private func saveGroupsToRealm(_ groups: [Group]) {
+        do {
+            let realm = try Realm()
+            let oldData = realm.objects(Group.self)
+            try realm.write {
+                realm.delete(oldData)
+                realm.add(groups)
+            }
+        } catch {
+            print(error)
+        }
+    }
+
+    private func saveFotosToRealm(userID: String, _ fotos: [Photo]) {
+        do {
+            let realm = try Realm()
+            let oldFotos = realm.objects(Photo.self).filter("userID = %@", userID)
+            try realm.write {
+                realm.delete(oldFotos)
+                realm.add(fotos)
+            }
+        } catch {
+            print(error)
+        }
+    }
+
+    private func saveUsersToRealm(_ users: [User]) {
+        do {
+            let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+            let realm = try Realm(configuration: config)
+
+            try realm.write {
+                realm.add(users, update: .modified)
+            }
+        } catch {
+            print(error)
+        }
     }
 }

@@ -5,6 +5,8 @@ import Foundation
 
 /// Модель для заполнения новостей
 struct News {
+    // MARK: - Public Properties
+
     /// Название источника  Новости (человек, группа)
     let sourceNews: String
     /// Картинка источника Новости

@@ -1,6 +1,7 @@
 // UserGroupsTableViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
+import RealmSwift
 import UIKit
 
 final class GroupsTableViewController: UITableViewController {
@@ -50,9 +51,26 @@ final class GroupsTableViewController: UITableViewController {
         }
     }
 
+    // MARK: - Private methods
+
     private func setupView() {
-        service.getGroups { [weak self] groups in
-            self?.groups = groups
+        loadFromRealm()
+        loadFromNetwork()
+    }
+
+    private func loadFromRealm() {
+        do {
+            let realm = try Realm()
+            let groups = realm.objects(Group.self)
+            self.groups = Array(groups)
+        } catch {
+            print(error)
+        }
+    }
+
+    private func loadFromNetwork() {
+        service.getGroups { [weak self] in
+            self?.loadFromRealm()
             self?.tableView.reloadData()
         }
     }
