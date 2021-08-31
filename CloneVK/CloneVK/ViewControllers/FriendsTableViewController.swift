@@ -9,7 +9,6 @@ final class FriendsTableViewController: UITableViewController {
 
     private var users: [User] = []
     private let reuseIdentifier = "FriendsTableViewCell"
-    // private var currentUserImage = String()
     private let segueFriendidentifier = "showFriend"
     private var sections: [Character: [User]] = [:]
     private var sectionTitles: [Character] = []
