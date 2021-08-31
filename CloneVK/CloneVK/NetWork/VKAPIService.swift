@@ -84,7 +84,7 @@ final class VKAPIService {
         }
     }
 
-    func getFriends(compleation: @escaping () -> ()) {
+    func getFriends() {
         let path = "friends.get"
         let parameters: Parameters = [
             "v": version,
@@ -101,10 +101,8 @@ final class VKAPIService {
                 let json = JSON(data)
                 let users = json["response"]["items"].arrayValue.compactMap { User(json: $0) }
                 self.saveUsersToRealm(users)
-                compleation()
             case let .failure(error):
                 print(error)
-                compleation()
             }
         }
     }
