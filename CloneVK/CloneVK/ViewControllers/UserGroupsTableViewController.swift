@@ -7,8 +7,10 @@ import UIKit
 final class GroupsTableViewController: UITableViewController {
     // MARK: - Private Properties
 
+    private var realm = try? Realm()
+    private var notificationToken: NotificationToken?
+    private var groups: Results<Group>?
     private let reuseIdentifier = "GroupsTableViewCell"
-    private var groups: [Group] = []
     private lazy var service = VKAPIService()
 
     // MARK: - UIViewController
@@ -19,12 +21,13 @@ final class GroupsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        groups.count
+        groups?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-            as? GroupsTableViewCell else { fatalError() }
+            as? GroupsTableViewCell,
+            let groups = groups else { fatalError() }
         cell.configureCell(group: groups[indexPath.row])
         return cell
     }
@@ -35,10 +38,9 @@ final class GroupsTableViewController: UITableViewController {
         forRowAt indexPath: IndexPath
     ) {
         if editingStyle == .delete {
-            tableView.beginUpdates()
-            groups.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.endUpdates()
+            guard let groups = groups else { return }
+            deleteGroup(groups[indexPath.row])
+            reloadTable()
         }
     }
 
@@ -46,32 +48,58 @@ final class GroupsTableViewController: UITableViewController {
         guard let destination = segue.destination as? AllGroupsTableViewController else { return }
         destination.closure = { [weak self] groupName, groupImageName in
             guard let self = self else { return }
-            self.groups.append(Group(groupName: groupName, groupImageName: groupImageName))
-            self.tableView.reloadData()
+            self.addGroup(groupName: groupName, groupImageName: groupImageName)
+            self.reloadTable()
         }
     }
 
     // MARK: - Private methods
 
     private func setupView() {
-        loadFromRealm()
-        loadFromNetwork()
+        bindViewWithRealm()
+        service.getGroups()
     }
 
-    private func loadFromRealm() {
+    private func bindViewWithRealm() {
+        guard let userGroups = realm?.objects(Group.self) else { return }
+
+        groups = userGroups
+
+        notificationToken = groups?.observe { change in
+            switch change {
+            case .initial:
+                break
+            case .update:
+                self.tableView.reloadData()
+            case let .error(error):
+                print(error)
+            }
+        }
+    }
+
+    private func addGroup(groupName: String, groupImageName: String) {
+        let newGroup = Group(groupName: groupName, groupImageName: groupImageName)
+
         do {
-            let realm = try Realm()
-            let groups = realm.objects(Group.self)
-            self.groups = Array(groups)
+            try realm?.write {
+                realm?.add(newGroup)
+            }
         } catch {
             print(error)
         }
     }
 
-    private func loadFromNetwork() {
-        service.getGroups { [weak self] in
-            self?.loadFromRealm()
-            self?.tableView.reloadData()
+    private func deleteGroup(_ group: Group) {
+        do {
+            try realm?.write {
+                realm?.delete(group)
+            }
+        } catch {
+            print(error)
         }
+    }
+
+    private func reloadTable(_ animated: Bool = true) {
+        animated ? tableView.reloadSections(IndexSet(integer: 0), with: .fade) : tableView.reloadData()
     }
 }

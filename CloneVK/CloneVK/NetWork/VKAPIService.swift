@@ -36,7 +36,7 @@ final class VKAPIService {
         }
     }
 
-    func getGroups(compleation: @escaping () -> ()) {
+    func getGroups() {
         let path = "groups.get"
         let parameters: Parameters = [
             "v": version,
@@ -52,10 +52,8 @@ final class VKAPIService {
                 guard let items = try? JSON(data: data)["response"]["items"].arrayValue else { return }
                 let newItems = items.compactMap { Group(json: $0) }
                 self.saveGroupsToRealm(newItems)
-                compleation()
             case let .failure(error):
                 print(error)
-                compleation()
             }
         }
     }
