@@ -79,7 +79,6 @@ final class VKAPIService {
                 compleation()
             case let .failure(error):
                 print(error)
-                compleation()
             }
         }
     }
