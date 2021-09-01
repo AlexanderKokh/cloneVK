@@ -7,7 +7,9 @@ import UIKit
 final class FriendsTableViewController: UITableViewController {
     // MARK: - Private Properties
 
-    private var users: [User] = []
+    private var realm = try? Realm()
+    private var users: Results<User>?
+    private var notificationToken: NotificationToken?
     private let reuseIdentifier = "FriendsTableViewCell"
     private let segueFriendidentifier = "showFriend"
     private var sections: [Character: [User]] = [:]
@@ -86,32 +88,30 @@ final class FriendsTableViewController: UITableViewController {
     // MARK: - Private methods
 
     private func getFriends() {
-        loadFromRealm()
-        loadFromNetwork()
+        bindViewWithRealm()
+        service.getFriends()
+        addSections()
     }
 
-    private func loadFromRealm() {
-        do {
-            let realm = try Realm()
-            let friends = realm.objects(User.self)
-            users = Array(friends)
-            addSections()
-            tableView.reloadData()
-        } catch {
-            print(error)
-        }
-    }
+    private func bindViewWithRealm() {
+        guard let friends = realm?.objects(User.self) else { return }
 
-    private func loadFromNetwork() {
-        service.getFriends { [weak self] in
-            self?.users = []
-            self?.sections = [:]
-            self?.sectionTitles = []
-            self?.loadFromRealm()
+        users = friends
+
+        notificationToken = users?.observe { change in
+            switch change {
+            case .initial:
+                break
+            case .update:
+                self.tableView.reloadData()
+            case let .error(error):
+                print(error)
+            }
         }
     }
 
     private func addSections() {
+        guard let users = users else { return }
         for user in users {
             guard let firstLetter = user.userName.first else { return }
             if sections[firstLetter] != nil {

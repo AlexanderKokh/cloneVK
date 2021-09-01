@@ -9,6 +9,7 @@ final class AllFriendFotoViewController: UIViewController {
 
     @IBOutlet private var friendImageView: UIImageView!
     @IBOutlet private var currentNumberLabel: UILabel!
+    @IBOutlet private var activitiIndicator: UIActivityIndicatorView!
 
     // MARK: - Public Properties
 
@@ -16,9 +17,11 @@ final class AllFriendFotoViewController: UIViewController {
 
     // MARK: - Private Properties
 
+    private let realm = try? Realm()
+    private var notificationToken: NotificationToken?
+    private var userPhoto: Results<Photo>?
     private var index = Int()
     private var photo: [UIImage] = []
-
     private lazy var service = VKAPIService()
 
     // MARK: - UIViewController
@@ -48,8 +51,10 @@ final class AllFriendFotoViewController: UIViewController {
     // MARK: - Private methods
 
     private func setupView() {
-        loadFromRealm()
-        loadFromNetwork()
+        bindingViewWithRealm()
+        service.getPhotos(userID: userID) { [weak self] in
+            self?.activitiIndicator.stopAnimating()
+        }
         createSwipeGesture()
     }
 
@@ -104,26 +109,26 @@ final class AllFriendFotoViewController: UIViewController {
         )
     }
 
-    private func loadFromRealm() {
-        do {
-            let realm = try Realm()
-            let realmPhotos = realm.objects(Photo.self).filter("userID = %@", userID)
-            let photos = Array(realmPhotos)
-            for photo in photos {
-                self.photo.append(service.getFoto(image: photo.photo))
-                let photoCount = self.photo.count
-                currentNumberLabel.text = "1 / \(photoCount)"
-                friendImageView.image = self.photo.first
-            }
-        } catch {
-            print(error)
-        }
-    }
+    private func bindingViewWithRealm() {
+        guard let fotos = realm?.objects(Photo.self).filter("userID = %@", userID) else { return }
+        userPhoto = fotos
 
-    private func loadFromNetwork() {
-        service.getPhotos(userID: userID) { [weak self] in
-            self?.photo = []
-            self?.loadFromRealm()
+        notificationToken = userPhoto?.observe { change in
+            switch change {
+            case .initial:
+                break
+            case .update:
+                self.photo = []
+                let photos = Array(fotos)
+                for photo in photos {
+                    self.photo.append(self.service.getFoto(image: photo.photo))
+                    let photoCount = self.photo.count
+                    self.currentNumberLabel.text = "1 / \(photoCount)"
+                    self.friendImageView.image = self.photo.first
+                }
+            case let .error(error):
+                print(error)
+            }
         }
     }
 }
