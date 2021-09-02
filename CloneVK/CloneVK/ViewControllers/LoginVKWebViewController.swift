@@ -71,9 +71,11 @@ extension LoginVKWebViewController: WKNavigationDelegate {
                 return dict
             }
 
-        guard let token = params["access_token"] else { return }
+        guard let token = params["access_token"],
+              let userID = params["user_id"] else { return }
 
         Session.shared.token = token
+        Session.shared.applicationUserID = userID
 
         addUserToFirebase()
 
@@ -84,16 +86,14 @@ extension LoginVKWebViewController: WKNavigationDelegate {
     func addUserToFirebase() {
         databaseRef.getData { [weak self] _, snapshot in
             guard let self = self else { return }
-
-            let title = "00000\(Int.random(in: 1 ... 9))"
-            Session.shared.applicationUserID = title
+            let userID = Session.shared.applicationUserID
 
             if let users = snapshot.value as? [String] {
                 self.fireBaseUsers = users
             }
 
-            guard !self.fireBaseUsers.contains(title) else { return }
-            self.fireBaseUsers.append(title)
+            guard !self.fireBaseUsers.contains(userID) else { return }
+            self.fireBaseUsers.append(userID)
             self.databaseRef.setValue(self.fireBaseUsers)
         }
     }
