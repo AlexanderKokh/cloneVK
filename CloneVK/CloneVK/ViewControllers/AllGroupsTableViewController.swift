@@ -46,10 +46,7 @@ final class AllGroupsTableViewController: UITableViewController {
             guard let self = self else { return }
             self.currentGroupName = self.groups[indexPath.row].groupName
             self.addUserGroupsFirebase { [weak self] in
-                guard let self = self else { return }
-                let groupName = self.groups[indexPath.row].groupName
-                let groupImageName = self.groups[indexPath.row].groupImageName
-                self.closure?(groupName, groupImageName)
+                self?.addNewGroup(indexPath: indexPath)
             }
         }
     }
@@ -58,6 +55,12 @@ final class AllGroupsTableViewController: UITableViewController {
 
     private func setupView() {
         searchBar.delegate = self
+    }
+
+    private func addNewGroup(indexPath: IndexPath) {
+        let groupName = groups[indexPath.row].groupName
+        let groupImageName = groups[indexPath.row].groupImageName
+        closure?(groupName, groupImageName)
     }
 
     private func addUserGroupsFirebase(compleation: @escaping () -> ()) {
