@@ -9,9 +9,8 @@ final class LoginVKWebViewController: UIViewController {
     // MARK: - Public Properties
 
     lazy var vkService = VKAPIService()
-    // let databaseRef = Database.database().reference().child("User")
-    let databaseRef = Database.database().reference(withPath: "User")
-    var fireBaseUsers: [String] = []
+    private let databaseRef = Database.database().reference().child("User")
+    private var fireBaseUsers: [String] = []
 
     // MARK: - IBOutlet
 
@@ -76,22 +75,27 @@ extension LoginVKWebViewController: WKNavigationDelegate {
 
         Session.shared.token = token
 
-        databaseRef.getData { _, snapshot in
+        addUserToFirebase()
+
+        decisionHandler(.cancel)
+        moveToNextViewController()
+    }
+
+    func addUserToFirebase() {
+        databaseRef.getData { [weak self] _, snapshot in
+            guard let self = self else { return }
 
             let title = "00000\(Int.random(in: 1 ... 9))"
+            Session.shared.applicationUserID = title
 
             if let users = snapshot.value as? [String] {
                 self.fireBaseUsers = users
             }
-            if !self.fireBaseUsers.contains(title) {
-                self.fireBaseUsers.append(title)
-                self.databaseRef.setValue(self.fireBaseUsers)
-            }
-            Session.shared.applicationUserID = title
-        }
 
-        decisionHandler(.cancel)
-        moveToNextViewController()
+            guard !self.fireBaseUsers.contains(title) else { return }
+            self.fireBaseUsers.append(title)
+            self.databaseRef.setValue(self.fireBaseUsers)
+        }
     }
 
     func moveToNextViewController() {
