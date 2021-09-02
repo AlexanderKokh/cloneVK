@@ -23,6 +23,7 @@
 		FC64575126C5DAFC00C768B6 /* CustomPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64575026C5DAFC00C768B6 /* CustomPushAnimator.swift */; };
 		FC65EF1426B9366F001212C7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65EF1326B9366F001212C7 /* LoginViewController.swift */; };
 		FC65EF1826B93816001212C7 /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65EF1726B93816001212C7 /* UIViewController+extension.swift */; };
+		FC6AB72926E020B90064B1BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC6AB72826E020B90064B1BC /* GoogleService-Info.plist */; };
 		FC6CD3B626BB473D006B486D /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CD3B526BB473D006B486D /* FriendsTableViewController.swift */; };
 		FC6CD3B926BB47CE006B486D /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CD3B826BB47CE006B486D /* FriendsTableViewCell.swift */; };
 		FC6CD3BF26BB4A5A006B486D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CD3BE26BB4A5A006B486D /* User.swift */; };
@@ -64,6 +65,7 @@
 		FC64575026C5DAFC00C768B6 /* CustomPushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnimator.swift; sourceTree = "<group>"; };
 		FC65EF1326B9366F001212C7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FC65EF1726B93816001212C7 /* UIViewController+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
+		FC6AB72826E020B90064B1BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC6CD3B526BB473D006B486D /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		FC6CD3B826BB47CE006B486D /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		FC6CD3BE26BB4A5A006B486D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				FC1931A326B87E410078AAC8 /* Main.storyboard */,
 				FC1931A626B87E430078AAC8 /* Assets.xcassets */,
 				FC1931A826B87E430078AAC8 /* LaunchScreen.storyboard */,
+				FC6AB72826E020B90064B1BC /* GoogleService-Info.plist */,
 				FC1931AB26B87E430078AAC8 /* Info.plist */,
 			);
 			path = Application;
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC1931AA26B87E430078AAC8 /* LaunchScreen.storyboard in Resources */,
+				FC6AB72926E020B90064B1BC /* GoogleService-Info.plist in Resources */,
 				FC1931A726B87E430078AAC8 /* Assets.xcassets in Resources */,
 				FC1931A526B87E410078AAC8 /* Main.storyboard in Resources */,
 			);
@@ -571,7 +575,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-0.CloneVK";
+				PRODUCT_BUNDLE_IDENTIFIER = com.RoadMap.CloneVK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -590,7 +594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-0.CloneVK";
+				PRODUCT_BUNDLE_IDENTIFIER = com.RoadMap.CloneVK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

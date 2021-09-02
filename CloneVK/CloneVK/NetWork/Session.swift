@@ -10,6 +10,7 @@ final class Session {
 
     var token = String()
     var userID = 7_618_150
+    var applicationUserID = String()
 
     // MARK: - Initializers
 

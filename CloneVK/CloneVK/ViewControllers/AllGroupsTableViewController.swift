@@ -1,6 +1,7 @@
 // AllGroupsTableViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
+import FirebaseDatabase
 import UIKit
 
 final class AllGroupsTableViewController: UITableViewController {
@@ -15,7 +16,10 @@ final class AllGroupsTableViewController: UITableViewController {
     // MARK: - Private Properties
 
     private var groups: [Group] = []
+    private var currentGroupName = String()
+    private var fireBaseUserGroups: [String] = []
     private let reuseIdentifier = "AllGroupsTableViewCell"
+    private let databaseRef = Database.database().reference().child("UserGroup").child(Session.shared.applicationUserID)
     private lazy var service = VKAPIService()
 
     // MARK: - UIViewController
@@ -40,9 +44,10 @@ final class AllGroupsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showAlertCompleation(title: "Вступить в группу", message: nil) { [weak self] in
             guard let self = self else { return }
-            let groupName = self.groups[indexPath.row].groupName
-            let groupImageName = self.groups[indexPath.row].groupImageName
-            self.closure?(groupName, groupImageName)
+            self.currentGroupName = self.groups[indexPath.row].groupName
+            self.addUserGroupsFirebase { [weak self] in
+                self?.addNewGroup(indexPath: indexPath)
+            }
         }
     }
 
@@ -50,6 +55,26 @@ final class AllGroupsTableViewController: UITableViewController {
 
     private func setupView() {
         searchBar.delegate = self
+    }
+
+    private func addNewGroup(indexPath: IndexPath) {
+        let groupName = groups[indexPath.row].groupName
+        let groupImageName = groups[indexPath.row].groupImageName
+        closure?(groupName, groupImageName)
+    }
+
+    private func addUserGroupsFirebase(compleation: @escaping () -> ()) {
+        databaseRef.getData { _, snapshot in
+            if let users = snapshot.value as? [String] {
+                self.fireBaseUserGroups = users
+            }
+
+            guard !self.fireBaseUserGroups.contains(self.currentGroupName) else { return }
+            self.fireBaseUserGroups.append(self.currentGroupName)
+            self.databaseRef.setValue(self.fireBaseUserGroups)
+
+            compleation()
+        }
     }
 }
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>31781704195-me2aq8iudcjmaivq4m1eq7h75b6nb52a.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.31781704195-me2aq8iudcjmaivq4m1eq7h75b6nb52a</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDnHVl7KwOK6VkH7Gez1SG_MhcxzWdrhTw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>31781704195</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.RoadMap.CloneVK</string>
+	<key>PROJECT_ID</key>
+	<string>clonevk-4bf09</string>
+	<key>STORAGE_BUCKET</key>
+	<string>clonevk-4bf09.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:31781704195:ios:5acc58308a26ca4b51f436</string>
+	<key>DATABASE_URL</key>
+	<string>https://clonevk-4bf09-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

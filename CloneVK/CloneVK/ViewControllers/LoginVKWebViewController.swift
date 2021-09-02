@@ -1,6 +1,7 @@
 // LoginVKWebViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
+import FirebaseDatabase
 import Foundation
 import WebKit
 
@@ -8,6 +9,8 @@ final class LoginVKWebViewController: UIViewController {
     // MARK: - Public Properties
 
     lazy var vkService = VKAPIService()
+    private let databaseRef = Database.database().reference().child("User")
+    private var fireBaseUsers: [String] = []
 
     // MARK: - IBOutlet
 
@@ -68,11 +71,31 @@ extension LoginVKWebViewController: WKNavigationDelegate {
                 return dict
             }
 
-        guard let token = params["access_token"] else { return }
+        guard let token = params["access_token"],
+              let userID = params["user_id"] else { return }
 
         Session.shared.token = token
+        Session.shared.applicationUserID = userID
+
+        addUserToFirebase()
+
         decisionHandler(.cancel)
         moveToNextViewController()
+    }
+
+    func addUserToFirebase() {
+        databaseRef.getData { [weak self] _, snapshot in
+            guard let self = self else { return }
+            let userID = Session.shared.applicationUserID
+
+            if let users = snapshot.value as? [String] {
+                self.fireBaseUsers = users
+            }
+
+            guard !self.fireBaseUsers.contains(userID) else { return }
+            self.fireBaseUsers.append(userID)
+            self.databaseRef.setValue(self.fireBaseUsers)
+        }
     }
 
     func moveToNextViewController() {
