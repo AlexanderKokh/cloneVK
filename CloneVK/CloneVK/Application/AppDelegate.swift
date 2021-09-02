@@ -1,6 +1,7 @@
 // AppDelegate.swift
 // Copyright © RoadMap. All rights reserved.
 
+import Firebase
 import UIKit
 
 @main
@@ -10,6 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
         print(getDocumentsDirectory())
+        FirebaseApp.configure()
         return true
     }
 

@@ -1,12 +1,17 @@
 // AllGroupsTableViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
+import FirebaseDatabase
 import UIKit
 
 final class AllGroupsTableViewController: UITableViewController {
     // MARK: - Public Properties
 
     var closure: ((_ groupName: String, _ groupImageName: String) -> ())?
+    var currentGroupName = String()
+
+    let databaseRef = Database.database().reference().child("UserGroup").child(Session.shared.applicationUserID)
+    var fireBaseUserGroups: [String] = []
 
     // MARK: - IBOutlet
 
@@ -37,12 +42,30 @@ final class AllGroupsTableViewController: UITableViewController {
         return cell
     }
 
+    func get1(compleation: @escaping () -> ()) {
+        databaseRef.getData { _, snapshot in
+            if let users = snapshot.value as? [String] {
+                self.fireBaseUserGroups = users
+            }
+
+            if !self.fireBaseUserGroups.contains(self.currentGroupName) {
+                self.fireBaseUserGroups.append(self.currentGroupName)
+                self.databaseRef.setValue(self.fireBaseUserGroups)
+            }
+            compleation()
+        }
+    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showAlertCompleation(title: "Вступить в группу", message: nil) { [weak self] in
             guard let self = self else { return }
-            let groupName = self.groups[indexPath.row].groupName
-            let groupImageName = self.groups[indexPath.row].groupImageName
-            self.closure?(groupName, groupImageName)
+            self.currentGroupName = self.groups[indexPath.row].groupName
+            self.get1 {
+                let groupName = self.groups[indexPath.row].groupName
+                let groupImageName = self.groups[indexPath.row].groupImageName
+                self.closure?(groupName, groupImageName)
+            }
+            // self.closure?(groupName, groupImageName)
         }
     }
 

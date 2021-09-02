@@ -90,7 +90,6 @@ final class FriendsTableViewController: UITableViewController {
     private func getFriends() {
         bindViewWithRealm()
         service.getFriends()
-        addSections()
     }
 
     private func bindViewWithRealm() {
@@ -101,8 +100,12 @@ final class FriendsTableViewController: UITableViewController {
         notificationToken = users?.observe { change in
             switch change {
             case .initial:
-                break
+                self.addSections()
+                self.tableView.reloadData()
             case .update:
+                self.sectionTitles = []
+                self.sections = [:]
+                self.addSections()
                 self.tableView.reloadData()
             case let .error(error):
                 print(error)
