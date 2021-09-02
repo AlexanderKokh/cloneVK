@@ -45,7 +45,8 @@ final class AllGroupsTableViewController: UITableViewController {
         showAlertCompleation(title: "Вступить в группу", message: nil) { [weak self] in
             guard let self = self else { return }
             self.currentGroupName = self.groups[indexPath.row].groupName
-            self.addUserGroupsFirebase {
+            self.addUserGroupsFirebase { [weak self] in
+                guard let self = self else { return }
                 let groupName = self.groups[indexPath.row].groupName
                 let groupImageName = self.groups[indexPath.row].groupImageName
                 self.closure?(groupName, groupImageName)
