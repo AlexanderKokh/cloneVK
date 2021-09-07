@@ -4,14 +4,25 @@
 import UIKit
 
 final class NewsViewController: UIViewController {
-    // MARK: - IBOutlet
 
+    enum CellTypes {
+        case avatar
+        case post
+        case foto
+        case like
+    }
+
+    // MARK: - IBOutlet
     @IBOutlet private var tableView: UITableView!
 
     // MARK: - Private Properties
 
     private var news: [News] = []
-    private let cellIdentifier = "NewsTableViewCell"
+    private let avatarcellIdentifier = "NewsTableViewCell"
+    private let fotoCelldentifier = "NewsTableViewFotoCell"
+    private let likesCellIdentifier = "NewsTableViewLikesCell"
+    private let textCellIdentifier = "NewsTableViewTextCell"
+    private let types: [CellTypes] = [.avatar, .post, .foto, .like]
 
     // MARK: - UIViewController
 
@@ -24,6 +35,7 @@ final class NewsViewController: UIViewController {
 
     private func setupView() {
         tableView.dataSource = self
+        tableView.delegate = self
         addNews()
     }
 
@@ -41,18 +53,60 @@ final class NewsViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate
+
+extension NewsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let type = types[indexPath.row]
+        switch type {
+        case .avatar:
+            return 80
+        case .foto:
+            return 400
+        case .post:
+            return 300
+        case .like:
+            return 40
+        }
+    }
+}
+
 // MARK: - UITableViewDataSource
 
 extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        4
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
         news.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? NewsTableViewCell
-        else { fatalError() }
-        cell.configureCell(news: news[indexPath.row])
-        return cell
+        let type = types[indexPath.row]
+
+        switch type {
+        case .avatar:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: avatarcellIdentifier) as? NewsTableViewCell
+            else { fatalError() }
+            cell.configureCell(news: news[indexPath.section])
+            return cell
+        case .foto:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: fotoCelldentifier) as? NewsTableViewFotoCell
+            else { fatalError() }
+            cell.configureCell(news: news[indexPath.section])
+            return cell
+        case .post:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier) as? NewsTableViewTextCell
+            else { fatalError() }
+            cell.configureCell(news: news[indexPath.section])
+            return cell
+        case .like:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: likesCellIdentifier)
+                    as? NewsTableViewLikesCell
+            else { fatalError() }
+            return cell
+        }
     }
 }
 
