@@ -15,4 +15,10 @@ struct News {
     let sourceText: String
     /// Основная картинка Новости
     let sourceMainImagename: String?
+
+    let likes: String
+    let comments: String
+    let views: String
+    let repost: String
+    let photo: String
 }

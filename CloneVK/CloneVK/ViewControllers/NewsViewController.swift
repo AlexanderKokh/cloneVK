@@ -4,7 +4,6 @@
 import UIKit
 
 final class NewsViewController: UIViewController {
-
     enum CellTypes {
         case avatar
         case post
@@ -13,6 +12,7 @@ final class NewsViewController: UIViewController {
     }
 
     // MARK: - IBOutlet
+
     @IBOutlet private var tableView: UITableView!
 
     // MARK: - Private Properties
@@ -29,6 +29,11 @@ final class NewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        let newsAPI = VKAPINewsService()
+        newsAPI.getNews { news in
+            self.news = news
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Private methods
@@ -36,21 +41,21 @@ final class NewsViewController: UIViewController {
     private func setupView() {
         tableView.dataSource = self
         tableView.delegate = self
-        addNews()
+        // addNews()
     }
 
-    private func addNews() {
-        news = [
-            News(
-                sourceNews: "Футбол | News 24",
-                sourceImageName: "IOS developers",
-                sourceText: textMessi,
-                sourceMainImagename: "messi"
-            ),
-            News(sourceNews: "IT юмор", sourceImageName: "Swift", sourceText: textITOne, sourceMainImagename: "IT"),
-            News(sourceNews: "IT юмор", sourceImageName: "Swift", sourceText: textITOne, sourceMainImagename: "IT2")
-        ]
-    }
+//    private func addNews() {
+//        news = [
+//            News(
+//                sourceNews: "Футбол | News 24",
+//                sourceImageName: "IOS developers",
+//                sourceText: textMessi,
+//                sourceMainImagename: "messi"
+//            ),
+//            News(sourceNews: "IT юмор", sourceImageName: "Swift", sourceText: textITOne, sourceMainImagename: "IT"),
+//            News(sourceNews: "IT юмор", sourceImageName: "Swift", sourceText: textITOne, sourceMainImagename: "IT2")
+//        ]
+//    }
 }
 
 // MARK: - UITableViewDelegate
@@ -103,8 +108,9 @@ extension NewsViewController: UITableViewDataSource {
             return cell
         case .like:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: likesCellIdentifier)
-                    as? NewsTableViewLikesCell
+                as? NewsTableViewLikesCell
             else { fatalError() }
+            cell.configureCell(news: news[indexPath.section])
             return cell
         }
     }

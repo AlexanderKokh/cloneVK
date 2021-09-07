@@ -11,6 +11,8 @@ final class NewsTableViewCell: UITableViewCell {
 
     // MARK: - Initializers
 
+    let sevice = VKAPIService()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         avatarNewsImageView.contentMode = .scaleAspectFit
@@ -19,7 +21,7 @@ final class NewsTableViewCell: UITableViewCell {
     // MARK: - Public methods
 
     func configureCell(news: News) {
-        avatarNewsImageView.image = UIImage(named: news.sourceImageName)
+        avatarNewsImageView.image = sevice.getFoto(image: news.sourceImageName)
         avatarNewsLabel.text = news.sourceNews
     }
 }
