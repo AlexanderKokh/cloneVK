@@ -8,7 +8,9 @@ final class NewsTableViewFotoCell: UITableViewCell {
 
     @IBOutlet private var mainNewsImageView: UIImageView!
 
-    let service = VKAPIService()
+    // MARK: - Private Properties
+
+    private let service = VKAPIService()
 
     // MARK: - Initializers
 
@@ -21,7 +23,6 @@ final class NewsTableViewFotoCell: UITableViewCell {
     // MARK: - Public methods
 
     func configureCell(news: News) {
-        // guard let mainNewsImage = news.photo else { return }
         mainNewsImageView.image = service.getFoto(image: news.photo)
     }
 }

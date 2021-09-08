@@ -4,10 +4,14 @@
 import UIKit
 
 final class NewsTableViewLikesCell: UITableViewCell {
-    @IBOutlet var newslikeLabel: UILabel!
-    @IBOutlet var newsRepostLabel: UILabel!
-    @IBOutlet var newsViewsLabel: UILabel!
-    @IBOutlet var newsCommentLabel: UILabel!
+    // MARK: - IBOutlet
+
+    @IBOutlet private var newslikeLabel: UILabel!
+    @IBOutlet private var newsRepostLabel: UILabel!
+    @IBOutlet private var newsViewsLabel: UILabel!
+    @IBOutlet private var newsCommentLabel: UILabel!
+
+    // MARK: - Public methods
 
     func configureCell(news: News) {
         newslikeLabel.text = news.likes

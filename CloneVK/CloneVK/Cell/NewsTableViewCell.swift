@@ -9,9 +9,11 @@ final class NewsTableViewCell: UITableViewCell {
     @IBOutlet private var avatarNewsImageView: UIImageView!
     @IBOutlet private var avatarNewsLabel: UILabel!
 
-    // MARK: - Initializers
+    // MARK: - Private Properties
 
-    let sevice = VKAPIService()
+    private let sevice = VKAPIService()
+
+    // MARK: - Initializers
 
     override func awakeFromNib() {
         super.awakeFromNib()
