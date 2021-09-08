@@ -14,7 +14,7 @@ final class User: Object {
     /// Фамилия пользователя
     @objc dynamic var userSurname = String()
     /// ID пользователя
-    @objc dynamic var userID = String()
+    @objc dynamic var userID = Int()
     /// Путь к аватарке пользователя
     @objc dynamic var userPhoto = String()
 
@@ -23,8 +23,8 @@ final class User: Object {
     convenience init(json: JSON) {
         self.init()
         let userName = json["first_name"].stringValue
-        let userSurname = json["second_name"].stringValue
-        let userID = json["id"].stringValue
+        let userSurname = json["last_name"].stringValue
+        let userID = json["id"].intValue
         let userPhoto = json["photo_100"].stringValue
 
         self.userName = userName

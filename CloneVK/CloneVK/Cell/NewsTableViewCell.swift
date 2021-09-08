@@ -9,6 +9,10 @@ final class NewsTableViewCell: UITableViewCell {
     @IBOutlet private var avatarNewsImageView: UIImageView!
     @IBOutlet private var avatarNewsLabel: UILabel!
 
+    // MARK: - Private Properties
+
+    private let sevice = VKAPIService()
+
     // MARK: - Initializers
 
     override func awakeFromNib() {
@@ -19,7 +23,7 @@ final class NewsTableViewCell: UITableViewCell {
     // MARK: - Public methods
 
     func configureCell(news: News) {
-        avatarNewsImageView.image = UIImage(named: news.sourceImageName)
+        avatarNewsImageView.image = sevice.getFoto(image: news.sourceImageName)
         avatarNewsLabel.text = news.sourceNews
     }
 }

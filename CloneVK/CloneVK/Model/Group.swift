@@ -13,6 +13,8 @@ final class Group: Object {
     @objc dynamic var groupName = String()
     /// Название оснвной картинки группы
     @objc dynamic var groupImageName = String()
+    /// ID группы
+    @objc dynamic var groupID = Int()
 
     // MARK: - Initializers
 
@@ -20,8 +22,10 @@ final class Group: Object {
         self.init()
         let groupName = json["name"].stringValue
         let groupImageName = json["photo_100"].stringValue
+        let groupID = json["id"].intValue
         self.groupName = groupName
         self.groupImageName = groupImageName
+        self.groupID = groupID
     }
 
     convenience init(groupName: String, groupImageName: String) {
