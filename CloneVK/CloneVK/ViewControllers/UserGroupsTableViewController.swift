@@ -57,7 +57,9 @@ final class GroupsTableViewController: UITableViewController {
 
     private func setupView() {
         bindViewWithRealm()
-        service.getGroups()
+        // service.getGroups()
+        let newservice = GroupAPIService()
+        newservice.getGroups()
     }
 
     private func bindViewWithRealm() {

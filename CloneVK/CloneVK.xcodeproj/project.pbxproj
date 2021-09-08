@@ -23,6 +23,7 @@
 		FC64575126C5DAFC00C768B6 /* CustomPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64575026C5DAFC00C768B6 /* CustomPushAnimator.swift */; };
 		FC65EF1426B9366F001212C7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65EF1326B9366F001212C7 /* LoginViewController.swift */; };
 		FC65EF1826B93816001212C7 /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65EF1726B93816001212C7 /* UIViewController+extension.swift */; };
+		FC6686E526E94DB90018625A /* GroupAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6686E426E94DB90018625A /* GroupAPIService.swift */; };
 		FC6AB72926E020B90064B1BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC6AB72826E020B90064B1BC /* GoogleService-Info.plist */; };
 		FC6C004626E6C4A200A07336 /* NewsTableViewFotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C004526E6C4A200A07336 /* NewsTableViewFotoCell.swift */; };
 		FC6C004926E6C4B200A07336 /* NewsTableViewTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C004826E6C4B200A07336 /* NewsTableViewTextCell.swift */; };
@@ -70,6 +71,7 @@
 		FC64575026C5DAFC00C768B6 /* CustomPushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnimator.swift; sourceTree = "<group>"; };
 		FC65EF1326B9366F001212C7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FC65EF1726B93816001212C7 /* UIViewController+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
+		FC6686E426E94DB90018625A /* GroupAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAPIService.swift; sourceTree = "<group>"; };
 		FC6AB72826E020B90064B1BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC6C004526E6C4A200A07336 /* NewsTableViewFotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewFotoCell.swift; sourceTree = "<group>"; };
 		FC6C004826E6C4B200A07336 /* NewsTableViewTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewTextCell.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			children = (
 				FCEAC80A26D45B4600191CB4 /* Session.swift */,
 				FCAA3F6426D5AA4B00BF6521 /* VKAPIService.swift */,
+				FC6686E426E94DB90018625A /* GroupAPIService.swift */,
 				FC6C5F8A26E7F256009B1696 /* NewsAPIService.swift */,
 			);
 			path = NetWork;
@@ -431,6 +434,7 @@
 				FCA51B9026BB6B2400B2FA77 /* AllGroupsTableViewCell.swift in Sources */,
 				FC1931A026B87E410078AAC8 /* SceneDelegate.swift in Sources */,
 				FCAA3F6526D5AA4B00BF6521 /* VKAPIService.swift in Sources */,
+				FC6686E526E94DB90018625A /* GroupAPIService.swift in Sources */,
 				FCB0A77A26C1C7AB0041982B /* NewsViewController.swift in Sources */,
 				FC6CD3C226BB5740006B486D /* UserCollectionViewCell.swift in Sources */,
 				FCAD1F7826C4F589005731E0 /* AllFriendFotoViewController.swift in Sources */,
