@@ -37,8 +37,9 @@ final class NewsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
 
-        let newsAPI = VKAPINewsService()
-        newsAPI.getNews { news in
+        let newsAPI = NewsAPIService()
+        newsAPI.getNews { [weak self] news in
+            guard let self = self else { return }
             self.news = news
             self.tableView.reloadData()
         }

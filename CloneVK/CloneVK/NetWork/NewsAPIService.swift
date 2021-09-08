@@ -1,11 +1,11 @@
-// VKAPINewsService.swift
+// NewsAPIService.swift
 // Copyright © RoadMap. All rights reserved.
 
 import Alamofire
 import Foundation
 import SwiftyJSON
 
-final class VKAPINewsService {
+final class NewsAPIService {
     // MARK: - Private Properties
 
     private let baseURL = "https://api.vk.com/method/"
@@ -55,23 +55,21 @@ final class VKAPINewsService {
             groups = json["response"]["groups"].arrayValue.compactMap { Group(json: $0) }
             posts = json["response"]["items"].arrayValue.compactMap { Items(json: $0) }
 
-            DispatchQueue.global().async(group: dispatchGroup) {
-                for post in posts {
-                    var author = ""
-                    var avatarURL = ""
+            for post in posts {
+                var author = ""
+                var avatarURL = ""
 
-                    if post.sourseID > 0 {
-                        guard let profile = profiles.filter({ $0.userID == post.sourseID }).first
-                        else { return }
-                        author = "\(profile.userName) \(profile.userSurname)"
-                        avatarURL = profile.userPhoto
-                    } else {
-                        guard let group = groups.filter({ $0.groupID == -post.sourseID }).first else { return }
-                        author = group.groupName
-                        avatarURL = group.groupImageName
-                    }
-                    self.addNews(source: post, author: author, avatarURL: avatarURL)
+                if post.sourseID > 0 {
+                    guard let profile = profiles.filter({ $0.userID == post.sourseID }).first
+                    else { return }
+                    author = "\(profile.userName) \(profile.userSurname)"
+                    avatarURL = profile.userPhoto
+                } else {
+                    guard let group = groups.filter({ $0.groupID == -post.sourseID }).first else { return }
+                    author = group.groupName
+                    avatarURL = group.groupImageName
                 }
+                self.addNews(source: post, author: author, avatarURL: avatarURL)
             }
         }
     }
