@@ -24,6 +24,10 @@
 		FC65EF1426B9366F001212C7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65EF1326B9366F001212C7 /* LoginViewController.swift */; };
 		FC65EF1826B93816001212C7 /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65EF1726B93816001212C7 /* UIViewController+extension.swift */; };
 		FC6686E526E94DB90018625A /* GroupAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6686E426E94DB90018625A /* GroupAPIService.swift */; };
+		FC66871526E985D10018625A /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC66871426E985D10018625A /* AsyncOperation.swift */; };
+		FC66871826E986770018625A /* GetDataAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC66871726E986770018625A /* GetDataAsync.swift */; };
+		FC66871C26E9870E0018625A /* SaveGroupsRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC66871B26E9870E0018625A /* SaveGroupsRealm.swift */; };
+		FC66872026E9878C0018625A /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC66871F26E9878C0018625A /* ParseData.swift */; };
 		FC6AB72926E020B90064B1BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC6AB72826E020B90064B1BC /* GoogleService-Info.plist */; };
 		FC6C004626E6C4A200A07336 /* NewsTableViewFotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C004526E6C4A200A07336 /* NewsTableViewFotoCell.swift */; };
 		FC6C004926E6C4B200A07336 /* NewsTableViewTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C004826E6C4B200A07336 /* NewsTableViewTextCell.swift */; };
@@ -72,6 +76,10 @@
 		FC65EF1326B9366F001212C7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FC65EF1726B93816001212C7 /* UIViewController+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
 		FC6686E426E94DB90018625A /* GroupAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAPIService.swift; sourceTree = "<group>"; };
+		FC66871426E985D10018625A /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		FC66871726E986770018625A /* GetDataAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataAsync.swift; sourceTree = "<group>"; };
+		FC66871B26E9870E0018625A /* SaveGroupsRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveGroupsRealm.swift; sourceTree = "<group>"; };
+		FC66871F26E9878C0018625A /* ParseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
 		FC6AB72826E020B90064B1BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC6C004526E6C4A200A07336 /* NewsTableViewFotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewFotoCell.swift; sourceTree = "<group>"; };
 		FC6C004826E6C4B200A07336 /* NewsTableViewTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewTextCell.swift; sourceTree = "<group>"; };
@@ -183,6 +191,7 @@
 				FC64574626C5CE6200C768B6 /* InteractiveTransition.swift */,
 				FC64574926C5D22800C768B6 /* CustomNavigationController.swift */,
 				FC62153826C642AC005370AD /* CustomPopAnimatorWithRotationAngle.swift */,
+				FC66871A26E986B80018625A /* OperationQueue */,
 				FC62153526C64258005370AD /* CustomPushAnimatorWithRotationAngle.swift */,
 				FC64574C26C5D59800C768B6 /* CustomPopAnimator.swift */,
 				FC64575026C5DAFC00C768B6 /* CustomPushAnimator.swift */,
@@ -217,6 +226,17 @@
 				FC1931AB26B87E430078AAC8 /* Info.plist */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		FC66871A26E986B80018625A /* OperationQueue */ = {
+			isa = PBXGroup;
+			children = (
+				FC66871426E985D10018625A /* AsyncOperation.swift */,
+				FC66871726E986770018625A /* GetDataAsync.swift */,
+				FC66871B26E9870E0018625A /* SaveGroupsRealm.swift */,
+				FC66871F26E9878C0018625A /* ParseData.swift */,
+			);
+			path = OperationQueue;
 			sourceTree = "<group>";
 		};
 		FC6CD3BB26BB48E3006B486D /* Cell */ = {
@@ -413,6 +433,8 @@
 				FC64574A26C5D22800C768B6 /* CustomNavigationController.swift in Sources */,
 				FC62153626C64258005370AD /* CustomPushAnimatorWithRotationAngle.swift in Sources */,
 				FC6CD3C526BB577A006B486D /* FriendsCollectionViewController.swift in Sources */,
+				FC66871C26E9870E0018625A /* SaveGroupsRealm.swift in Sources */,
+				FC66871526E985D10018625A /* AsyncOperation.swift in Sources */,
 				FC6CD3C826BB5E69006B486D /* UserGroupsTableViewController.swift in Sources */,
 				FCAA3F5E26D583B000BF6521 /* LoginVKWebViewController.swift in Sources */,
 				FCA51B9426BB6B9700B2FA77 /* AllGroupsTableViewController.swift in Sources */,
@@ -424,12 +446,14 @@
 				FC64575126C5DAFC00C768B6 /* CustomPushAnimator.swift in Sources */,
 				FC62153926C642AC005370AD /* CustomPopAnimatorWithRotationAngle.swift in Sources */,
 				FC6CD3CB26BB5FDB006B486D /* GroupsTableViewCell.swift in Sources */,
+				FC66871826E986770018625A /* GetDataAsync.swift in Sources */,
 				FC641C3526BC6E3B00749964 /* UserView.swift in Sources */,
 				FC9FBB1926D77B2D000D0DAB /* Photo.swift in Sources */,
 				FCB0A77D26C1D1AB0041982B /* NewsTableViewCell.swift in Sources */,
 				FC6C004C26E6D80C00A07336 /* NewsTableViewLikesCell.swift in Sources */,
 				FC19319E26B87E410078AAC8 /* AppDelegate.swift in Sources */,
 				FC6CD3B926BB47CE006B486D /* FriendsTableViewCell.swift in Sources */,
+				FC66872026E9878C0018625A /* ParseData.swift in Sources */,
 				FCEAC80B26D45B4600191CB4 /* Session.swift in Sources */,
 				FCA51B9026BB6B2400B2FA77 /* AllGroupsTableViewCell.swift in Sources */,
 				FC1931A026B87E410078AAC8 /* SceneDelegate.swift in Sources */,

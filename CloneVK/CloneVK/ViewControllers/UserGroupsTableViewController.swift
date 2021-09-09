@@ -11,7 +11,7 @@ final class GroupsTableViewController: UITableViewController {
     private var notificationToken: NotificationToken?
     private var groups: Results<Group>?
     private let reuseIdentifier = "GroupsTableViewCell"
-    private lazy var service = VKAPIService()
+    private lazy var service = GroupAPIService()
 
     // MARK: - UIViewController
 
@@ -57,9 +57,7 @@ final class GroupsTableViewController: UITableViewController {
 
     private func setupView() {
         bindViewWithRealm()
-        // service.getGroups()
-        let newservice = GroupAPIService()
-        newservice.getGroups()
+        service.getGroups()
     }
 
     private func bindViewWithRealm() {
