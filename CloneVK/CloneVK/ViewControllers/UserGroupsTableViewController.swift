@@ -11,7 +11,7 @@ final class GroupsTableViewController: UITableViewController {
     private var notificationToken: NotificationToken?
     private var groups: Results<Group>?
     private let reuseIdentifier = "GroupsTableViewCell"
-    private lazy var service = VKAPIService()
+    private lazy var service = GroupAPIService()
 
     // MARK: - UIViewController
 

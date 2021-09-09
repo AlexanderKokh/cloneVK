@@ -80,8 +80,8 @@ final class FriendsTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == segueFriendidentifier,
               let destination = segue.destination as? AllFriendFotoViewController else { return }
-        if let userImage = sender as? String {
-            destination.userID = userImage
+        if let userImage = sender as? Int {
+            destination.userID = String(userImage)
         }
     }
 

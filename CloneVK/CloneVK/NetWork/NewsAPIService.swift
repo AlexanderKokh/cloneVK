@@ -30,8 +30,9 @@ final class NewsAPIService {
             case let .success(data):
 
                 let dispatchGroup = DispatchGroup()
-                self.fillNewsArray(dispatchGroup: dispatchGroup, data: data)
-
+                DispatchQueue.global().async(group: dispatchGroup) {
+                    self.fillNewsArray(dispatchGroup: dispatchGroup, data: data)
+                }
                 dispatchGroup.notify(queue: DispatchQueue.main) {
                     compleation(self.postNews)
                 }
@@ -49,28 +50,26 @@ final class NewsAPIService {
         var groups: [Group] = []
         var posts: [Items] = []
 
-        DispatchQueue.global().async(group: dispatchGroup) {
-            let json = JSON(data)
-            profiles = json["response"]["profiles"].arrayValue.compactMap { User(json: $0) }
-            groups = json["response"]["groups"].arrayValue.compactMap { Group(json: $0) }
-            posts = json["response"]["items"].arrayValue.compactMap { Items(json: $0) }
+        let json = JSON(data)
+        profiles = json["response"]["profiles"].arrayValue.compactMap { User(json: $0) }
+        groups = json["response"]["groups"].arrayValue.compactMap { Group(json: $0) }
+        posts = json["response"]["items"].arrayValue.compactMap { Items(json: $0) }
 
-            for post in posts {
-                var author = ""
-                var avatarURL = ""
+        for post in posts {
+            var author = ""
+            var avatarURL = ""
 
-                if post.sourseID > 0 {
-                    guard let profile = profiles.filter({ $0.userID == post.sourseID }).first
-                    else { return }
-                    author = "\(profile.userName) \(profile.userSurname)"
-                    avatarURL = profile.userPhoto
-                } else {
-                    guard let group = groups.filter({ $0.groupID == -post.sourseID }).first else { return }
-                    author = group.groupName
-                    avatarURL = group.groupImageName
-                }
-                self.addNews(source: post, author: author, avatarURL: avatarURL)
+            if post.sourseID > 0 {
+                guard let profile = profiles.filter({ $0.userID == post.sourseID }).first
+                else { return }
+                author = "\(profile.userName) \(profile.userSurname)"
+                avatarURL = profile.userPhoto
+            } else {
+                guard let group = groups.filter({ $0.groupID == -post.sourseID }).first else { return }
+                author = group.groupName
+                avatarURL = group.groupImageName
             }
+            addNews(source: post, author: author, avatarURL: avatarURL)
         }
     }
 
