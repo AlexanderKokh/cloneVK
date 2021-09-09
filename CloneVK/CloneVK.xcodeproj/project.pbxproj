@@ -13,6 +13,7 @@
 		FC1931A526B87E410078AAC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1931A326B87E410078AAC8 /* Main.storyboard */; };
 		FC1931A726B87E430078AAC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC1931A626B87E430078AAC8 /* Assets.xcassets */; };
 		FC1931AA26B87E430078AAC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1931A826B87E430078AAC8 /* LaunchScreen.storyboard */; };
+		FC5D829426EA9EA10023FA06 /* UserAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D829326EA9EA10023FA06 /* UserAPIService.swift */; };
 		FC62153626C64258005370AD /* CustomPushAnimatorWithRotationAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62153526C64258005370AD /* CustomPushAnimatorWithRotationAngle.swift */; };
 		FC62153926C642AC005370AD /* CustomPopAnimatorWithRotationAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62153826C642AC005370AD /* CustomPopAnimatorWithRotationAngle.swift */; };
 		FC641C3526BC6E3B00749964 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC641C3426BC6E3B00749964 /* UserView.swift */; };
@@ -65,6 +66,7 @@
 		FC1931A626B87E430078AAC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC1931A926B87E430078AAC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC1931AB26B87E430078AAC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC5D829326EA9EA10023FA06 /* UserAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIService.swift; sourceTree = "<group>"; };
 		FC62153526C64258005370AD /* CustomPushAnimatorWithRotationAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnimatorWithRotationAngle.swift; sourceTree = "<group>"; };
 		FC62153826C642AC005370AD /* CustomPopAnimatorWithRotationAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimatorWithRotationAngle.swift; sourceTree = "<group>"; };
 		FC641C3426BC6E3B00749964 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				FCAA3F6426D5AA4B00BF6521 /* VKAPIService.swift */,
 				FC6686E426E94DB90018625A /* GroupAPIService.swift */,
 				FC6C5F8A26E7F256009B1696 /* NewsAPIService.swift */,
+				FC5D829326EA9EA10023FA06 /* UserAPIService.swift */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				FC64575126C5DAFC00C768B6 /* CustomPushAnimator.swift in Sources */,
 				FC62153926C642AC005370AD /* CustomPopAnimatorWithRotationAngle.swift in Sources */,
 				FC6CD3CB26BB5FDB006B486D /* GroupsTableViewCell.swift in Sources */,
+				FC5D829426EA9EA10023FA06 /* UserAPIService.swift in Sources */,
 				FC66871826E986770018625A /* GetDataAsync.swift in Sources */,
 				FC641C3526BC6E3B00749964 /* UserView.swift in Sources */,
 				FC9FBB1926D77B2D000D0DAB /* Photo.swift in Sources */,
