@@ -12,6 +12,7 @@ final class GroupsTableViewController: UITableViewController {
     private var groups: Results<Group>?
     private let reuseIdentifier = "GroupsTableViewCell"
     private lazy var service = GroupAPIService()
+    private lazy var photoService = PhotoService(container: tableView)
 
     // MARK: - UIViewController
 
@@ -28,7 +29,8 @@ final class GroupsTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
             as? GroupsTableViewCell,
             let groups = groups else { fatalError() }
-        cell.configureCell(group: groups[indexPath.row])
+        let image = photoService.photo(atIndexPath: indexPath, byUrl: groups[indexPath.row].groupImageName)
+        cell.configureCell(group: groups[indexPath.row], indexPath: indexPath, image: image ?? UIImage())
         return cell
     }
 
