@@ -3,6 +3,7 @@
 
 import Alamofire
 import Foundation
+import RealmSwift
 
 final class GroupAPIService {
     // MARK: - Public methods
@@ -40,5 +41,18 @@ final class GroupAPIService {
         let url = (baseURL + path)
         let request = AF.request(url, parameters: parameters)
         return request
+    }
+
+    private func saveUsersToRealm(_ users: [User]) {
+        do {
+            let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+            let realm = try Realm(configuration: config)
+
+            try realm.write {
+                realm.add(users, update: .modified)
+            }
+        } catch {
+            print(error)
+        }
     }
 }

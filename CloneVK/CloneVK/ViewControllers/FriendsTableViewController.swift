@@ -14,7 +14,7 @@ final class FriendsTableViewController: UITableViewController {
     private let segueFriendidentifier = "showFriend"
     private var sections: [Character: [User]] = [:]
     private var sectionTitles: [Character] = []
-    private lazy var service = VKAPIService()
+    private lazy var service = UserAPIService()
 
     // MARK: - UIViewController
 
