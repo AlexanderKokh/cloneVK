@@ -49,18 +49,16 @@ final class UserAPIService {
         let baseURL = "https://api.vk.com/method/"
         let version = "5.131"
         let token = Session.shared.token
+        let path = "friends.get"
+        let parameters: Parameters = [
+            "v": version,
+            "access_token": token,
+            "fields": "photo_100",
+            "order": "name"
+        ]
+        let url = (baseURL + path)
 
         return Promise<Data> { resolver in
-            let path = "friends.get"
-            let parameters: Parameters = [
-                "v": version,
-                "access_token": token,
-                "fields": "photo_100",
-                "order": "name"
-            ]
-
-            let url = (baseURL + path)
-
             AF.request(url, parameters: parameters).validate().responseData { response in
                 guard let data = response.data else { return }
                 resolver.fulfill(data)
