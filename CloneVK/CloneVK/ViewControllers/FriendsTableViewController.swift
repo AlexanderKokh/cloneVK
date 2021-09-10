@@ -15,7 +15,6 @@ final class FriendsTableViewController: UITableViewController {
     private var sections: [Character: [User]] = [:]
     private var sectionTitles: [Character] = []
     private lazy var service = UserAPIService()
-    //  private lazy var service = VKAPIService()
 
     // MARK: - UIViewController
 
@@ -91,8 +90,6 @@ final class FriendsTableViewController: UITableViewController {
     private func getFriends() {
         bindViewWithRealm()
         service.getFriends()
-//        let vff1 = UserAPIService()
-//        vff1.getFriends()
     }
 
     private func bindViewWithRealm() {

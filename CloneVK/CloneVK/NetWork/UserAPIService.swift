@@ -8,6 +8,8 @@ import RealmSwift
 import SwiftyJSON
 
 final class UserAPIService {
+    // MARK: - Public methods
+
     func getFriends() {
         firstly {
             getDataAF()
@@ -19,6 +21,8 @@ final class UserAPIService {
             print(error)
         }
     }
+
+    // MARK: - Private methods
 
     private func saveUsersToRealm(_ users: [User]) {
         do {
@@ -33,7 +37,7 @@ final class UserAPIService {
         }
     }
 
-    func parseData(data: Data) -> Promise<[User]> {
+    private func parseData(data: Data) -> Promise<[User]> {
         Promise<[User]> { resolver in
             let json = JSON(data)
             let users = json["response"]["items"].arrayValue.compactMap { User(json: $0) }
@@ -41,7 +45,7 @@ final class UserAPIService {
         }
     }
 
-    func getDataAF() -> Promise<Data> {
+    private func getDataAF() -> Promise<Data> {
         let baseURL = "https://api.vk.com/method/"
         let version = "5.131"
         let token = Session.shared.token
