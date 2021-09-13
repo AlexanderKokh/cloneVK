@@ -301,7 +301,7 @@
         <scene sceneID="xYV-Fn-e2s">
             <objects>
                 <viewController id="RCl-Vd-fwj" customClass="AllFriendFotoViewController" customModule="CloneVK" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4qo-kk-mOo">
+                    <view key="view" contentMode="scaleToFill" id="4qo-kk-mOo" customClass="AllFriendFotoView" customModule="CloneVK" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -334,13 +334,13 @@
                             <constraint firstItem="boZ-GY-VpD" firstAttribute="centerX" secondItem="4qo-kk-mOo" secondAttribute="centerX" id="gru-nr-Xto"/>
                             <constraint firstItem="W9j-RM-6P5" firstAttribute="centerX" secondItem="hfd-4K-2Ng" secondAttribute="centerX" id="x2s-kb-cVF"/>
                         </constraints>
+                        <connections>
+                            <outlet property="activitiIndicator" destination="boZ-GY-VpD" id="4qO-gn-rD0"/>
+                            <outlet property="currentNumberLabel" destination="z05-0W-B8b" id="Iic-B1-Xtb"/>
+                            <outlet property="friendImageView" destination="W9j-RM-6P5" id="OBD-k3-SAh"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="32v-MF-REb"/>
-                    <connections>
-                        <outlet property="activitiIndicator" destination="boZ-GY-VpD" id="mNa-Fr-EUG"/>
-                        <outlet property="currentNumberLabel" destination="z05-0W-B8b" id="4b3-e5-jjc"/>
-                        <outlet property="friendImageView" destination="W9j-RM-6P5" id="4hr-NP-JEF"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iLH-0u-E8u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
