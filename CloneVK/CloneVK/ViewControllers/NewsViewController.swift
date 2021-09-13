@@ -36,7 +36,6 @@ final class NewsViewController: UIViewController {
 
     private func setupView() {
         tableView.dataSource = self
-        // tableView.estimatedRowHeight = 1
         tableView.delegate = self
 
         let newsAPI = NewsAPIService()
@@ -75,7 +74,9 @@ extension NewsViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: avatarcellIdentifier) as? NewsTableViewCell
             else { fatalError() }
             let image = photoService.photo(atIndexPath: indexPath, byUrl: news[indexPath.section].sourceImageName)
-            cell.configureCell(news: news[indexPath.section], image: image ?? UIImage())
+            if image != nil {
+                cell.configureCell(news: news[indexPath.section], image: image ?? UIImage())
+            }
             return cell
         case .foto:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: fotoCelldentifier) as? NewsTableViewFotoCell

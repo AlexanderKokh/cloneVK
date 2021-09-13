@@ -307,8 +307,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W9j-RM-6P5">
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W9j-RM-6P5">
                                 <rect key="frame" x="43.5" y="91" width="327" height="543"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="327" id="KQ2-Sd-RYB"/>
                                     <constraint firstAttribute="width" secondItem="W9j-RM-6P5" secondAttribute="height" multiplier="109:181" id="sNV-6P-Dx4"/>
@@ -316,10 +317,12 @@
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="boZ-GY-VpD">
                                 <rect key="frame" x="188.5" y="344" width="37" height="37"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
                                 <color key="color" systemColor="tertiarySystemBackgroundColor"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z05-0W-B8b">
                                 <rect key="frame" x="140" y="661" width="134" height="0.0"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -618,6 +621,7 @@
                                             <constraints>
                                                 <constraint firstItem="RNf-fQ-zGF" firstAttribute="leading" secondItem="BQx-gU-cWz" secondAttribute="leading" id="08g-hh-oxh"/>
                                                 <constraint firstAttribute="trailing" secondItem="RNf-fQ-zGF" secondAttribute="trailing" id="FpO-3k-CPL"/>
+                                                <constraint firstItem="RNf-fQ-zGF" firstAttribute="width" secondItem="BQx-gU-cWz" secondAttribute="width" id="T52-MP-1eS"/>
                                                 <constraint firstAttribute="bottom" secondItem="RNf-fQ-zGF" secondAttribute="bottom" id="T5k-0m-lXL"/>
                                                 <constraint firstItem="RNf-fQ-zGF" firstAttribute="top" secondItem="BQx-gU-cWz" secondAttribute="top" id="WXe-lZ-8vH"/>
                                             </constraints>
@@ -633,30 +637,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MyY-P7-RNx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rlc-NV-Xlm">
-                                                            <rect key="frame" x="0.0" y="1" width="414" height="19"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                                    <constraints>
-                                                        <constraint firstItem="rlc-NV-Xlm" firstAttribute="centerX" secondItem="MyY-P7-RNx" secondAttribute="centerX" id="1gj-0P-v6C"/>
-                                                        <constraint firstItem="rlc-NV-Xlm" firstAttribute="top" secondItem="MyY-P7-RNx" secondAttribute="top" constant="1" id="5DW-sC-n4z"/>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rlc-NV-Xlm" secondAttribute="trailing" priority="900" id="875-KU-wW1"/>
-                                                        <constraint firstItem="rlc-NV-Xlm" firstAttribute="width" secondItem="MyY-P7-RNx" secondAttribute="width" id="8ZC-OG-gz2"/>
-                                                        <constraint firstItem="rlc-NV-Xlm" firstAttribute="centerY" secondItem="MyY-P7-RNx" secondAttribute="centerY" id="KeY-Fb-3ln"/>
-                                                        <constraint firstItem="rlc-NV-Xlm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MyY-P7-RNx" secondAttribute="leading" priority="900" id="lEO-xf-gYc"/>
-                                                    </constraints>
-                                                </view>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rlc-NV-Xlm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="MyY-P7-RNx" firstAttribute="leading" secondItem="p7b-Eg-cpM" secondAttribute="leading" id="N4i-et-Gvm"/>
-                                                <constraint firstAttribute="trailing" secondItem="MyY-P7-RNx" secondAttribute="trailing" id="Y0d-5Q-H5H"/>
-                                                <constraint firstAttribute="bottom" secondItem="MyY-P7-RNx" secondAttribute="bottom" id="isc-bU-kTb"/>
-                                                <constraint firstItem="MyY-P7-RNx" firstAttribute="top" secondItem="p7b-Eg-cpM" secondAttribute="top" id="wC9-NT-1CG"/>
+                                                <constraint firstItem="rlc-NV-Xlm" firstAttribute="leading" secondItem="p7b-Eg-cpM" secondAttribute="leading" id="3j9-4d-tzA"/>
+                                                <constraint firstAttribute="bottom" secondItem="rlc-NV-Xlm" secondAttribute="bottom" constant="1" id="HBf-ca-DhQ"/>
+                                                <constraint firstItem="rlc-NV-Xlm" firstAttribute="top" secondItem="p7b-Eg-cpM" secondAttribute="top" id="QFR-b0-0ys"/>
+                                                <constraint firstAttribute="trailing" secondItem="rlc-NV-Xlm" secondAttribute="trailing" id="dvh-nE-XY5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -854,6 +844,9 @@
         <namedColor name="VKLoginViewColor">
             <color red="0.46399998664855957" green="0.63200002908706665" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -862,9 +855,6 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
