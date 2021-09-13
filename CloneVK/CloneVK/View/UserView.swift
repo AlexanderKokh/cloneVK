@@ -73,6 +73,7 @@ import UIKit
     private func setupView() {
         usershadomView.frame = bounds
         usershadomView.backgroundColor = .white
+        // userImageView.backgroundColor = .systemBackground
         addSubview(usershadomView)
 
         userImageView.frame = bounds

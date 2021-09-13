@@ -47,17 +47,22 @@ final class AllFriendFotoViewController: UIViewController {
             case .initial:
                 break
             case .update:
-                contentView.photo = []
                 let photos = Array(fotos)
-                for photo in photos {
-                    contentView.photo.append(self.service.getFoto(image: photo.photo))
-                    let photoCount = contentView.photo.count
-                    contentView.currentNumberLabel.text = "1 / \(photoCount)"
-                    contentView.friendImageView.image = contentView.photo.first
-                }
+                updatePhoto(view: contentView, photoRealm: photos)
             case let .error(error):
                 print(error)
             }
+        }
+    }
+
+    private func updatePhoto(view contentView: AllFriendFotoView, photoRealm: [Photo]) {
+        contentView.photo = []
+        let photos = Array(photoRealm)
+        for photo in photos {
+            contentView.photo.append(service.getFoto(image: photo.photo))
+            let photoCount = contentView.photo.count
+            contentView.currentNumberLabel.text = "1 / \(photoCount)"
+            contentView.friendImageView.image = contentView.photo.first
         }
     }
 }
