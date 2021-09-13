@@ -23,6 +23,7 @@ final class NewsViewController: UIViewController {
     private let likesCellIdentifier = "NewsTableViewLikesCell"
     private let textCellIdentifier = "NewsTableViewTextCell"
     private let types: [CellTypes] = [.avatar, .post, .foto, .like]
+    private lazy var photoService = PhotoService(container: tableView)
 
     // MARK: - UIViewController
 
@@ -73,12 +74,14 @@ extension NewsViewController: UITableViewDataSource {
         case .avatar:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: avatarcellIdentifier) as? NewsTableViewCell
             else { fatalError() }
-            cell.configureCell(news: news[indexPath.section])
+            let image = photoService.photo(atIndexPath: indexPath, byUrl: news[indexPath.section].sourceImageName)
+            cell.configureCell(news: news[indexPath.section], image: image ?? UIImage())
             return cell
         case .foto:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: fotoCelldentifier) as? NewsTableViewFotoCell
             else { fatalError() }
-            cell.configureCell(news: news[indexPath.section])
+            let image = photoService.photo(atIndexPath: indexPath, byUrl: news[indexPath.section].photo)
+            cell.configureCell(image: image ?? UIImage())
             return cell
         case .post:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier) as? NewsTableViewTextCell

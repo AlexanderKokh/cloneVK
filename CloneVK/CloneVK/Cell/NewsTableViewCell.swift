@@ -22,8 +22,8 @@ final class NewsTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    func configureCell(news: News) {
-        avatarNewsImageView.image = sevice.getFoto(image: news.sourceImageName)
+    func configureCell(news: News, image: UIImage) {
+        avatarNewsImageView.image = image
         avatarNewsLabel.text = news.sourceNews
     }
 }

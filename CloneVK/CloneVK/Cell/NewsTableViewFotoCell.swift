@@ -22,7 +22,7 @@ final class NewsTableViewFotoCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    func configureCell(news: News) {
-        mainNewsImageView.image = service.getFoto(image: news.photo)
+    func configureCell(image: UIImage) {
+        mainNewsImageView.image = image
     }
 }
