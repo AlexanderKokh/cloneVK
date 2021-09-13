@@ -7,9 +7,9 @@ import UIKit
 class AllFriendFotoView: UIView {
     // MARK: - IBOutlet
 
-    @IBOutlet var friendImageView: UIImageView!
-    @IBOutlet var currentNumberLabel: UILabel!
-    @IBOutlet var activitiIndicator: UIActivityIndicatorView!
+    @IBOutlet private var friendImageView: UIImageView!
+    @IBOutlet private var currentNumberLabel: UILabel!
+    @IBOutlet private var activitiIndicator: UIActivityIndicatorView!
 
     private var index = Int()
     var photo: [UIImage] = []
@@ -23,6 +23,11 @@ class AllFriendFotoView: UIView {
 
     func stopActivityIndicator() {
         activitiIndicator.stopAnimating()
+    }
+
+    func updatePhoto(count: Int) {
+        currentNumberLabel.text = "1 / \(count)"
+        friendImageView.image = photo.first
     }
 
     func createSwipeGesture() {

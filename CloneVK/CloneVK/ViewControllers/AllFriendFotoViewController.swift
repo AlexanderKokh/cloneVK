@@ -61,8 +61,7 @@ final class AllFriendFotoViewController: UIViewController {
         for photo in photos {
             contentView.photo.append(service.getFoto(image: photo.photo))
             let photoCount = contentView.photo.count
-            contentView.currentNumberLabel.text = "1 / \(photoCount)"
-            contentView.friendImageView.image = contentView.photo.first
+            contentView.updatePhoto(count: photoCount)
         }
     }
 }

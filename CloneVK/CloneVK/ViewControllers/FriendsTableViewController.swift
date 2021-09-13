@@ -15,6 +15,7 @@ final class FriendsTableViewController: UITableViewController {
     private var sections: [Character: [User]] = [:]
     private var sectionTitles: [Character] = []
     private lazy var service = UserAPIService()
+    private lazy var photoService = PhotoService(container: tableView)
 
     // MARK: - UIViewController
 
@@ -62,7 +63,8 @@ final class FriendsTableViewController: UITableViewController {
         else { fatalError() }
 
         guard let user = sections[sectionTitles[indexPath.section]]?[indexPath.row] else { fatalError() }
-        cell.configureCell(user: user)
+        let image = photoService.photo(atIndexPath: indexPath, byUrl: user.userPhoto)
+        cell.configureCell(user: user, image: image ?? UIImage())
 
         return cell
     }
