@@ -35,6 +35,7 @@ final class NewsViewController: UIViewController {
 
     private func setupView() {
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 1
         tableView.delegate = self
 
         let newsAPI = NewsAPIService()
@@ -49,19 +50,22 @@ final class NewsViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension NewsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let type = types[indexPath.row]
-        switch type {
-        case .avatar:
-            return 80
-        case .foto:
-            return 400
-        case .post:
-            return 300
-        case .like:
-            return 40
-        }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
     }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let type = types[indexPath.row]
+//        switch type {
+//        case .avatar:
+//            return 80
+//        case .foto:
+//            return 400
+//        case .post:
+//            return 300
+//        case .like:
+//            return 40
+//        }
+//    }
 }
 
 // MARK: - UITableViewDataSource

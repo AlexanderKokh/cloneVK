@@ -17,7 +17,7 @@ final class NewsTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        avatarNewsImageView.contentMode = .scaleAspectFit
+        avatarNewsImageView.contentMode = .scaleAspectFill
     }
 
     // MARK: - Public methods
