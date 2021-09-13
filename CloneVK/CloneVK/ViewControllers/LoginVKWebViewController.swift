@@ -30,20 +30,7 @@ final class LoginVKWebViewController: UIViewController {
     // MARK: - Private methods
 
     private func loadRequest() {
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "oauth.vk.com"
-        urlComponents.path = "/authorize"
-        urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "\(Session.shared.userID)"),
-            URLQueryItem(name: "display", value: "mobile"),
-            URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-            URLQueryItem(name: "scope", value: "wall, friends"),
-            URLQueryItem(name: "response_type", value: "token"),
-            URLQueryItem(name: "V", value: "5.68")
-        ]
-        guard let url = urlComponents.url else { return }
-        let request = URLRequest(url: url)
+        guard let request = vkService.getAuthRequest() else { return }
         webView.load(request)
     }
 }
