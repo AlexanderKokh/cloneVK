@@ -17,13 +17,13 @@ final class NewsTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        avatarNewsImageView.contentMode = .scaleAspectFit
+        avatarNewsImageView.contentMode = .scaleAspectFill
     }
 
     // MARK: - Public methods
 
-    func configureCell(news: News) {
-        avatarNewsImageView.image = sevice.getFoto(image: news.sourceImageName)
+    func configureCell(news: News, image: UIImage) {
+        avatarNewsImageView.image = image
         avatarNewsLabel.text = news.sourceNews
     }
 }

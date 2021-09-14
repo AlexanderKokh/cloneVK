@@ -23,6 +23,7 @@ final class NewsViewController: UIViewController {
     private let likesCellIdentifier = "NewsTableViewLikesCell"
     private let textCellIdentifier = "NewsTableViewTextCell"
     private let types: [CellTypes] = [.avatar, .post, .foto, .like]
+    private lazy var photoService = PhotoService(container: tableView)
 
     // MARK: - UIViewController
 
@@ -49,18 +50,8 @@ final class NewsViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension NewsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let type = types[indexPath.row]
-        switch type {
-        case .avatar:
-            return 80
-        case .foto:
-            return 400
-        case .post:
-            return 300
-        case .like:
-            return 40
-        }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
     }
 }
 
@@ -82,12 +73,16 @@ extension NewsViewController: UITableViewDataSource {
         case .avatar:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: avatarcellIdentifier) as? NewsTableViewCell
             else { fatalError() }
-            cell.configureCell(news: news[indexPath.section])
+            let image = photoService.photo(atIndexPath: indexPath, byUrl: news[indexPath.section].sourceImageName)
+            if image != nil {
+                cell.configureCell(news: news[indexPath.section], image: image ?? UIImage())
+            }
             return cell
         case .foto:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: fotoCelldentifier) as? NewsTableViewFotoCell
             else { fatalError() }
-            cell.configureCell(news: news[indexPath.section])
+            let image = photoService.photo(atIndexPath: indexPath, byUrl: news[indexPath.section].photo)
+            cell.configureCell(image: image ?? UIImage())
             return cell
         case .post:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier) as? NewsTableViewTextCell

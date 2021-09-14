@@ -30,7 +30,7 @@ final class GroupsTableViewController: UITableViewController {
             as? GroupsTableViewCell,
             let groups = groups else { fatalError() }
         let image = photoService.photo(atIndexPath: indexPath, byUrl: groups[indexPath.row].groupImageName)
-        cell.configureCell(group: groups[indexPath.row], indexPath: indexPath, image: image ?? UIImage())
+        cell.configureCell(group: groups[indexPath.row], image: image ?? UIImage())
         return cell
     }
 
