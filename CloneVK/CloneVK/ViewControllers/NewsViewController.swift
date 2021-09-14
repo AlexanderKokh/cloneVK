@@ -27,7 +27,6 @@ final class NewsViewController: UIViewController {
     private lazy var photoService = PhotoService(container: tableView)
     private lazy var newsAPI = NewsAPIService()
     private var nextFrom = ""
-
     private var isloading = true
 
     private let dateFormatter: DateFormatter = {
@@ -59,7 +58,7 @@ final class NewsViewController: UIViewController {
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
 
-    func getCellDateText(forIndexPath indexPath: IndexPath, andTimestamp timestamp: Double) -> String {
+    private func getCellDateText(forIndexPath indexPath: IndexPath, andTimestamp timestamp: Double) -> String {
         if let stringDate = dateTextCache[indexPath] {
             return stringDate
         } else {
@@ -69,6 +68,8 @@ final class NewsViewController: UIViewController {
             return stringDate
         }
     }
+
+    // MARK: - IBAction
 
     @objc private func refresh() {
         let mostFreshdate = ((news.first?.date) ?? Date().timeIntervalSince1970) + 1
