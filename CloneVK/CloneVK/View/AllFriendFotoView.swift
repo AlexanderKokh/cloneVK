@@ -11,15 +11,24 @@ class AllFriendFotoView: UIView {
     @IBOutlet private var currentNumberLabel: UILabel!
     @IBOutlet private var activitiIndicator: UIActivityIndicatorView!
 
-    private var index = Int()
+    // MARK: - Public Properties
+
     var photo: [UIImage] = []
     var navController: UINavigationController?
+
+    // MARK: - Private Properties
+
+    private var index = Int()
+
+    // MARK: - Initializers
 
     override func awakeFromNib() {
         super.awakeFromNib()
         activitiIndicator.startAnimating()
         createSwipeGesture()
     }
+
+    // MARK: - Public methods
 
     func stopActivityIndicator() {
         activitiIndicator.stopAnimating()
@@ -43,6 +52,8 @@ class AllFriendFotoView: UIView {
         swipeDown.direction = UISwipeGestureRecognizer.Direction.down
         addGestureRecognizer(swipeDown)
     }
+
+    // MARK: - Private methods
 
     private func swipe(translationX: Int, increaseIndex: Int) {
         index += increaseIndex

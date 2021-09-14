@@ -9,6 +9,9 @@ final class LoginVKWebViewController: UIViewController {
     // MARK: - Public Properties
 
     lazy var vkService = VKAPIService()
+
+    // MARK: - Private Properties
+
     private let databaseRef = Database.database().reference().child("User")
     private var fireBaseUsers: [String] = []
 

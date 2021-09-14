@@ -12,7 +12,7 @@ final class NewsTableViewFotoCell: UITableViewCell {
 
     private let service = VKAPIService()
 
-    var aspectConstraint: NSLayoutConstraint? {
+    private var aspectConstraint: NSLayoutConstraint? {
         didSet {
             if oldValue != nil {
                 mainNewsImageView.removeConstraint(oldValue ?? NSLayoutConstraint())
@@ -53,9 +53,7 @@ final class NewsTableViewFotoCell: UITableViewCell {
             constant: 0.0
         )
         constraint.priority = UILayoutPriority(rawValue: 999)
-
         aspectConstraint = constraint
-
         mainNewsImageView.image = image
     }
 }
