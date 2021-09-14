@@ -25,6 +25,10 @@ final class NewsViewController: UIViewController {
     private let types: [CellTypes] = [.avatar, .post, .foto, .like]
     private var dateTextCache: [IndexPath: String] = [:]
     private lazy var photoService = PhotoService(container: tableView)
+    private lazy var newsAPI = NewsAPIService()
+    private var nextFrom = ""
+
+    private var isloading = true
 
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -44,6 +48,7 @@ final class NewsViewController: UIViewController {
     private func setupView() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.prefetchDataSource = self
         setupPullToRefresh()
     }
 
@@ -66,13 +71,36 @@ final class NewsViewController: UIViewController {
     }
 
     @objc private func refresh() {
-        let mostFreshdate = (news.first?.date) ?? Date().timeIntervalSince1970
-        let newsAPI = NewsAPIService()
-        newsAPI.getNews(from: mostFreshdate) { [weak self] news in
+        let mostFreshdate = ((news.first?.date) ?? Date().timeIntervalSince1970) + 1
+
+        newsAPI.getNews(startTime: mostFreshdate) { [weak self] news, nextFrom in
             guard let self = self else { return }
             self.tableView.refreshControl?.endRefreshing()
             self.news = news + self.news
             self.tableView.reloadData()
+            self.nextFrom = nextFrom
+            self.isloading = false
+        }
+    }
+}
+
+// MARK: - UITableViewDataSourcePrefetching
+
+extension NewsViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        guard let maxRow = indexPaths.map(\.section).max(),
+              maxRow > news.count - 3,
+              isloading == false else { return }
+        isloading = true
+
+        newsAPI.getNews(startFrom: nextFrom) { [weak self] news, nextFrom in
+            guard let self = self else { return }
+            let oldNewsCount = self.news.count
+            let indexSet = IndexSet(integersIn: self.news.count ..< self.news.count + news.count)
+            self.news.append(contentsOf: news)
+            self.tableView.insertSections(indexSet, with: .automatic)
+            self.isloading = false
+            self.nextFrom = nextFrom
         }
     }
 }

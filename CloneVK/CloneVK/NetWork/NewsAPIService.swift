@@ -12,24 +12,30 @@ final class NewsAPIService {
     private let version = "5.131"
     private let token = Session.shared.token
     private var postNews: [News] = []
+    private var nextFrom: String = ""
 
     // MARK: - Public methods
 
     func getNews(
-        from startTime: TimeInterval? = nil,
-        _ compleation: @escaping ([News]) -> ()
+        startTime: TimeInterval? = nil,
+        startFrom: String? = nil,
+        _ compleation: @escaping ([News], String) -> ()
     ) {
+        postNews = []
         let path = "newsfeed.get"
-        let parameters: Parameters = [
+        var parameters: Parameters = [
             "v": version,
             "filters": "post",
-            "access_token": token
+            "access_token": token,
+            "count": 50
         ]
 
         if let startTime = startTime {
-            let extraParameters: Parameters = [
-                "start_time": "\(startTime)"
-            ]
+            parameters["start_time"] = "\(startTime)"
+        }
+
+        if let startFrom = startFrom {
+            parameters["start_from"] = "\(startFrom)"
         }
 
         let url = baseURL + path
@@ -43,7 +49,7 @@ final class NewsAPIService {
                     self.fillNewsArray(dispatchGroup: dispatchGroup, data: data)
                 }
                 dispatchGroup.notify(queue: DispatchQueue.main) {
-                    compleation(self.postNews)
+                    compleation(self.postNews, self.nextFrom)
                 }
 
             case let .failure(error):
@@ -63,6 +69,7 @@ final class NewsAPIService {
         profiles = json["response"]["profiles"].arrayValue.compactMap { User(json: $0) }
         groups = json["response"]["groups"].arrayValue.compactMap { Group(json: $0) }
         posts = json["response"]["items"].arrayValue.compactMap { Items(json: $0) }
+        nextFrom = json["response"]["next_from"].stringValue
 
         for post in posts {
             var author = ""
