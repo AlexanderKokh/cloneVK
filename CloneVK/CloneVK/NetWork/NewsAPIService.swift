@@ -15,13 +15,22 @@ final class NewsAPIService {
 
     // MARK: - Public methods
 
-    func getNews(_ compleation: @escaping ([News]) -> ()) {
+    func getNews(
+        from startTime: TimeInterval? = nil,
+        _ compleation: @escaping ([News]) -> ()
+    ) {
         let path = "newsfeed.get"
         let parameters: Parameters = [
             "v": version,
             "filters": "post",
             "access_token": token
         ]
+
+        if let startTime = startTime {
+            let extraParameters: Parameters = [
+                "start_time": "\(startTime)"
+            ]
+        }
 
         let url = baseURL + path
 
@@ -83,7 +92,8 @@ final class NewsAPIService {
             comments: source.comments,
             views: source.views,
             repost: source.repost,
-            photo: source.photo
+            photo: source.photo,
+            date: source.date
         )
         postNews.append(news)
     }

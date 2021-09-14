@@ -25,4 +25,6 @@ struct News {
     let repost: String
     /// картинка для описания новости
     let photo: String
+    /// картинка для описания новости
+    let date: Double
 }

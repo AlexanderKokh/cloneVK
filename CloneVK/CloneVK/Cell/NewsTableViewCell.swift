@@ -8,6 +8,7 @@ final class NewsTableViewCell: UITableViewCell {
 
     @IBOutlet private var avatarNewsImageView: UIImageView!
     @IBOutlet private var avatarNewsLabel: UILabel!
+    @IBOutlet private var avatarNewsTimeLabel: UILabel!
 
     // MARK: - Private Properties
 
@@ -22,8 +23,9 @@ final class NewsTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    func configureCell(news: News, image: UIImage) {
+    func configureCell(news: News, image: UIImage, date: String) {
         avatarNewsImageView.image = image
         avatarNewsLabel.text = news.sourceNews
+        avatarNewsTimeLabel.text = date
     }
 }
