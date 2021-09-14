@@ -44,6 +44,7 @@
 		FC6CD3CB26BB5FDB006B486D /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CD3CA26BB5FDB006B486D /* GroupsTableViewCell.swift */; };
 		FC6CD3CE26BB60F9006B486D /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CD3CD26BB60F9006B486D /* Group.swift */; };
 		FC6F4E5826EBDBF600C5CB9B /* Cashe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F4E5726EBDBF600C5CB9B /* Cashe.swift */; };
+		FC82EA5326F0B41300360BA0 /* UITableView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC82EA5226F0B41300360BA0 /* UITableView+extension.swift */; };
 		FC9FBB1926D77B2D000D0DAB /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FBB1826D77B2D000D0DAB /* Photo.swift */; };
 		FCA51B9026BB6B2400B2FA77 /* AllGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA51B8F26BB6B2400B2FA77 /* AllGroupsTableViewCell.swift */; };
 		FCA51B9426BB6B9700B2FA77 /* AllGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA51B9326BB6B9700B2FA77 /* AllGroupsTableViewController.swift */; };
@@ -99,6 +100,7 @@
 		FC6CD3CA26BB5FDB006B486D /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		FC6CD3CD26BB60F9006B486D /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		FC6F4E5726EBDBF600C5CB9B /* Cashe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cashe.swift; sourceTree = "<group>"; };
+		FC82EA5226F0B41300360BA0 /* UITableView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+extension.swift"; sourceTree = "<group>"; };
 		FC9FBB1826D77B2D000D0DAB /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		FCA51B8F26BB6B2400B2FA77 /* AllGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewCell.swift; sourceTree = "<group>"; };
 		FCA51B9326BB6B9700B2FA77 /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				FC65EF1726B93816001212C7 /* UIViewController+extension.swift */,
 				FC64574626C5CE6200C768B6 /* InteractiveTransition.swift */,
 				FC64574926C5D22800C768B6 /* CustomNavigationController.swift */,
+				FC82EA5226F0B41300360BA0 /* UITableView+extension.swift */,
 				FC62153826C642AC005370AD /* CustomPopAnimatorWithRotationAngle.swift */,
 				FC6F4E5726EBDBF600C5CB9B /* Cashe.swift */,
 				FC66871A26E986B80018625A /* OperationQueue */,
@@ -474,6 +477,7 @@
 				FC6CD3C226BB5740006B486D /* UserCollectionViewCell.swift in Sources */,
 				FCAD1F7826C4F589005731E0 /* AllFriendFotoViewController.swift in Sources */,
 				FC64574726C5CE6200C768B6 /* InteractiveTransition.swift in Sources */,
+				FC82EA5326F0B41300360BA0 /* UITableView+extension.swift in Sources */,
 				FC6C004926E6C4B200A07336 /* NewsTableViewTextCell.swift in Sources */,
 				FCCFBF4726E8CC5A0006CB4A /* NewsItems.swift in Sources */,
 				FC641C3B26BC973700749964 /* UserImageLikeControl.swift in Sources */,

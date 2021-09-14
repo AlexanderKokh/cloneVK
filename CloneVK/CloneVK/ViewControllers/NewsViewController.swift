@@ -37,12 +37,23 @@ final class NewsViewController: UIViewController {
     private func setupView() {
         tableView.dataSource = self
         tableView.delegate = self
+        setupPullToRefresh()
+    }
 
+    private func setupPullToRefresh() {
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.tintColor = .systemGray
+        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "loading...")
+        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+
+    @objc private func refresh() {
         let newsAPI = NewsAPIService()
         newsAPI.getNews { [weak self] news in
             guard let self = self else { return }
             self.news = news
             self.tableView.reloadData()
+            self.tableView.refreshControl?.endRefreshing()
         }
     }
 }
@@ -63,7 +74,12 @@ extension NewsViewController: UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        news.count
+        if news.isEmpty {
+            tableView.showEmptyMessage("No news loaded. \nPull screen to load data.")
+        } else {
+            tableView.hideEmptyMessage()
+        }
+        return news.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,8 +97,10 @@ extension NewsViewController: UITableViewDataSource {
         case .foto:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: fotoCelldentifier) as? NewsTableViewFotoCell
             else { fatalError() }
-            let image = photoService.photo(atIndexPath: indexPath, byUrl: news[indexPath.section].photo)
-            cell.configureCell(image: image ?? UIImage())
+            if !news[indexPath.section].photo.isEmpty {
+                let image = photoService.photo(atIndexPath: indexPath, byUrl: news[indexPath.section].photo)
+                cell.configureCell(image: image ?? UIImage())
+            }
             return cell
         case .post:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier) as? NewsTableViewTextCell
