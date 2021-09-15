@@ -34,6 +34,7 @@ final class NewsTableViewFotoCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         aspectConstraint = nil
+        mainNewsImageView.image = nil
     }
 
     // MARK: - Public methods

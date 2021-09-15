@@ -9,7 +9,7 @@ struct Items {
     // MARK: - Public Properties
 
     /// Дата публикации новости
-    var date = String()
+    var date = Double()
     /// ID источника новости(группа или пользователь)
     var sourseID = Int()
     /// Текст новости
@@ -28,7 +28,7 @@ struct Items {
     // MARK: - Initializers
 
     init(json: JSON) {
-        let date = json["date"].stringValue
+        let date = json["date"].doubleValue
         let sourseID = json["source_id"].intValue
         let text = json["text"].stringValue
         let views = json["views"]["count"].stringValue
